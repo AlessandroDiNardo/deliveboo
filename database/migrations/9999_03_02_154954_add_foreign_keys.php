@@ -25,13 +25,13 @@ return new class extends Migration
             $table -> foreignId('restaurant_id') -> constrained();
         });
 
-        Schema::table('restaurant_category', function (Blueprint $table) {
+        Schema::table('category_restaurant', function (Blueprint $table) {
             $table -> foreignId('restaurant_id') -> constrained();
 
             $table -> foreignId('category_id') -> constrained();
         });  
         
-        Schema::table('product_order', function (Blueprint $table) {
+        Schema::table('order_product', function (Blueprint $table) {
             $table -> foreignId('product_id') -> constrained();
 
             $table -> foreignId('order_id') -> constrained();
@@ -57,16 +57,16 @@ return new class extends Migration
             $table -> dropForeign('orders_restaurant_id_foreign');
         });
 
-        Schema::table('restaurant_category', function (Blueprint $table) {
-            $table -> dropForeign('restaurant_category_restaurant_id_foreign');
+        Schema::table('category_restaurant', function (Blueprint $table) {
+            $table -> dropForeign('category_restaurant_restaurant_id_foreign');
 
-            $table -> dropForeign('restaurant_category_category_id_foreign');
+            $table -> dropForeign('category_restaurant_category_id_foreign');
         });
 
-        Schema::table('product_order', function (Blueprint $table) {
-            $table -> dropForeign('product_order_product_id_foreign');
+        Schema::table('order_product', function (Blueprint $table) {
+            $table -> dropForeign('order_product_product_id_foreign');
 
-            $table -> dropForeign('product_order_order_id_foreign');
+            $table -> dropForeign('order_product_order_id_foreign');
         });
     }
 };
