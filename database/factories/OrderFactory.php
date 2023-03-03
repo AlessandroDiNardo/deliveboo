@@ -18,7 +18,7 @@ class OrderFactory extends Factory
     {
         return [
             'code' => fake() -> ean8(),
-            'price' => fake() -> fake() -> randomFloat(2, 40, 999),
+            'price' => fake() -> randomFloat(2, 40, 999),
             'order_date' => fake() -> dateTime(),
             'rider_phone_number' => fake() -> phoneNumber(),
             'address' => fake() -> streetAddress()

@@ -19,7 +19,7 @@ class ProductFactory extends Factory
         return [
             'name' => fake() -> words(rand(1, 4), true),
             'description' => fake() -> paragraph(2),
-            'ingredients' => fake() -> words(rand(3, 8)),
+            'ingredients' => fake() -> words(rand(3, 8), true),
             'price' => fake() -> randomFloat(2, 2, 99),
             'img' => fake() -> imageUrl(360, 360, 'animals', true)
         ];
