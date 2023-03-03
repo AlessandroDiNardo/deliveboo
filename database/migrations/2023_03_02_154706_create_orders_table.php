@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+
+            $table->string('name', 64);
+            $table->decimal('price', $precision = 6, $scale = 2);
+            $table->dateTime('order_date');
+            $table->smallInteger('rider_phone_number');
+            $table->string('address', 128);
+
             $table->timestamps();
         });
     }
