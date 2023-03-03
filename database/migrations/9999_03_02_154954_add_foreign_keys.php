@@ -17,10 +17,12 @@ return new class extends Migration
             $table -> foreignId('restaurant_id') -> constrained();
         });
 
-        Schema::table('restaurant_product', function (Blueprint $table) {
+        Schema::table('products', function (Blueprint $table) {
             $table -> foreignId('restaurant_id') -> constrained();
+        });
 
-            $table -> foreignId('product_id') -> constrained();
+        Schema::table('orders', function (Blueprint $table) {
+            $table -> foreignId('restaurant_id') -> constrained();
         });
 
         Schema::table('restaurant_category', function (Blueprint $table) {
@@ -47,22 +49,24 @@ return new class extends Migration
             $table -> dropForeign('users_restaurant_id_foreign');
         });
 
-        Schema::table('restaurant_product', function (Blueprint $table) {
-            $table -> dropForeign('restaurant_product_restaurant_id_foreign');
+        Schema::table('products', function (Blueprint $table) {
+            $table -> dropForeign('products_restaurant_id_foreign');
+        });
 
-            $table -> dropForeign('restaurant_product_product_id_foreign');
+        Schema::table('orders', function (Blueprint $table) {
+            $table -> dropForeign('orders_restaurant_id_foreign');
         });
 
         Schema::table('restaurant_category', function (Blueprint $table) {
-            $table -> dropForeign('restaurant_category_restaurant_id_foreign') -> constrained();
+            $table -> dropForeign('restaurant_category_restaurant_id_foreign');
 
-            $table -> dropForeign('restaurant_category_category_id_foreign') -> constrained();
+            $table -> dropForeign('restaurant_category_category_id_foreign');
         });
 
         Schema::table('product_order', function (Blueprint $table) {
-            $table -> dropForeign('product_order_product_id_foreign') -> constrained();
+            $table -> dropForeign('product_order_product_id_foreign');
 
-            $table -> dropForeign('product_order_order_id_foreign') -> constrained();
+            $table -> dropForeign('product_order_order_id_foreign');
         });
     }
 };

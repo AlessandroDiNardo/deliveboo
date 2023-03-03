@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name', 64);
             $table->text('description');
             $table->string('place', 64);
-            $table->smallInteger('phone_number');
+            $table->string('phone_number', 32);
             $table->string('img');
             $table->time('opening_time');
             $table->time('closing_time');
