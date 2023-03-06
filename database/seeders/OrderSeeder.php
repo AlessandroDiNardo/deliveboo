@@ -27,7 +27,7 @@ class OrderSeeder extends Seeder
     
                 $o -> save();
 
-                $products = Product::where(['restaurant_id' => $restaurant -> id]) -> inRandomOrder() -> limit(rand(1,5)) -> get();
+                $products = Product::where('restaurant_id', '=', $restaurant -> id) -> inRandomOrder() -> limit(rand(1,5)) -> get();
 
                 $o -> products() -> sync($products);
             });
