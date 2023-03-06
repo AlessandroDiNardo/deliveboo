@@ -18,12 +18,17 @@ class RestaurantSeeder extends Seeder
      */
     public function run()
     {
-        Restaurant::factory()-> count(5) -> make() -> each(function($r) {
-            $r -> save();
+        for ($i = 1; $i < 6; $i++) {
 
-            $categories = Category::inRandomOrder() -> limit(rand(1,3)) -> get();
+            Restaurant::factory()-> count(1) -> make() -> each(function($r) use($i) {
+                $r -> user_id = $i;
 
-            $r -> categories() -> sync($categories);
-        });
+                $r -> save();
+
+                $categories = Category::inRandomOrder() -> limit(rand(1,3)) -> get();
+
+                $r -> categories() -> sync($categories);
+            });
+        }
     }
 }
