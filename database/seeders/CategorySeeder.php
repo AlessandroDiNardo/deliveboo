@@ -17,6 +17,34 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::factory() -> count(20) -> create();
+        
+        $categories = [
+            'italiano', 
+            'cinese', 
+            'americano',
+            'giappponese',
+            'bakery',
+            'indiano',
+            'kebab',
+            'hamburger',
+            'pizza',
+            'fast food',
+            'poke',
+            'sushi',
+            'bibite',
+            'pollo',
+            'messicano',
+            'pasta',
+            'piadina',
+            'sandwich',
+            'vegano',
+            'vegetariano',
+        ];
+
+        foreach ($categories as $category) {
+            $newCategory = new Category();
+            $newCategory->name = $category;
+            $newCategory->save();
+        }
     }
 }
