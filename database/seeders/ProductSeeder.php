@@ -251,6 +251,7 @@ class ProductSeeder extends Seeder
             $p -> save();
         });
 
+
         // ristorante 7 piatto 1
         Product::factory()-> count(1) -> make() -> each(function($p){
             $p->restaurant_id = 7;
@@ -277,6 +278,7 @@ class ProductSeeder extends Seeder
             $p -> img = 'https://media-cdn.tripadvisor.com/media/photo-o/05/4d/df/3b/lin.jpg';
             $p -> save();
         });
+
 
         // ristorante 8 piatto 1
         Product::factory()-> count(1) -> make() -> each(function($p){
@@ -305,6 +307,7 @@ class ProductSeeder extends Seeder
             $p -> save();
         });
 
+
          // ristorante 9 piatto 1
          Product::factory()-> count(1) -> make() -> each(function($p){
             $p->restaurant_id = 9;
@@ -320,6 +323,199 @@ class ProductSeeder extends Seeder
             $p -> name = 'Ramen';
             $p -> ingredients = 'carne di manzo, 2 uova sode, brodo vegetale, cipollotto,zenzero, alga nori, aglio';
             $p -> img = 'https://media-cdn.tripadvisor.com/media/photo-w/12/60/5b/7f/photo0jpg.jpg';
+            $p -> save();
+        });
+
+
+        // ristorante 10 piatto 1
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 10;
+            $p -> name = 'Chana Masala';
+            $p -> ingredients = 'ceci, pomodoro, succo di limone, salsa Masala al curry';
+            $p -> img = 'https://image.jimcdn.com/app/cms/image/transf/dimension=350x1024:format=jpg/path/saf8b9882a31d7ace/image/i65eb0268720ce1cc/version/1544686875/ricetta-chana-masala.jpg';
+            $p -> save();
+        });
+
+        // ristorante 10 piatto 2
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 10;
+            $p -> name = 'Cutlets vegetariani';
+            $p -> ingredients = 'patate, peperoncino, curcuma, succo di limone, cubetti di verdure, ceci';
+            $p -> img = 'https://image.jimcdn.com/app/cms/image/transf/dimension=340x1024:format=jpg/path/saf8b9882a31d7ace/image/ic726825fdc4a5456/version/1541252765/ricetta-cutlets-vegetariani.jpg';
+            $p -> save();
+        });
+
+        // ristorante 10 dolce 1
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 10;
+            $p -> name = 'Masala Chai';
+            $p -> ingredients = 'tè spezziato indiano';
+            $p -> img = 'https://image.jimcdn.com/app/cms/image/transf/dimension=340x1024:format=jpg/path/saf8b9882a31d7ace/image/ic726825fdc4a5456/version/1541252765/ricetta-cutlets-vegetariani.jpg';
+            $p -> save();
+        });
+
+        // ristorante 11 piatto 1
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 11;
+            $p -> name = 'Daal';
+            $p -> ingredients = 'lenticchie, zenzero, curcuma, peperoncino, scalogno, cumino';
+            $p -> img = 'https://image.jimcdn.com/app/cms/image/transf/dimension=335x1024:format=jpg/path/saf8b9882a31d7ace/image/ie49a48a94aa2d12c/version/1544749169/image.jpg';
+            $p -> save();
+        });
+
+        // ristorante 11 piatto 2
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 11;
+            $p -> name = 'Gatta Masala';
+            $p -> ingredients = 'farina di ceci, curcuma, zenzero, menta, yogurt';
+            $p -> img = 'https://image.jimcdn.com/app/cms/image/transf/dimension=340x1024:format=jpg/path/saf8b9882a31d7ace/image/i10578cfb2a8c42b4/version/1544749210/ricetta-gatta-masala.jpg';
+            $p -> save();
+        });
+
+        // ristorante 11 dolce 1
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 11;
+            $p -> name = 'Lassi';
+            $p -> ingredients = 'yogurt, miele, ghiaccio';
+            $p -> img = 'https://image.jimcdn.com/app/cms/image/transf/dimension=338x1024:format=jpg/path/saf8b9882a31d7ace/image/i1fe5d6e17ca23bc0/version/1541300522/ricetta-lassi.jpg';
+            $p -> save();
+        });
+
+        // ristorante 12 piatti 1
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 12;
+            $p -> name = 'Fagiolli alla messicana';
+            $p -> ingredients = 'fagioli, cipolle, cannella, prezzemolo, passata di pomodoro, peperoncino';
+            $p -> img = 'https://www.giallozafferano.it/images/238-23869/Fagioli-alla-messicana_780x520_wm.jpg';
+            $p -> save();
+        });
+
+        // ristorante 12 piatti 2
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 12;
+            $p -> name = 'Salsa di pomodori messicana';
+            $p -> ingredients = 'pomodori, cipolle, coriandolo, peperoncino, limone, zucchero';
+            $p -> img = 'https://www.giallozafferano.it/images/6-633/Salsa-di-pomodori-messicana_780x520_wm.jpg';
+            $p -> save();
+        });
+
+         // ristorante 13 piatti 1
+         Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 13;
+            $p -> name = 'Salsa di pomodori messicana';
+            $p -> ingredients = 'pomodori, cipolle, coriandolo, peperoncino, limone, zucchero';
+            $p -> img = 'https://www.giallozafferano.it/images/6-633/Salsa-di-pomodori-messicana_780x520_wm.jpg';
+            $p -> save();
+        });
+
+        // ristorante 13 piatti 2
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 13;
+            $p -> name = 'Fajitas';
+            $p -> ingredients = 'tortilla di fajidas, controfiletto di manzo / petto di pollo, peperoni rossi / gialli, cipolle bianche / lime, Worcestershire sauce / coriandolo ';
+            $p -> img = 'https://www.giallozafferano.it/images/215-21529/Fajitas-di-carne-e-pollo_450x300.jpg';
+            $p -> save();
+        });
+
+        // ristorante 13 dolce 1
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 13;
+            $p -> name = 'Flan de vanilla';
+            $p -> ingredients = 'latte, uova, zucchero, vaniglia';
+            $p -> img = 'https://www.giallozafferano.it/images/174-17482/Flan-de-vanilla_780x520_wm.jpg';
+            $p -> save();
+        });
+
+        // ristorante 14 piatto 1
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 14;
+            $p -> name = 'Kebab agnello';
+            $p -> ingredients = 'carne di agnello, fesa di tacchino, salsa yogurt, pomodiri, insalta cippole';
+            $p -> img = 'https://media-cdn.tripadvisor.com/media/photo-o/0f/cb/e9/dc/photo1jpg.jpg';
+            $p -> save();
+        });
+
+        // ristorante 14 piatto 2
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 14;
+            $p -> name = 'Pizza col kebab';
+            $p -> ingredients = 'kebab di pollo, patate, provola, cipolle, sale e olio';
+            $p -> img = 'https://blog.giallozafferano.it/ricettedilibellula/wp-content/uploads/2022/05/pizza-kebab--800x533.jpg';
+            $p -> save();
+        });
+
+        // ristorante 15 piatto 1
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 15;
+            $p -> name = 'Kebab pollo';
+            $p -> ingredients = 'pollo, fesa di tacchino, salsa yogurt, pomodiri, insalta cippole';
+            $p -> img = 'https://media-cdn.tripadvisor.com/media/photo-o/0f/cb/e9/dc/photo1jpg.jpg';
+            $p -> save();
+        });
+
+        // ristorante 15 piatto 1
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 15;
+            $p -> name = 'Pizza col kebab';
+            $p -> ingredients = 'kebab di agnello, patate, provola, cipolle, sale e olio';
+            $p -> img = 'https://blog.giallozafferano.it/ricettedilibellula/wp-content/uploads/2022/05/pizza-kebab--800x533.jpg';
+            $p -> save();
+        });
+
+
+        // ristorante 16 dolce 1
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 16;
+            $p -> name = 'Torta al cioccolato';
+            $p -> ingredients = 'cioccolato fondente, zucchero, cacao';
+            $p -> img = 'https://www.giallozafferano.it/images/243-24376/Torta-al-cioccolato_450x300.jpg';
+            $p -> save();
+        });
+
+         // ristorante 16 dolce 1
+         Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 16;
+            $p -> name = 'Cheesecake fredda';
+            $p -> ingredients = 'formaggio fresco spalmabile, more, mirtilli, panna';
+            $p -> img = 'https://www.giallozafferano.it/images/242-24217/New-York-Cheesecake_450x300.jpg';
+            $p -> save();
+        });
+        
+
+         // ristorante 17 psece 1
+         Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 17;
+            $p -> name = 'Involtini di pesce spada con pesto di pistacchi';
+            $p -> ingredients = "pesce spada, pesto di pistacchi, pomodorini secchi sotto'olio";
+            $p -> img = 'https://www.soniaperonaci.it/wp-content/uploads/2019/07/Involtini-pesce-spada.jpg';
+            $p -> save();
+        });
+
+         // ristorante 17 pesce 1
+         Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 17;
+            $p -> name = 'Spaghetti con ragù di crostacei, bottarga e limone';
+            $p -> ingredients = 'ragù di crostacei, bottarga, limone';
+            $p -> img = 'https://www.soniaperonaci.it/wp-content/uploads/2021/09/Spaghetti-con-ragu-di-crostacei-bottarga-e-limone-960x1440.jpg';
+            $p -> save();
+        });
+
+
+        // ristorante 18 pesce 1
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 18;
+            $p -> name = 'Spaghetti con ragù di crostacei, bottarga e limone';
+            $p -> ingredients = 'ragù di crostacei, bottarga, limone';
+            $p -> img = 'https://www.soniaperonaci.it/wp-content/uploads/2021/09/Spaghetti-con-ragu-di-crostacei-bottarga-e-limone-960x1440.jpg';
+            $p -> save();
+        });
+
+        // ristorante 18 pesce 1
+        Product::factory()-> count(1) -> make() -> each(function($p){
+            $p->restaurant_id = 18;
+            $p -> name = 'Involtini di pesce spada con pesto di pistacchi';
+            $p -> ingredients = "pesce spada, pesto di pistacchi, pomodorini secchi sotto'olio";
+            $p -> img = 'https://www.soniaperonaci.it/wp-content/uploads/2019/07/Involtini-pesce-spada.jpg';
             $p -> save();
         });
     }
