@@ -9,16 +9,21 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
+use App\Models\Restaurant;
+
 class ProfileController extends Controller
 {
     /**
      * Display the user's profile form.
      */
     public function edit(Request $request): View
-    {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+    {   
+        // check if exist a restaurant with logged user_id
+        $restaurant = Restaurant::find($request -> user() -> id);
+
+        $user = $request->user();
+
+        return view('profile.edit', compact('restaurant', 'user'));
     }
 
     /**
