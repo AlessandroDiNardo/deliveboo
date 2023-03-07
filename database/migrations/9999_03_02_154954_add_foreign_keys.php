@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('restaurants', function (Blueprint $table) {
-            $table -> foreignId('user_id') -> constrained();
+            $table->unsignedBigInteger('user_id') -> unique();
+ 
+            $table->foreign('user_id')->references('id')->on('users');
         });
 
         Schema::table('products', function (Blueprint $table) {
