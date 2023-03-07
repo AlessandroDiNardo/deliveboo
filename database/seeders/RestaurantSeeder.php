@@ -153,7 +153,7 @@ class RestaurantSeeder extends Seeder
             $r->categories()->attach(13);
         });
 
-        // indiano 1
+        // indiano 1, vegetariano
         Restaurant::factory()-> count(1) -> make() -> each(function($r) {
             $r->user_id = 10;
             $r->name = 'Ristorante Krishna 13';
@@ -164,10 +164,11 @@ class RestaurantSeeder extends Seeder
             $r->closing_time = '24:00:00';
             $r->save();
             $r->categories()->attach(5);
+            $r->categories()->attach(11);
             $r->categories()->attach(12);
         });
 
-        // indiano 2
+        // indiano 2, vegetariano
         Restaurant::factory()-> count(1) -> make() -> each(function($r) {
             $r->user_id = 11;
             $r->name = 'Royal India';
@@ -178,6 +179,7 @@ class RestaurantSeeder extends Seeder
             $r->closing_time = '24:00:00';
             $r->save();
             $r->categories()->attach(5);
+            $r->categories()->attach(11);
             $r->categories()->attach(12);
         });
 
