@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('ingredients');
             $table->decimal('price', $precision = 5, $scale = 2);
             $table->string('img');
+            $table->boolean('visible') -> default('1');
 
             $table->timestamps();
         });
