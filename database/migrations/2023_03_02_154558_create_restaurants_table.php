@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('place', 128);
             $table->string('phone_number', 32);
             $table->string('img');
-            $table->string('vat');
+            $table->string('vat') -> unique();
             $table->time('opening_time');
             $table->time('closing_time');
             $table->decimal('shipping_cost', $precision = 4, $scale = 2);
