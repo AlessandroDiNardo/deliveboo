@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
 
             $table->string('name', 64);
-            $table->text('description');
             $table->text('ingredients');
             $table->decimal('price', $precision = 5, $scale = 2);
             $table->string('img');
