@@ -9,6 +9,9 @@ use App\Models\Restaurant;
 use App\Models\Category;
 use App\Models\User;
 
+// imported Facades
+use Illuminate\Support\Facades\Storage;
+
 class RestaurantController extends Controller
 {
     public function create(Request $request) {
@@ -36,8 +39,12 @@ class RestaurantController extends Controller
         //     'category_id' => 'required|array'
         // ]);
         
-        $user = User::find($request -> user() -> id);
+        // adding img
+        $img_path = Storage::put('uploads', $data['img']);
+        $data['img'] = $img_path;
 
+        $user = User::find($request -> user() -> id);
+        
         $restaurant = Restaurant::make($data);
 
         $restaurant -> user() -> associate($user);
