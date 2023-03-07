@@ -29,7 +29,7 @@ class RestaurantSeeder extends Seeder
             $r->closing_time = '24:00:00';
             $r->save();
             $r->categories()->attach(1);
-            $r->categories()->attach(8);
+            $r->categories()->attach(9);
             $r->categories()->attach(10);
             $r->categories()->attach(12);
         });
