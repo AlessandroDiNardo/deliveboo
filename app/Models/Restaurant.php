@@ -20,6 +20,7 @@ class Restaurant extends Model
         'place',
         'phone_number',
         'img',
+        'vat',
         'opening_time',
         'closing_time',
         'shipping_cost',
@@ -27,7 +28,7 @@ class Restaurant extends Model
     ];
 
     public function user() {
-        return $this -> hasOne(User::class);
+        return $this -> belongsTo(User::class);
     }
 
     public function products() {
