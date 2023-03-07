@@ -34,7 +34,7 @@ class RestaurantSeeder extends Seeder
             $r->categories()->attach(12);
         });
 
-        // italiano, pasta, pesce, vegano 2
+        // italiano, pasta, pesce, vegetariano 2
         Restaurant::factory()-> count(1) -> make() -> each(function($r) {
             $r->user_id = 2;
             $r->name = 'La bella Italia';
