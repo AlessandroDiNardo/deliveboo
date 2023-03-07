@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>CREATE NEW RESTAURANT</h1>
-<form method="POST" action="{{ route('restaurant.store') }}">
+<form method="POST" action="{{ route('restaurant.store') }}" enctype="multipart/form-data">
     @csrf
 
     <label for="name">Name</label>
@@ -22,7 +22,7 @@
     <br>
 
     <label for="img">Img</label>
-    <input type="text" name="img">
+    <input type="file" name="img">
     <br>
 
     <label for="vat">Piva</label>
