@@ -22,6 +22,7 @@ class RestaurantFactory extends Factory
             'place' => fake() -> streetAddress(),
             'phone_number' => fake() -> phoneNumber(),
             'img' => fake() -> imageUrl(360, 360, 'animals', true),
+            'vat' => fake() -> vat(),
             'opening_time' => fake() -> time(),
             'closing_time' => fake() -> time(),
             'shipping_cost' => fake() -> randomFloat(2, 1, 5),
