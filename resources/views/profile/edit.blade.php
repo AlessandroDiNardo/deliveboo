@@ -20,13 +20,15 @@
         </header>
     
         <a href="{{ route('restaurant.create') }}" class="btn btn-success w-25">
-            Add Restaurant
+            Aggiungi Ristorante
         </a>
 
         {{-- if exist... --}}
         @else
 
         <header>
+            <img src="{{ asset('storage/' . $restaurant -> img) }}" alt="restaurantimg">
+
             <h2 class="text-lg font-medium text-gray-900">
                 {{ $restaurant -> name }}
             </h2>
@@ -34,6 +36,10 @@
             <p class="mt-1 text-sm text-gray-600">
                 {{ $restaurant -> description }}
             </p>
+
+            <a href="{{ route('restaurant.edit', $restaurant) }}" class="btn btn-success w-25">
+                Modifica Ristorante
+            </a>
         </header>
         @endif
 
