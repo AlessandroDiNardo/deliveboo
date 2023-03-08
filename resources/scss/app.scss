@@ -1,1 +1,33 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+.my_bg{
+    background-image: url('https://ci-aws-media.s3-accelerate.amazonaws.com/2022/02/Rabobank-foodservice-lead-image-crop.jpg');
+    background-size: cover;
+}
+
+.Logo_filter{
+    filter:  brightness(100%) contrast(3000%)  ;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    border: white solid 3px;
+    background-color:rgba($color: #069e24, $alpha: 0.7);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    padding: 25px;
+    border-radius: 15px;
+    color: white;
+    input{
+        background-color: transparent;
+        border: none;
+        border-bottom: 3px solid white;
+        color: white;
+    }
+
+}
+#btn_submit{
+    background-color: white;
+    color: steelblue;
+    
+
+}
