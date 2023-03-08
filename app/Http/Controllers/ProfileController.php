@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 use App\Models\Restaurant;
+use App\Models\Product; 
 
 class ProfileController extends Controller
 {
@@ -20,6 +21,7 @@ class ProfileController extends Controller
     {   
         // check if exist a restaurant with logged user_id
         $restaurant = Restaurant::find($request -> user() -> id);
+        $product = Product::find($request -> user() -> id);
 
         $user = $request->user();
 

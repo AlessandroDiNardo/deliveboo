@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // imported Controllers
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// CRUD RISTORANTE
 Route::middleware('auth')->group(function () {
     Route::get('/restaurant/create', [RestaurantController::class, 'create'])->name('restaurant.create');
     Route::post('/restaurant/store', [RestaurantController::class, 'store'])->name('restaurant.store');
+});
+
+// CRUD PRODOTTI
+Route::middleware('auth')->group(function () {
+    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
 });
 
 require __DIR__.'/auth.php';

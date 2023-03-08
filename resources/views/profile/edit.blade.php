@@ -27,6 +27,7 @@
         @else
 
         <header>
+            {{-- restaurant --}}
             <h2 class="text-lg font-medium text-gray-900">
                 {{ $restaurant -> name }}
             </h2>
@@ -34,6 +35,22 @@
             <p class="mt-1 text-sm text-gray-600">
                 {{ $restaurant -> description }}
             </p>
+            
+            @foreach ( $restaurant -> products as $product)
+            {{-- product --}}
+            <h3 class="mt-1 text-sm text-gray-600">
+                {{ $product -> name }}
+            </h3>
+
+            <p class="mt-1 text-sm text-gray-600">
+                {{ $product -> ingredients }}
+            </p>
+                
+            @endforeach
+            <a href="{{ route('product.create') }}" class="btn btn-success w-20">
+                Aggiungi Piatto
+            </a>
+
         </header>
         @endif
 
