@@ -30,12 +30,14 @@ class ProductController extends Controller
 
     public function store(Request $request) {
             
-        $data = $request -> all();
+        $data = $request -> validate([
+            'name' => 'required|string|min:3',
+            'ingredients' => 'required|string|min:3',
+            'visible' => 'required|boolean',
+            'img'  => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'price' => 'required|numeric|between:1.300',
 
-        // validate([
-
-
-        // ]);
+        ]);
 
         // adding img
         $img_path = Storage::put('productsImg', $data['img']);
