@@ -1,0 +1,20 @@
+@import "/resources/scss/general/general.scss";
+
+header {
+    background-color: $main-color;
+    color: $black;
+
+    h1 {
+        font-weight: 700;
+    }
+
+    .ms_link {
+        color: $black;
+        font-size: 15px;
+        font-weight: 700;
+
+        &:hover {
+            color: white;
+        }
+    }
+}

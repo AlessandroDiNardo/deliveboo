@@ -1,0 +1,14 @@
+@import "/resources/scss/general/general.scss";
+
+section {
+    background-color: $bg-main;
+
+    .ms_btn {
+        background-color: $main-color;
+
+        &:hover {
+
+            background-color: #07a156;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+@import "/resources/scss/general/general.scss";
+
+.ms_btn_link {
+
+    text-decoration: underline;
+    color: $main-color;
+
+    &:hover {
+        color: $main-color;
+    }
+}

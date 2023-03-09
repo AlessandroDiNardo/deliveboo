@@ -1,3 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
 @import "./general/general.scss";
-@import "./partials/home.scss";
+@import "partials/profile/headerApp.scss";
+@import "partials/profile/welcome.scss";
+@import "partials/profile/login.scss";
