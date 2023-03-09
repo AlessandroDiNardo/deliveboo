@@ -38,7 +38,7 @@ class RestaurantController extends Controller
         ]);
         
         // adding img
-        $img_path = Storage::put('uploads', $data['img']);
+        $img_path = Storage::put('restaurantsImg', $data['img']);
         $data['img'] = $img_path;
 
         $user = User::find($request -> user() -> id);
@@ -65,7 +65,6 @@ class RestaurantController extends Controller
 
     public function update(Request $request, Restaurant $restaurant) {
 
-        // dd($request);
         $data = $request -> validate([
             'name' => 'required|string|min:3',
             'description' => 'required|string|min:10',
@@ -79,12 +78,14 @@ class RestaurantController extends Controller
             'closing_day' => 'required|string|min:3',
             'category_id' => 'required|array'
         ]);
-
-        // dd($data);
         
         // update img only if uploaded new img
         if (array_key_exists('img', $data)) {
-            $img_path = Storage::put('uploads', $data['img']);
+
+            Storage::delete($restaurant -> img);
+
+            $img_path = Storage::put('restaurantsImg', $data['img']);
+
             $data['img'] = $img_path;
         }
 
@@ -99,6 +100,16 @@ class RestaurantController extends Controller
         $categories = Category :: find($data['category_id']);
 
         $restaurant -> categories() -> sync($categories);
+
+        return redirect() -> route('profile.edit');
+    }
+
+    public function delete(Restaurant $restaurant) {
+        Storage::delete($restaurant -> img);
+
+        $restaurant -> categories() -> sync([]);
+
+        $restaurant -> delete();
 
         return redirect() -> route('profile.edit');
     }
