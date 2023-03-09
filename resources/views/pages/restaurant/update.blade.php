@@ -50,7 +50,7 @@
         @foreach ($dayOfWeek as $day => $giorno)
             <option value="{{ $day }}" {{ $restaurant -> closing_day == $day ? 'selected' : '' }}>{{ $giorno }}</option>
         @endforeach
-      </select>
+    </select>
     <br>
 
     <label>Categorie ristorante</label>
