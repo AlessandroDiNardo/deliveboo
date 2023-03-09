@@ -23,8 +23,8 @@
 
     <label for="visible">Disponibilità</label>
     <select name="visible">
-    <option value="true" selected>Disponibile</option>
-    <option value="false">Non Disponibile</option>
+    <option value="1" selected>Disponibile</option>
+    <option value="0">Non Disponibile</option>
     </select>
     <br>
 
