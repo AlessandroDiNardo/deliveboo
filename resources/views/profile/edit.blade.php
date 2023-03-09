@@ -11,11 +11,11 @@
         @if ($restaurant == null)
         <header>
             <h2 class="text-lg font-medium text-gray-900">
-                {{ __('Create Restaurant') }}
+                Crea il tuo ristorante
             </h2>
     
             <p class="mt-1 text-sm text-gray-600">
-                {{ __("Add all your restaurant's info") }}
+                Aggiungi tutte le info necessarie
             </p>
         </header>
     
@@ -46,20 +46,9 @@
                     Elimina Ristorante
                 </a>
 
-                {{-- @foreach ( $restaurant -> products as $product)
-            {{-- product --}}
-            {{-- <h3 class="mt-1 text-sm text-gray-600">
-                {{ $product -> name }}
-            </h3>
-
-            <p class="mt-1 text-sm text-gray-600">
-                {{ $product -> ingredients }}
-            </p>
-                
-            @endforeach
-            <a href="{{ route('product.create') }}" class="btn btn-success w-20">
-                Aggiungi Piatto
-            </a>  --}}
+                <a href="{{ route('product.showAll') }}" class="btn btn-success w-25">
+                    Vai ai Prodotti
+                </a>
 
             </div>
         </header>
