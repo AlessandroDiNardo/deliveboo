@@ -35,11 +35,11 @@ public function store(Request $request) {
     $data['img'] = $img_path;
 
 
-    $user = User::find($request -> user() -> id);
+    $restaurant = Restaurant::where('user_id', $request -> user() -> id) -> first();
 
     $product = Product::make($data);
 
-    $product -> restaurant() -> associate($user);
+    $product -> restaurant() -> associate($restaurant);
     $product -> save();
 
     return redirect() -> route('profile.edit');
