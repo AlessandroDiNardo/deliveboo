@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/restaurant/store', [RestaurantController::class, 'store'])->name('restaurant.store');
     Route::get('/restaurant/edit/{restaurant}', [RestaurantController::class, 'edit'])->name('restaurant.edit');
     Route::post('/restaurant/update/{restaurant}', [RestaurantController::class, 'update'])->name('restaurant.update');
+    Route::get('/restaurant/delete/{restaurant}', [RestaurantController::class, 'delete'])->name('restaurant.delete');
 });
 
 require __DIR__.'/auth.php';
