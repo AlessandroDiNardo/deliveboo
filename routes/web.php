@@ -46,9 +46,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/product/showall', [ProductController::class, 'showAll'])->name('product.showAll');
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
-    Route::get('/restaurant/edit/{product}', [RestaurantController::class, 'edit'])->name('product.edit');
-    Route::post('/restaurant/update/{product}', [RestaurantController::class, 'update'])->name('product.update');
-    Route::get('/restaurant/delete/{product}', [RestaurantController::class, 'delete'])->name('product.delete');
+    Route::get('/product/edit/{product}', [ProductController::class, 'edit'])->name('product.edit');
+    Route::post('/product/update/{product}', [ProductController::class, 'update'])->name('product.update');
+    Route::get('/product/delete/{product}', [ProductController::class, 'delete'])->name('product.delete');
 });
 
 require __DIR__.'/auth.php';
