@@ -20,25 +20,35 @@
         </header>
     
         <a href="{{ route('restaurant.create') }}" class="btn btn-success w-25">
-            Add Restaurant
+            Aggiungi Ristorante
         </a>
 
         {{-- if exist... --}}
         @else
 
-        <header>
-            {{-- restaurant --}}
-            <h2 class="text-lg font-medium text-gray-900">
-                {{ $restaurant -> name }}
-            </h2>
-    
-            <p class="mt-1 text-sm text-gray-600">
-                {{ $restaurant -> description }}
-            </p>
-            
-            @foreach ( $restaurant -> products as $product)
+        <header class="row align-items-center">
+            <img src="{{ asset('storage/' . $restaurant -> img) }}" alt="restaurantimg" class="col-3">
+            <div class="col">
+
+                <h2 class="text-lg font-medium text-gray-900">
+                    {{ $restaurant -> name }}
+                </h2>
+                
+                <p class="mt-1 text-sm text-gray-600">
+                    {{ $restaurant -> description }}
+                </p>
+                
+                <a href="{{ route('restaurant.edit', $restaurant) }}" class="btn btn-warning w-25">
+                    Modifica Ristorante
+                </a>
+
+                <a href="{{ route('restaurant.delete', $restaurant) }}" class="btn btn-danger w-25">
+                    Elimina Ristorante
+                </a>
+
+                {{-- @foreach ( $restaurant -> products as $product)
             {{-- product --}}
-            <h3 class="mt-1 text-sm text-gray-600">
+            {{-- <h3 class="mt-1 text-sm text-gray-600">
                 {{ $product -> name }}
             </h3>
 
@@ -49,8 +59,9 @@
             @endforeach
             <a href="{{ route('product.create') }}" class="btn btn-success w-20">
                 Aggiungi Piatto
-            </a>
+            </a>  --}}
 
+            </div>
         </header>
         @endif
 

@@ -22,7 +22,7 @@ class ProfileController extends Controller
         // check if exist a restaurant with logged user_id
         $restaurant = Restaurant::where('user_id', $request -> user() -> id) -> first();
 
-        $user = $request->user();
+        $user = $request -> user();
 
         return view('profile.edit', compact('restaurant', 'user'));
     }

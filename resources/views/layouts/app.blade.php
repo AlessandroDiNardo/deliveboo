@@ -85,6 +85,8 @@
             </div>
         </nav>
 
+        @include('components.errors')
+
         <main class="">
             @yield('content')
         </main>
