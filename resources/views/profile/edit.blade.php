@@ -26,20 +26,26 @@
         {{-- if exist... --}}
         @else
 
-        <header>
-            <img src="{{ asset('storage/' . $restaurant -> img) }}" alt="restaurantimg">
+        <header class="row align-items-center">
+            <img src="{{ asset('storage/' . $restaurant -> img) }}" alt="restaurantimg" class="col-3">
+            <div class="col">
 
-            <h2 class="text-lg font-medium text-gray-900">
-                {{ $restaurant -> name }}
-            </h2>
-    
-            <p class="mt-1 text-sm text-gray-600">
-                {{ $restaurant -> description }}
-            </p>
+                <h2 class="text-lg font-medium text-gray-900">
+                    {{ $restaurant -> name }}
+                </h2>
+                
+                <p class="mt-1 text-sm text-gray-600">
+                    {{ $restaurant -> description }}
+                </p>
+                
+                <a href="{{ route('restaurant.edit', $restaurant) }}" class="btn btn-warning w-25">
+                    Modifica Ristorante
+                </a>
 
-            <a href="{{ route('restaurant.edit', $restaurant) }}" class="btn btn-success w-25">
-                Modifica Ristorante
-            </a>
+                <a href="{{ route('restaurant.delete', $restaurant) }}" class="btn btn-danger w-25">
+                    Elimina Ristorante
+                </a>
+            </div>
         </header>
         @endif
 
