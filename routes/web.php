@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
 
 // CRUD PRODOTTI
 Route::middleware('auth')->group(function () {
+    Route::get('/product/showall', [ProductController::class, 'showAll'])->name('product.showAll');
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
 });
