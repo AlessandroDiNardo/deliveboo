@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 // imported Models
 use App\Models\Restaurant;
+use App\Models\Product;
 use App\Models\Category;
 use App\Models\User;
 
@@ -108,6 +109,8 @@ class RestaurantController extends Controller
         Storage::delete($restaurant -> img);
 
         $restaurant -> categories() -> sync([]);
+
+        Product::where('restaurant_id', $restaurant -> id)-> delete();
 
         $restaurant -> delete();
 
