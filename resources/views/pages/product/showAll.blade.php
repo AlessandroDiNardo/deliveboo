@@ -10,24 +10,30 @@
 </div>
 <br>
 
-@foreach ( $restaurant -> products as $product)
-<div class="card" style="width: 18rem;">
-    <div class="card" style="width: 18rem;">
-        <img src="{{ str_contains($product -> img, 'http') ? $product -> img : asset('storage/' . $product -> img) }}" alt="productimg" class="col-3">
-        <div class="card-body">
-            <h3 class="card-title">{{ $product -> name }}</h3>
-            <h6>Prezzo: {{ $product -> price }}</h6>
-            <h5>Ingredienti:</h5>
-            <p class="card-text">{{ $product -> ingredients }}</p>
-            <a href="{{ route('product.edit', $product) }}" class="btn btn-warning ">
-            Modifica Piatto
-        </a>
-
-        <a href="{{ route('product.delete', $product) }}" class="btn btn-danger ">
-            Elimina Piatto
-        </a>
+        @foreach ( $restaurant -> products as $product)
+        <div class="card-deck  d-flex align-items-center justify-content-center p-3 " >
+            <div class="card" style="width: 18rem;">
+                <img src="{{ str_contains($product -> img, 'http') ? $product -> img : asset('storage/' . $product -> img) }}" alt="Card image cap" class="col-4 card-img-top">
+                <div class=" text text-center">
+                    <h3 class="card-title category font-weight-bold">{{ $product -> name }}</h3>
+                    <h6>Prezzo: {{ $product -> price }}</h6>
+                    <h5>Ingredienti:</h5>
+                    <p class="card-text">{{ $product -> ingredients }}</p>
+                    <a href="#" class="d-flex align-items-center justify-content-between">
+                        <a href="{{ route('product.edit', $product) }}" class="btn btn-outline-success p-1">
+                            Modifica Piatto
+                        </a>
+        
+                        <a href="{{ route('product.delete', $product) }}" class="btn btn-outline-danger p-1 ">
+                            Elimina Piatto
+                        </a>
+                       
+                    </a>
+                   
+                </div>
         </div>
-</div>
-@endforeach 
 
-@endsection
+        
+        @endforeach 
+
+    @endsection
