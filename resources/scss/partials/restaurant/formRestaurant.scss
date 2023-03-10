@@ -1,0 +1,45 @@
+@import "/resources/scss/general/general.scss";
+
+.my_bg {
+    background: url('https://ci-aws-media.s3-accelerate.amazonaws.com/2022/02/Rabobank-foodservice-lead-image-crop.jpg');
+    background-size: cover;
+}
+
+.Logo_filter {
+    filter: brightness(100%) contrast(3000%);
+    margin-bottom: 50px;
+}
+
+.form {
+    border: white solid 3px;
+    background-color: $main-color;
+    width: 800px;
+    padding: 50px;
+    border-radius: 15px;
+    color: white;
+
+    input[type=text],
+    input[type=time],
+    input[type=number],
+    input[type=file],
+    select {
+        background-color: transparent;
+        border: none;
+        border-bottom: 3px solid white;
+        color: white;
+        margin-bottom: 15px;
+        width: 500px;
+    }
+}
+
+input[type=submit] {
+    background-color: white;
+    border: black;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+ul {
+    list-style: none;
+
+}
