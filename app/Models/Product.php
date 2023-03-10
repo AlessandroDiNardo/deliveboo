@@ -15,10 +15,11 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'description',
         'ingredients',
         'price',
         'img',
+        'visible',
+
     ];
 
     public function restaurant() {
