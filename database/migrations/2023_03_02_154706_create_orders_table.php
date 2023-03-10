@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('price', $precision = 6, $scale = 2);
             $table->dateTime('order_date');
             $table->string('rider_phone_number', 32);
+            $table->string('buyer_phone_number', 32);
             $table->string('address', 128);
 
             $table->timestamps();
