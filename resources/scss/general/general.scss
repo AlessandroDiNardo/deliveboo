@@ -1,0 +1,23 @@
+$main-color: #06c167;
+$bg-main: #e0dede;
+$black: #272727;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: $bg-main;
+}
+
+.ms_btn {
+
+    background-color: $main-color;
+
+    &:hover {
+        background-color: #07a156;
+    }
+}
