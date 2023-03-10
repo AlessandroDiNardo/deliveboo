@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 use App\Models\Restaurant;
+use App\Models\Product; 
 
 class ProfileController extends Controller
 {
@@ -19,9 +20,9 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {   
         // check if exist a restaurant with logged user_id
-        $restaurant = Restaurant::find($request -> user() -> id);
+        $restaurant = Restaurant::where('user_id', $request -> user() -> id) -> first();
 
-        $user = $request->user();
+        $user = $request -> user();
 
         return view('profile.edit', compact('restaurant', 'user'));
     }

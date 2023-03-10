@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // imported Controllers
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// CRUD RISTORANTE
 Route::middleware('auth')->group(function () {
     Route::get('/restaurant/create', [RestaurantController::class, 'create'])->name('restaurant.create');
     Route::post('/restaurant/store', [RestaurantController::class, 'store'])->name('restaurant.store');
+    Route::get('/restaurant/edit/{restaurant}', [RestaurantController::class, 'edit'])->name('restaurant.edit');
+    Route::post('/restaurant/update/{restaurant}', [RestaurantController::class, 'update'])->name('restaurant.update');
+    Route::get('/restaurant/delete/{restaurant}', [RestaurantController::class, 'delete'])->name('restaurant.delete');
+});
+
+// CRUD PRODOTTI
+Route::middleware('auth')->group(function () {
+    Route::get('/product/showall', [ProductController::class, 'showAll'])->name('product.showAll');
+    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+    Route::get('/product/edit/{product}', [ProductController::class, 'edit'])->name('product.edit');
+    Route::post('/product/update/{product}', [ProductController::class, 'update'])->name('product.update');
+    Route::get('/product/delete/{product}', [ProductController::class, 'delete'])->name('product.delete');
 });
 
 require __DIR__.'/auth.php';
