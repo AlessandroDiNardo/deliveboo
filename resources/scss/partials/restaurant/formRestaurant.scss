@@ -1,8 +1,9 @@
 @import "/resources/scss/general/general.scss";
 
 .my_bg {
-    background: url('https://ci-aws-media.s3-accelerate.amazonaws.com/2022/02/Rabobank-foodservice-lead-image-crop.jpg');
-    background-size: cover;
+    // background: url('https://ci-aws-media.s3-accelerate.amazonaws.com/2022/02/Rabobank-foodservice-lead-image-crop.jpg');
+    // background-size: cover;
+    background-color: $bg-main;
 }
 
 .Logo_filter {
@@ -13,7 +14,8 @@
 .form {
     border: white solid 3px;
     background-color: $main-color;
-    width: 800px;
+    width: 1200px;
+    height: 850px;
     padding: 50px;
     border-radius: 15px;
     color: white;
@@ -28,7 +30,7 @@
         border-bottom: 3px solid white;
         color: white;
         margin-bottom: 15px;
-        width: 500px;
+        width: 800px;
     }
 }
 
