@@ -77,8 +77,8 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </header>
 
         @include('components.errors')
 
