@@ -18,6 +18,7 @@ class Order extends Model
         'price',
         'order_date',
         'rider_phone_number',
+        'buyer_phone_number',
         'address',
     ];
 
