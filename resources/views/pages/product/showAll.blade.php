@@ -13,7 +13,7 @@
 @foreach ( $restaurant -> products as $product)
 <div class="card" style="width: 18rem;">
     <div class="card" style="width: 18rem;">
-        <img src="{{ asset('storage/' . $product -> img) }}" class="card-img-top" alt="productimg">
+        <img src="{{ str_contains($product -> img, 'http') ? $product -> img : asset('storage/' . $product -> img) }}" alt="productimg" class="col-3">
         <div class="card-body">
             <h3 class="card-title">{{ $product -> name }}</h3>
             <h6>Prezzo: {{ $product -> price }}</h6>
