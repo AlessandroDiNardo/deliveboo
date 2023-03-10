@@ -1,33 +1,43 @@
 @import '~bootstrap/scss/bootstrap';
-.my_bg{
-    background-image: url('https://ci-aws-media.s3-accelerate.amazonaws.com/2022/02/Rabobank-foodservice-lead-image-crop.jpg');
+
+.my_bg {
+    background: url('https://ci-aws-media.s3-accelerate.amazonaws.com/2022/02/Rabobank-foodservice-lead-image-crop.jpg');
     background-size: cover;
 }
 
-.Logo_filter{
-    filter:  brightness(100%) contrast(3000%)  ;
+.Logo_filter {
+    filter: brightness(100%) contrast(3000%);
+    margin-bottom: 50px;
 }
-.form{
-    display: flex;
-    flex-direction: column;
+
+.form {
     border: white solid 3px;
-    background-color:rgba($color: #069e24, $alpha: 0.7);
-    backdrop-filter: blur(5px);
-    width: 100%;
-    padding: 25px;
+    background-color: rgba($color: #06c167, $alpha: 0.7);
+    width: 800px;
+    padding: 50px;
     border-radius: 15px;
     color: white;
-    input{
+
+    input[type=text],
+    input[type=time],
+    input[type=number],
+    input[type=file] {
         background-color: transparent;
         border: none;
         border-bottom: 3px solid white;
         color: white;
+        margin-bottom: 10px;
+        width: 500px;
     }
-
 }
-#btn_submit{
-    background-color: white;
-    color: steelblue;
-    
 
+input[type=submit] {
+    background-color: white;
+    color: #ff0000;
+    border: black;
+    border-radius: 5px;
+}
+
+ul {
+    list-style: none;
 }
