@@ -20,11 +20,11 @@ return new class extends Migration
         });
 
         Schema::table('products', function (Blueprint $table) {
-            $table -> foreignId('restaurant_id') -> constrained();
+            $table -> foreignId('restaurant_id') -> constrained() -> onDelete('cascade');
         });
 
         Schema::table('orders', function (Blueprint $table) {
-            $table -> foreignId('restaurant_id') -> constrained();
+            $table -> foreignId('restaurant_id') -> constrained() -> onDelete('cascade');
         });
 
         Schema::table('category_restaurant', function (Blueprint $table) {
@@ -34,9 +34,9 @@ return new class extends Migration
         });  
         
         Schema::table('order_product', function (Blueprint $table) {
-            $table -> foreignId('product_id') -> constrained();
+            $table -> foreignId('product_id') -> constrained() -> onDelete('cascade');
 
-            $table -> foreignId('order_id') -> constrained();
+            $table -> foreignId('order_id') -> constrained() -> onDelete('cascade');
         });  
     }
 

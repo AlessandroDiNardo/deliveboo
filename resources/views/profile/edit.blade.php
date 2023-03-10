@@ -27,7 +27,7 @@
         @else
 
         <header class="row align-items-center">
-            <img src="{{ asset('storage/' . $restaurant -> img) }}" alt="restaurantimg" class="col-3">
+            <img src="{{ str_contains($restaurant -> img, 'http') ? $restaurant -> img : asset('storage/' . $restaurant -> img) }}" alt="restaurantimg" class="col-3">
             <div class="col">
 
                 <h2 class="text-lg font-medium text-gray-900">

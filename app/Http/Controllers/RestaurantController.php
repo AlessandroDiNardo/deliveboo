@@ -72,8 +72,8 @@ class RestaurantController extends Controller
             'phone_number' => 'required|string|min:5',
             'img'  => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'vat'  => 'required|string|min:11|max:11|',
-            'opening_time'  => 'date_format:"H:i:s"|required',
-            'closing_time' => 'date_format:"H:i:s"|required',
+            // 'opening_time'  => 'date_format:"H:i"|required',
+            // 'closing_time' => 'date_format:"H:i"|required',
             'shipping_cost' => 'required|numeric|between:0,9.99',
             'closing_day' => 'required|string|min:3',
             'category_id' => 'required|array'
