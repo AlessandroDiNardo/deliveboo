@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@php
+    $dayOfWeek = array('Monday' => 'Lunedi', 'Tuesday' => 'Martedì', 'Wednesday' => 'Mercoledì', 'Thursday' => 'Giovedì', 'Friday' => 'Venerdì', 'Saturday' => 'Sabato', 'Sunday' => 'Domenica',)
+@endphp
+
 @section('content')
 <section class="d-flex justify-content-center py-5 my_bg">
     <form class="form" method="POST" action="{{ route('restaurant.store') }}" enctype="multipart/form-data">
@@ -35,7 +39,7 @@
                     <input type="text" name="vat">
                 </div>
 
-                <label for="shipping_cost">Spesa spedizione</label>
+                <label for="shipping_cost">Costo di spedizione</label>
                 <div>
                     <input type="number" step="0.01" min="1" max="5" name="shipping_cost">
                 </div>       
@@ -52,7 +56,11 @@
 
                 <label for="closing_day">Giorno di chiusura</label>
                 <div>
-                    <input type="text" name="closing_day">
+                    <select name="closing_day">
+                        @foreach ($dayOfWeek as $day => $giorno)
+                            <option value="{{ $day }}" {{ $restaurant -> closing_day == $day ? 'selected' : '' }}>{{ $giorno }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <label for="img">Inserisci un immagine</label><br><br>
@@ -75,7 +83,9 @@
                 </ul>
             </div>
         </div>
-        <input type="submit" value="CREATE NEW RESTAURANT" class="text-center">
+        <div class="d-flex justify-content-center align-items-center">
+            <input type="submit" value="CREATE NEW RESTAURANT">
+        </div>
     </form>
 </section>
 @endsection
