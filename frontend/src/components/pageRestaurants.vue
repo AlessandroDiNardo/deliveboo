@@ -1,6 +1,52 @@
 <script>
+import axios from "axios";
+
 export default {
-    name: "pageRestaurants"
+    name: "pageRestaurants",
+
+    data() {
+        return {
+            categories: [],
+            filteredCategories: [],
+        }
+    },
+
+    mounted() {
+
+        this.getRestaurants();
+
+        this.getCategories();
+    },
+
+    methods: {
+        getRestaurants() {
+            axios.get('http://localhost:8000/api/v1/restaurants/search', { params: { categories : this.filteredCategories }})
+                .then(res => {
+                    const data = res.data;
+                    const success = data.success;
+                    const restaurants = data.response;
+                    console.log(restaurants);
+                })
+                .catch(err => console.error(err));
+        },
+
+        getCategories() {
+            axios.get('http://localhost:8000/api/v1/categories/all')
+                .then(res => {
+                    const data = res.data;
+                    const success = data.success;
+                    this.categories = data.response;
+                })
+                .catch(err => console.error(err));
+        },
+
+        logsdddd() {
+            console.log(this.filteredCategories)
+        }
+    },
+
+    computed: {
+    }
 }
 </script>
 
@@ -19,42 +65,14 @@ export default {
 
                         <div class="offcanvas-body">
                             <ul class=" filter_cont d-flex flex-wrap justify-content-center align-items-center gap-4">
-                                <li>
-                                    Italiano
-                                    <input type="checkbox">
-                                </li>
-                                <li>
-                                    Cinese
-                                    <input type="checkbox">
-                                </li>
-                                <li>
-                                    Giapponese
-                                    <input type="checkbox">
-                                </li>
-                                <li>
-                                    Kebab
-                                    <input type="checkbox">
-                                </li>
-                                <li>
-                                    Hamburger
-                                    <input type="checkbox">
-                                </li>
-                                <li>
-                                    Sushi
-                                    <input type="checkbox">
-                                </li>
-                                <li>
-                                    Dolci
-                                    <input type="checkbox">
-                                </li>
-                                <li>
-                                    Messicano
-                                    <input type="checkbox">
+                                <li v-for="category in this.categories" :key="category.id">
+                                    {{ category.name }}
+                                    <input type="checkbox" :id="'category_' + category.id" :value="category.id" v-model="filteredCategories">
                                 </li>
                             </ul>
                         </div>
                         <div class="d-flex justify-content-end align-items-end p-5">
-                            <button type="button" class="btn btn-color btn-outline-success">Filter</button>
+                            <button type="button" class="btn btn-color btn-outline-success" @click="getRestaurants()">Filter</button>
                         </div>
                     </div>
                 </div>
