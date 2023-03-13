@@ -33,7 +33,7 @@ export default {
                 </button>
                     <button class=" mx-2  rounded-5 p-1 bg-white border-0">
                         <a class="  text-decoration-none text-primary  link_nav  " href="#">
-                            <i class="bi bi-cart mx-1"></i>
+                            <i class="fa-sharp fa-solid fa-cart-shopping"></i>
                         </a>
                     </button>
                 </div>
@@ -41,10 +41,10 @@ export default {
         </nav>
     </header>
     <!-- <section>
-                            <div class="video_container m-0 p-0 bg-black ">
-                                <video class="video_bg" src="../assets/video-jumbo.mp4" autoplay loop muted></video>
-                            </div>
-                        </section> -->
+                                    <div class="video_container m-0 p-0 bg-black ">
+                                        <video class="video_bg" src="../assets/video-jumbo.mp4" autoplay loop muted></video>
+                                    </div>
+                                </section> -->
 </template>
 
 <style lang="scss">
