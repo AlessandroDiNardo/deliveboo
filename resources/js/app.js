@@ -92,23 +92,23 @@ function validate(e) {
     inputClosingError.setAttribute("aria-hidden", false);
     inputClosingError.setAttribute("aria-invalid", true);
   }
-  return valid;
-
-  if (!dayOffField.value) {
-    const inputClosingError = document.getElementById("input_dayOffError");
-    inputDayOffError.classList.add("visible");
-    dayOffField.classList.add("invalid");
-   inputDayOffError.setAttribute("aria-hidden", false);
-   inputDayOffError.setAttribute("aria-invalid", true);
-  }
-  return valid;
+  
+  
+  // if (!dayOffField.value) {
+  //   const inputClosingError = document.getElementById("input_dayOffError");
+  //   inputDayOffError.classList.add("visible");
+  //   dayOffField.classList.add("invalid");
+  //  inputDayOffError.setAttribute("aria-hidden", false);
+  //  inputDayOffError.setAttribute("aria-invalid", true);
+  // }
+  
 
   if (!imgField.value) {
-    const inputClosingError = document.getElementById("input_imgError");
-    inpuImgError.classList.add("visible");
+    const inputImgError = document.getElementById("input_imgError");
+    inputImgError.classList.add("visible");
     imgField.classList.add("invalid");
-    inpuImgError.setAttribute("aria-hidden", false);
-    inpuImgError.setAttribute("aria-invalid", true);
+    inputImgError.setAttribute("aria-hidden", false);
+    inputImgError.setAttribute("aria-invalid", true);
   }
   return valid;
 

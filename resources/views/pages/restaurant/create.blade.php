@@ -28,7 +28,7 @@
                     
                 </div>
 
-                <label for="place">Indirizzooo</label>
+                <label for="place">Indirizzo</label>
                 <div>
                     <input id=input_place type="text" name="place">
                     <span role="alert" id="input_placeError" aria-hidden="true">
