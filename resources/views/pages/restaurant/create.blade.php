@@ -16,6 +16,7 @@
 
                    <span role="alert" id="nameError" aria-hidden="true">
                        Riempi il campo del nome del ristorante
+                       <button type="button" class="btn-close-white" aria-label="Close"></button>
                     </span>
                 </div>
             
@@ -54,7 +55,7 @@
 
                 <label for="shipping_cost">Spesa spedizione</label>
                 <div>
-                    <input required id="input_shipping" type="text" step="0.01" min="1" max="5"  requred name="shipping_cost">
+                    <input required id="input_shipping" type="number" step="0.01" min="1" max="5"  requred name="shipping_cost">
                     <span role="alert" id="input_shippingError" aria-hidden="true">
                         Aggiungi Spesa di spedizione
                      </span>
@@ -104,7 +105,7 @@
                       </span>
                     @foreach ($categories as $category)
                     <li>
-                        <input id="input_category" required type="checkbox" name="category_id[]" value="{{ $category -> id }}" id="{{ $category -> id }}" class="mb-2 mx-2">
+                        <input required id="input_category" type="checkbox" name="category_id[]" value="{{ $category -> id }}" id="{{ $category -> id }}" class="mb-2 mx-2">
                         <label for="{{ $category -> id }}">{{ $category -> name }}</label>
                     </li>
                    

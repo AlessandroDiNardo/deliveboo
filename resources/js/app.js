@@ -10,7 +10,7 @@ const submit = document.getElementById("submit");
 submit.addEventListener("click", validate);
 
 function validate(e) {
-  e.preventDefault();
+  // e.preventDefault();
 
   const firstNameField = document.getElementById("name");
   const descriptionField = document.getElementById("input_description");
@@ -23,7 +23,7 @@ function validate(e) {
   const dayOffField = document.getElementById("day_off");
   const imgField = document.getElementById("input_img");
   const categoryField = document.getElementById("input_category");
-
+ 
   let valid = true;
 
    if (!firstNameField.value) {
@@ -32,6 +32,7 @@ function validate(e) {
      firstNameField.classList.add("invalid");
      nameError.setAttribute("aria-hidden", false);
      nameError.setAttribute("aria-invalid", true);
+     nameError.innerHTML+= btnAlert;
    }
   if (!descriptionField.value) {
     const inputDescriptionError = document.getElementById("inputDescriptionError");
@@ -65,12 +66,15 @@ function validate(e) {
     inputVatError.setAttribute("aria-hidden", false);
     inputVatError.setAttribute("aria-invalid", true);
   }
-  if (!shippingField.value) {
-    const inputShippingError = document.getElementById("input_shippingError");
-    inputShippingError.classList.add("visible");
-    firstNameField.classList.add("invalid");
-    nameError.setAttribute("aria-hidden", false);
-    nameError.setAttribute("aria-invalid", true);
+  // if (isNaN(shippingField.value)) {
+  //   const inputShippingError = document.getElementById("input_shippingError");
+  //   inputShippingError.classList.add("visible");
+  //   firstNameField.classList.add("invalid");
+  //   nameError.setAttribute("aria-hidden", false);
+  //   nameError.setAttribute("aria-invalid", true);
+  // }
+  else{
+    
   }
   if (!placeField.value) {
     const inputDescriptionError = document.getElementById("inputDescriptionError");
@@ -112,9 +116,9 @@ function validate(e) {
     inputImgError.setAttribute("aria-invalid", true);
   }
   if (categoryField.checked) {
-    
+    return valid;
   }
-  else{
+  else if(!categoryField.value){
     const inputCategoryError = document.getElementById("input_categoryError");
     inputCategoryError.classList.add("visible");
     categoryField.classList.add("invalid");
