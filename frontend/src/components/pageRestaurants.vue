@@ -15,15 +15,8 @@ export default {
 
                     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
                         aria-labelledby="offcanvasWithBothOptionsLabel">
-                        <div class="offcanvas-header">
-                            <div class="search_container d-flex justify-content-center align-items-center">
-                                <font-awesome-icon icon="fa-solid fa-magnifying-glass"
-                                    class="ms_search_icon border border-1 p-3" />
-                                <input type="text" placeholder="Search" class="ms_search_bar my-2 px-3">
-                            </div>
-                            <button type="button" class="btn btn-color-close btn-color" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
-                        </div>
+                        <h3>Filtra per categorie</h3>
+
                         <div class="offcanvas-body">
                             <ul class=" filter_cont d-flex flex-wrap justify-content-center align-items-center gap-4">
                                 <li>
@@ -74,87 +67,7 @@ export default {
         <section>
             <div class=" ms_container py-5 d-flex flex-wrap justify-content-center align-items-center gap-4">
                 <div class="card ms_card">
-                    <img src="/public/img/git.png" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-color btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card ms_card">
-                    <img src="/public/img/git.png" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-color btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card ms_card">
-                    <img src="/public/img/git.png" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-color btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card ms_card">
-                    <img src="/public/img/git.png" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-color btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card ms_card">
-                    <img src="/public/img/git.png" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-color btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card ms_card">
-                    <img src="/public/img/git.png" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-color btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card ms_card">
-                    <img src="/public/img/git.png" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-color btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card ms_card">
-                    <img src="/public/img/git.png" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-color btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card ms_card">
-                    <img src="/public/img/git.png" class="card-img-top" alt="">
+                    <img src="" class="card-img-top" alt="">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make
