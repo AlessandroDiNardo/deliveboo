@@ -22,16 +22,17 @@ function validate(e) {
   const closingField = document.getElementById("input_closing");
   const dayOffField = document.getElementById("day_off");
   const imgField = document.getElementById("input_img");
+  const categoryField = document.getElementById("input_category");
 
   let valid = true;
 
-  if (!firstNameField.value) {
-    const nameError = document.getElementById("nameError");
-    nameError.classList.add("visible");
-    firstNameField.classList.add("invalid");
-    nameError.setAttribute("aria-hidden", false);
-    nameError.setAttribute("aria-invalid", true);
-  }
+   if (!firstNameField.value) {
+     const nameError = document.getElementById("nameError");
+     nameError.classList.add("visible");
+     firstNameField.classList.add("invalid");
+     nameError.setAttribute("aria-hidden", false);
+     nameError.setAttribute("aria-invalid", true);
+   }
   if (!descriptionField.value) {
     const inputDescriptionError = document.getElementById("inputDescriptionError");
     inputDescriptionError.classList.add("visible");
@@ -94,13 +95,13 @@ function validate(e) {
   }
   
   
-  // if (!dayOffField.value) {
-  //   const inputClosingError = document.getElementById("input_dayOffError");
-  //   inputDayOffError.classList.add("visible");
-  //   dayOffField.classList.add("invalid");
-  //  inputDayOffError.setAttribute("aria-hidden", false);
-  //  inputDayOffError.setAttribute("aria-invalid", true);
-  // }
+ if (!dayOffField.value) {
+   const inputDayOffError = document.getElementById("input_dayOffError");
+   inputDayOffError.classList.add("visible");
+   dayOffField.classList.add("invalid");
+  inputDayOffError.setAttribute("aria-hidden", false);
+  inputDayOffError.setAttribute("aria-invalid", true);
+ }
   
 
   if (!imgField.value) {
@@ -109,6 +110,16 @@ function validate(e) {
     imgField.classList.add("invalid");
     inputImgError.setAttribute("aria-hidden", false);
     inputImgError.setAttribute("aria-invalid", true);
+  }
+  if (categoryField.checked) {
+    
+  }
+  else{
+    const inputCategoryError = document.getElementById("input_categoryError");
+    inputCategoryError.classList.add("visible");
+    categoryField.classList.add("invalid");
+    inputCategoryError.setAttribute("aria-hidden", false);
+    inputCategoryError.setAttribute("aria-invalid", true);
   }
   return valid;
 

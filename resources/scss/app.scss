@@ -16,7 +16,7 @@
 .form {
     border: white solid 3px;
     background-color: rgba($color: #06c167, $alpha: 0.7);
-    width: 800px;
+    max-width: 800px;
     padding: 50px;
     border-radius: 15px;
     color: white;
@@ -45,16 +45,16 @@ ul {
     list-style: none;
 }
 
-#nameError ,#inputDescriptionError,#input_placeError,#input_phoneError,#input_vatError,#input_shippingError,#input_openError,#input_closingError,#input_dayOffError,#input_imgError {
+#nameError ,#inputDescriptionError,#input_placeError,#input_phoneError,#input_vatError,#input_shippingError,#input_openError,#input_closingError,#input_dayOffError,#input_imgError,#input_categoryError {
     display: none;
-    font-size: 1.5em;
+    font-size: 1em;
     text-align: center;
     background-color: steelblue;
     padding: 10px;
     border-radius: 15px;
   }
   
-  #nameError.visible,#inputDescriptionError.visible,#input_placeError.visible,#input_phoneError.visible,#input_vatError.visible,#input_shippingError.visible,#input_openError.visible,#input_closingError.visible,#input_dayOffError.visible, #input_imgError.visible{
+  #nameError.visible,#inputDescriptionError.visible,#input_placeError.visible,#input_phoneError.visible,#input_vatError.visible,#input_shippingError.visible,#input_openError.visible,#input_closingError.visible,#input_dayOffError.visible, #input_imgError.visible,#input_categoryError.visible{
     display: block;
 
   }
