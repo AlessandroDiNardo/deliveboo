@@ -25,26 +25,24 @@ export default {
                         <a class=" text-decoration-none link_nav " href="#">
                             Registrati
                         </a>
-                    </button>
-                    <button class=" mx-2  btn_nav rounded-2 p-1">
+                </button>
+                <button class=" mx-2  btn_nav rounded-2 p-1">
                     <a class="  text-decoration-none  link_nav  " href="#">
                         Area Riservata
-                    </a>
-                </button>
-                    <button class=" mx-2  rounded-5 p-1 bg-white border-0">
-                        <a class="  text-decoration-none text-primary  link_nav  " href="#">
-                            <i class="fa-sharp fa-solid fa-cart-shopping"></i>
                         </a>
+                    </button>
+                    <button class=" cart">
+                        <font-awesome-icon icon="fa-solid fa-cart-shopping" />
                     </button>
                 </div>
             </div>
         </nav>
     </header>
     <!-- <section>
-                                    <div class="video_container m-0 p-0 bg-black ">
-                                        <video class="video_bg" src="../assets/video-jumbo.mp4" autoplay loop muted></video>
-                                    </div>
-                                </section> -->
+                                                                                                                    <div class="video_container m-0 p-0 bg-black ">
+                                                                                                                        <video class="video_bg" src="../assets/video-jumbo.mp4" autoplay loop muted></video>
+                                                                                                                    </div>
+                                                                                                                </section> -->
 </template>
 
 <style lang="scss">
@@ -70,24 +68,33 @@ header {
     .btn_nav {
         background-color: #069e24;
         font-weight: 600;
-        transition: ease-in-out 1s;
+        transition: ease-in-out 0.8s;
         border: none;
 
         &:hover {
             background-color: white;
-            border: #00eb56 1px solid;
-
-
+            border: #ffffff 1px solid;
         }
     }
 
     .link_nav {
-        transition: ease-in-out 1s;
+        transition: ease-in-out 0.8s;
         color: white;
     }
 
     .btn_nav .link_nav:hover {
         color: #069e24;
+    }
+
+    .cart {
+        background-color: $black;
+        border: none;
+        color: rgb(255, 255, 255);
+        transition: ease-in-out 0.8s;
+
+        &:hover {
+            color: #069e24;
+        }
     }
 }
 </style>
