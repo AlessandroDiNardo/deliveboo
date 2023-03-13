@@ -1,8 +1,10 @@
 <script >
+import pagePayment from './components/pagePayment.vue';
 
 
 export default {
   components: {
+    pagePayment
   }
 }
 
@@ -11,6 +13,7 @@ export default {
 
 <template>
   
+  <pagePayment/>
 </template>
 
 <style scoped>
