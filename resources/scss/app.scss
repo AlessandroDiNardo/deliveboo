@@ -44,3 +44,22 @@ input[type=submit] {
 ul {
     list-style: none;
 }
+
+#nameError ,#inputDescriptionError,#input_placeError,#input_phoneError,#input_vatError,#input_shippingError,#input_openError,#input_closingError,#input_dayOffError,#input_imgError {
+    display: none;
+    font-size: 1.5em;
+    text-align: center;
+    background-color: steelblue;
+    padding: 10px;
+    border-radius: 15px;
+  }
+  
+  #nameError.visible,#inputDescriptionError.visible,#input_placeError.visible,#input_phoneError.visible,#input_vatError.visible,#input_shippingError.visible,#input_openError.visible,#input_closingError.visible,#input_dayOffError.visible, #input_imgError.visible{
+    display: block;
+
+  }
+  
+  input.invalid {
+    border-color: red;
+  }
+  
