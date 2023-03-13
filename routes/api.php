@@ -6,5 +6,7 @@ use Illuminate\Support\Facades\Route;
 // imported controllers
 use App\Http\Controllers\ApiController;
 
-Route::get('/v1/restaurants/all', [ApiController::class, 'getRestaurants']);
+Route::get('/v1/restaurants/search', [ApiController::class, 'getRestaurants']);
+
+Route::get('/v1/categories/all', [ApiController::class, 'getCategories']);
 
