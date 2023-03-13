@@ -24,10 +24,18 @@ class OrderSeeder extends Seeder
         foreach ($restaurants as $restaurant) {
             Order::factory()-> count(2) -> make() -> each(function($o) use($restaurant) {
                 $o -> restaurant() -> associate($restaurant);
-    
-                $o -> save();
-
+                
                 $products = Product::where('restaurant_id', '=', $restaurant -> id) -> inRandomOrder() -> limit(rand(1,5)) -> get();
+                
+                $sum = $restaurant -> shipping_cost;
+
+                foreach ($products as $product) {
+                    $sum += $product -> price;
+                }
+
+                $o -> price = $sum;
+
+                $o -> save();
 
                 $o -> products() -> sync($products);
             });
