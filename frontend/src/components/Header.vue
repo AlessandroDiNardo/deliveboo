@@ -1,4 +1,5 @@
 <script>
+import { RouterLink, RouterView } from 'vue-router';
 
 export default {
     data() {
@@ -17,12 +18,14 @@ export default {
         <nav class="navbar  bg-transparent w-75 m-auto">
             <div class="container-fluid">
                 <a class="navbar-brand bg-transparent" href="#">
-                    <img :src="image" alt="Logo" width="40" height="34" class="d-inline-block align-text-top Logo_filter">
-                    <span class="mx-2" id="font_logo">Deliveboo</span>
+                    <RouterLink :to="{ name: 'home' }">
+                        <img :src="image" alt="Logo" width="40" height="34"
+                            class="d-inline-block align-text-top Logo_filter">
+                    </RouterLink>
                 </a>
                 <div>
                     <button class="  mx-2 btn_nav rounded-2 p-1">
-                        <a class=" text-decoration-none link_nav " href="#">
+                        <a class=" text-decoration-none link_nav " href="http://localhost:8000/register">
                             Registrati
                         </a>
                     </button>
@@ -35,6 +38,11 @@ export default {
                         <a class="  text-decoration-none text-primary  link_nav  " href="#">
                             <i class="bi bi-cart mx-1"></i>
                         </a>
+                    </button>
+                    <button class=" mx-2  rounded-5 p-1 bg-white border-0">
+                        <router-link :to="{ name: 'restaurant' }">
+                            Ristoranti
+                        </router-link>
                     </button>
                 </div>
             </div>
