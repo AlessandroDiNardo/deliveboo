@@ -1,18 +1,15 @@
 <script >
 import Header from './components/Header.vue';
-import Section from './components/Section.vue';
-import Section1 from './components/Section1.vue';
+import home from './components/home.vue';
 import pageRestaurants from './components/pageRestaurants.vue'
 import pagePayment from './components/pagePayment.vue';
-import pageLista from './components/pageLista.vue';
+import pageLista from './components/pageDishes.vue';
 import Footer from './components/Footer.vue';
 
 export default {
   components: {
     Header,
-    Section,
-    Section,
-    Section1,
+    home,
     pageRestaurants,
     pagePayment,
     pageLista,
@@ -52,11 +49,7 @@ export default {
   <div v-else>
     <Header />
     <main>
-      <Section />
-      <Section1 />
-      <pageRestaurants />
-      <pagePayment />
-      <pageLista />
+      <home />
     </main>
     <Footer />
   </div>
