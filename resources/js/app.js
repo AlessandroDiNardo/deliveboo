@@ -10,7 +10,7 @@ const submit = document.getElementById("submit");
 submit.addEventListener("click", validate);
 
 function validate(e) {
-  e.preventDefault();
+  // e.preventDefault();
 
   const firstNameField = document.getElementById("name");
   const descriptionField = document.getElementById("input_description");
@@ -22,16 +22,18 @@ function validate(e) {
   const closingField = document.getElementById("input_closing");
   const dayOffField = document.getElementById("day_off");
   const imgField = document.getElementById("input_img");
-
+  const categoryField = document.getElementById("input_category");
+ 
   let valid = true;
 
-  if (!firstNameField.value) {
-    const nameError = document.getElementById("nameError");
-    nameError.classList.add("visible");
-    firstNameField.classList.add("invalid");
-    nameError.setAttribute("aria-hidden", false);
-    nameError.setAttribute("aria-invalid", true);
-  }
+   if (!firstNameField.value) {
+     const nameError = document.getElementById("nameError");
+     nameError.classList.add("visible");
+     firstNameField.classList.add("invalid");
+     nameError.setAttribute("aria-hidden", false);
+     nameError.setAttribute("aria-invalid", true);
+     nameError.innerHTML+= btnAlert;
+   }
   if (!descriptionField.value) {
     const inputDescriptionError = document.getElementById("inputDescriptionError");
     inputDescriptionError.classList.add("visible");
@@ -64,12 +66,15 @@ function validate(e) {
     inputVatError.setAttribute("aria-hidden", false);
     inputVatError.setAttribute("aria-invalid", true);
   }
-  if (!shippingField.value) {
-    const inputShippingError = document.getElementById("input_shippingError");
-    inputShippingError.classList.add("visible");
-    firstNameField.classList.add("invalid");
-    nameError.setAttribute("aria-hidden", false);
-    nameError.setAttribute("aria-invalid", true);
+  // if (isNaN(shippingField.value)) {
+  //   const inputShippingError = document.getElementById("input_shippingError");
+  //   inputShippingError.classList.add("visible");
+  //   firstNameField.classList.add("invalid");
+  //   nameError.setAttribute("aria-hidden", false);
+  //   nameError.setAttribute("aria-invalid", true);
+  // }
+  else{
+    
   }
   if (!placeField.value) {
     const inputDescriptionError = document.getElementById("inputDescriptionError");
@@ -92,23 +97,33 @@ function validate(e) {
     inputClosingError.setAttribute("aria-hidden", false);
     inputClosingError.setAttribute("aria-invalid", true);
   }
-  return valid;
-
-  if (!dayOffField.value) {
-    const inputClosingError = document.getElementById("input_dayOffError");
-    inputDayOffError.classList.add("visible");
-    dayOffField.classList.add("invalid");
-   inputDayOffError.setAttribute("aria-hidden", false);
-   inputDayOffError.setAttribute("aria-invalid", true);
-  }
-  return valid;
+  
+  
+ if (!dayOffField.value) {
+   const inputDayOffError = document.getElementById("input_dayOffError");
+   inputDayOffError.classList.add("visible");
+   dayOffField.classList.add("invalid");
+  inputDayOffError.setAttribute("aria-hidden", false);
+  inputDayOffError.setAttribute("aria-invalid", true);
+ }
+  
 
   if (!imgField.value) {
-    const inputClosingError = document.getElementById("input_imgError");
-    inpuImgError.classList.add("visible");
+    const inputImgError = document.getElementById("input_imgError");
+    inputImgError.classList.add("visible");
     imgField.classList.add("invalid");
-    inpuImgError.setAttribute("aria-hidden", false);
-    inpuImgError.setAttribute("aria-invalid", true);
+    inputImgError.setAttribute("aria-hidden", false);
+    inputImgError.setAttribute("aria-invalid", true);
+  }
+  if (categoryField.checked) {
+    return valid;
+  }
+  else if(!categoryField.value){
+    const inputCategoryError = document.getElementById("input_categoryError");
+    inputCategoryError.classList.add("visible");
+    categoryField.classList.add("invalid");
+    inputCategoryError.setAttribute("aria-hidden", false);
+    inputCategoryError.setAttribute("aria-invalid", true);
   }
   return valid;
 
