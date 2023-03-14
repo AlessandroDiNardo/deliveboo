@@ -19,7 +19,7 @@ class OrderFactory extends Factory
         return [
             'code' => fake() -> ean8(),
             'price' => fake() -> randomFloat(2, 40, 999),
-            'order_date' => fake() -> dateTime(),
+            'order_date' => fake() -> dateTimeInInterval('-1 years', '+1 years'),
             'rider_phone_number' => fake() -> phoneNumber(),
             'buyer_phone_number' => fake() -> phoneNumber(),
             'address' => fake() -> streetAddress()

@@ -27,6 +27,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-s/15/a8/7a/0a/interieur.jpg';
             $r->opening_time = '07:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='2.00';
             $r->save();
             $r->categories()->attach(1);
             $r->categories()->attach(9);
@@ -43,6 +44,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-m/1280/1a/ec/5f/5a/uno-scorcio-della-sala.jpg';
             $r->opening_time = '07:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='2.50';
             $r->save();
             $r->categories()->attach(1);
             $r->categories()->attach(13);
@@ -59,6 +61,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-o/1a/cf/ab/fe/img-20200205-190011-largejpg.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='1.50';
             $r->save();
             $r->categories()->attach(1);
             $r->categories()->attach(8);
@@ -76,6 +79,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-m/1280/16/fc/d6/b0/la-rockstar-della-nostra.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='2.50';
             $r->save();
             $r->categories()->attach(3);
             $r->categories()->attach(7);
@@ -90,6 +94,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-o/11/5a/b7/9a/diner-americano-in-stile.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='2.00';
             $r->save();
             $r->categories()->attach(3);
             $r->categories()->attach(13);
@@ -104,6 +109,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-o/12/21/10/a7/mu-dimsum-la-sala-principale.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='2.00';
             $r->save();
             $r->categories()->attach(2);
         });
@@ -117,6 +123,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-m/1280/1c/1f/08/10/orient-express.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='3.00';
             $r->save();
             $r->categories()->attach(2);
             $r->categories()->attach(11);
@@ -131,6 +138,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-o/0e/5c/5f/b6/ristorante-giapponese.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='2.50';
             $r->save();
             $r->categories()->attach(4);
             $r->categories()->attach(11);
@@ -146,6 +154,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-m/1280/1b/8c/0b/06/sala.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='2.00';
             $r->save();
             $r->categories()->attach(4);
             $r->categories()->attach(11);
@@ -162,6 +171,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-s/02/cf/5a/e1/krishna-13.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='1.50';
             $r->save();
             $r->categories()->attach(5);
             $r->categories()->attach(11);
@@ -177,6 +187,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-m/1280/1c/23/38/d7/i-nostri-tavoli.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='2.00';
             $r->save();
             $r->categories()->attach(5);
             $r->categories()->attach(11);
@@ -192,6 +203,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-o/11/10/12/e2/sala-principale.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='2.00';
             $r->save();
             $r->categories()->attach(6);
             $r->categories()->attach(12);
@@ -206,6 +218,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-m/1280/1c/58/8f/29/interni.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='2.50';
             $r->save();
             $r->categories()->attach(6);
             $r->categories()->attach(12);
@@ -220,6 +233,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-o/04/4b/1d/de/kebab-sorrento.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '02:00:00';
+            $r->shipping_cost='2.00';
             $r->save();
             $r->categories()->attach(7);
             $r->categories()->attach(12);
@@ -234,6 +248,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-o/05/fe/f0/a4/kebab-borgomanero-nuovo.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '03:00:00';
+            $r->shipping_cost='3.00';
             $r->save();
             $r->categories()->attach(7);
         });
@@ -247,6 +262,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-o/04/9e/79/4a/pasticceria-migliavacca.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '19:00:00';
+            $r->shipping_cost='3.00';
             $r->save();
             $r->categories()->attach(12);
         });
@@ -260,6 +276,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-o/16/45/39/59/new-interior-of-our-first.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='1.50';
             $r->save();
             $r->categories()->attach(13);
         });
@@ -273,6 +290,7 @@ class RestaurantSeeder extends Seeder
             $r->img = 'https://media-cdn.tripadvisor.com/media/photo-o/04/2e/92/39/ristorante-all-anguilla.jpg';
             $r->opening_time = '09:00:00';
             $r->closing_time = '24:00:00';
+            $r->shipping_cost='2.00';
             $r->save();
             $r->categories()->attach(13);
         });
