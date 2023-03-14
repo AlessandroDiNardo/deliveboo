@@ -20,9 +20,15 @@ class ApiController extends Controller
             $restaurants = null;
 
             foreach ($categories as $category) {
-                $restaurants = Restaurant::whereHas('categories', function ($q) use ($category) {
+                if (is_null($restaurants)) {
+                    $restaurants = Restaurant::whereHas('categories', function ($q) use ($category) {
+                        $q->where('category_id', $category);
+                    })->get();
+                }
+
+                $restaurants = $restaurants ->merge(Restaurant::whereHas('categories', function ($q) use ($category) {
                     $q->where('category_id', $category);
-                })->get();
+                })->get());
             }
         }
 
