@@ -12,7 +12,7 @@
             <div>
                 <label for="name">Nome</label>
                 <div>
-                    <input required id="name" type="text" name="name" >
+                    <input required  id="name" type="text" name="name" >
 
                    <span role="alert" id="nameError" aria-hidden="true">
                        Riempi il campo del nome del ristorante
@@ -105,7 +105,7 @@
                       </span>
                     @foreach ($categories as $category)
                     <li>
-                        <input required id="input_category" type="checkbox" name="category_id[]" value="{{ $category -> id }}" id="{{ $category -> id }}" class="mb-2 mx-2">
+                        <input required class="input_category" type="checkbox" name="category_id[]" value="{{ $category -> id }}" id="{{ $category -> id }}" class="mb-2 mx-2">
                         <label for="{{ $category -> id }}">{{ $category -> name }}</label>
                     </li>
                    

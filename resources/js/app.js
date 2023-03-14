@@ -22,7 +22,7 @@ function validate(e) {
   const closingField = document.getElementById("input_closing");
   const dayOffField = document.getElementById("day_off");
   const imgField = document.getElementById("input_img");
-  const categoryField = document.getElementById("input_category");
+  const categoryField = document.getElementsByClassName(".input_category");
  
   let valid = true;
 
@@ -66,13 +66,13 @@ function validate(e) {
     inputVatError.setAttribute("aria-hidden", false);
     inputVatError.setAttribute("aria-invalid", true);
   }
-  // if (isNaN(shippingField.value)) {
-  //   const inputShippingError = document.getElementById("input_shippingError");
-  //   inputShippingError.classList.add("visible");
-  //   firstNameField.classList.add("invalid");
-  //   nameError.setAttribute("aria-hidden", false);
-  //   nameError.setAttribute("aria-invalid", true);
-  // }
+   if (isNaN(shippingField.value)) {
+     const inputShippingError = document.getElementById("input_shippingError");
+     inputShippingError.classList.add("visible");
+     firstNameField.classList.add("invalid");
+     nameError.setAttribute("aria-hidden", false);
+     nameError.setAttribute("aria-invalid", true);
+   }
   else{
     
   }
@@ -118,7 +118,7 @@ function validate(e) {
   if (categoryField.checked) {
     return valid;
   }
-  else if(!categoryField.value){
+  else if(!categoryField.checked){
     const inputCategoryError = document.getElementById("input_categoryError");
     inputCategoryError.classList.add("visible");
     categoryField.classList.add("invalid");
