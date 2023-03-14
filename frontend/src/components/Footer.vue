@@ -1,11 +1,9 @@
 <script>
-
 export default {
     data() {
         return {
             items: [{
                 'title': 'Scopri Deliveboo',
-
                 links: [
                     'Parteners',
                     'Chi siamo',
@@ -38,7 +36,6 @@ export default {
         }
     },
 }
-
 </script>
 
 <template>

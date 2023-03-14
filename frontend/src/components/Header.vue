@@ -3,7 +3,7 @@
 export default {
     data() {
         return {
-            image: 'Logo-Deliveboo.png'
+            image: '../../public/img/home/Logo-Deliveboo.png'
         }
     },
 }
@@ -25,76 +25,73 @@ export default {
                         <a class=" text-decoration-none link_nav " href="#">
                             Registrati
                         </a>
-                </button>
-                <button class=" mx-2  btn_nav rounded-2 p-1">
-                    <a class="  text-decoration-none  link_nav  " href="#">
-                        Area Riservata
+                    </button>
+                    <button class=" mx-2  btn_nav rounded-2 p-1">
+                        <a class="  text-decoration-none  link_nav  " href="#">
+                            Area Riservata
                         </a>
                     </button>
-                    <button class=" cart">
-                        <font-awesome-icon icon="fa-solid fa-cart-shopping" />
+                    <button class=" mx-2  rounded-5 p-1 bg-white border-0">
+                        <a class="  text-decoration-none text-primary  link_nav  " href="#">
+                            <i class="bi bi-cart mx-1"></i>
+                        </a>
                     </button>
                 </div>
             </div>
         </nav>
     </header>
-    <!-- <section>
-                                                                                                                    <div class="video_container m-0 p-0 bg-black ">
-                                                                                                                        <video class="video_bg" src="../assets/video-jumbo.mp4" autoplay loop muted></video>
-                                                                                                                    </div>
-                                                                                                                </section> -->
 </template>
 
 <style lang="scss">
-@use '../assets/scss/general.scss' as *;
-@use '../assets/scss/partials/variables.scss' as *;
-
+// stile Intestazione 
 header {
-    background-color: $black;
+    position: absolute;
+    top: 0;
+    background: transparent;
+    width: 100%;
+    z-index: 1;
+}
 
-    .Logo_filter {
-        filter: invert(57%) sepia(70%) saturate(1956%) hue-rotate(108deg) brightness(91%) contrast(95%);
+.Logo_filter {
+    filter: invert(57%) sepia(70%) saturate(1956%) hue-rotate(108deg) brightness(91%) contrast(95%);
+}
+
+#font_logo {
+
+    font-weight: 900;
+    color: #069e24;
+
+
+}
+
+.btn_nav {
+    background-color: #069e24;
+    font-weight: 600;
+    transition: ease-in-out 1s;
+    border: none;
+
+    &:hover {
+        background-color: white;
+        border: #00eb56 1px solid;
+
+
     }
+}
 
+.link_nav {
+    transition: ease-in-out 1s;
+    color: white;
+}
 
-    #font_logo {
+.btn_nav .link_nav:hover {
+    color: #069e24;
+}
 
-        font-weight: 900;
-        color: #069e24;
+//Stile Video
 
+.video_bg {
 
-    }
-
-    .btn_nav {
-        background-color: #069e24;
-        font-weight: 600;
-        transition: ease-in-out 0.8s;
-        border: none;
-
-        &:hover {
-            background-color: white;
-            border: #ffffff 1px solid;
-        }
-    }
-
-    .link_nav {
-        transition: ease-in-out 0.8s;
-        color: white;
-    }
-
-    .btn_nav .link_nav:hover {
-        color: #069e24;
-    }
-
-    .cart {
-        background-color: $black;
-        border: none;
-        color: rgb(255, 255, 255);
-        transition: ease-in-out 0.8s;
-
-        &:hover {
-            color: #069e24;
-        }
-    }
+    width: 100%;
+    opacity: 0.5;
 }
 </style>
