@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function showAll(Request $request) {
 
         $restaurant = Restaurant::where('user_id', $request -> user() -> id) -> first();
