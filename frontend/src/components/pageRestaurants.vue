@@ -8,6 +8,7 @@ export default {
         return {
             categories: [],
             filteredCategories: [],
+            filteredRestaurants: [],
         }
     },
 
@@ -24,8 +25,7 @@ export default {
                 .then(res => {
                     const data = res.data;
                     const success = data.success;
-                    const restaurants = data.response;
-                    console.log(restaurants);
+                    this.filteredRestaurants = data.response;
                 })
                 .catch(err => console.error(err));
         },
@@ -40,9 +40,7 @@ export default {
                 .catch(err => console.error(err));
         },
 
-        logsdddd() {
-            console.log(this.filteredCategories)
-        }
+
     },
 
     computed: {
@@ -84,13 +82,11 @@ export default {
         <!-- main content -->
         <section>
             <div class=" ms_container py-5 d-flex flex-wrap justify-content-center align-items-center gap-4">
-                <div class="card ms_card">
-                    <img src="" class="card-img-top" alt="">
+                <div class="card ms_card" v-for="restaurant in this.filteredRestaurants">
+                    <img :src="restaurant.img" class="card-img-top" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulk of the
-                            card's content.</p>
+                        <h5 class="card-title">{{restaurant.name}}</h5>
+                        <p class="card-text">{{ restaurant.description }}</p>
                         <a href="#" class="btn btn-color btn-primary">Go somewhere</a>
                     </div>
                 </div>
