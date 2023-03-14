@@ -3,6 +3,8 @@ import Header from './components/Header.vue';
 import Section from './components/Section.vue';
 import Section1 from './components/Section1.vue';
 import pageRestaurants from './components/pageRestaurants.vue'
+import pagePayment from './components/pagePayment.vue';
+import pageLista from './components/pageLista.vue';
 import Footer from './components/Footer.vue';
 
 export default {
@@ -12,6 +14,8 @@ export default {
     Section,
     Section1,
     pageRestaurants,
+    pagePayment,
+    pageLista,
     Footer,
   },
   data() {
@@ -51,12 +55,14 @@ export default {
       <Section />
       <Section1 />
       <pageRestaurants />
+      <pagePayment />
+      <pageLista />
     </main>
     <Footer />
   </div>
 </template>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 @use './assets/scss/general.scss' as *;
 @use './assets/scss/partials/variables.scss' as *;
 
