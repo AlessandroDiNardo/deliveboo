@@ -17,14 +17,24 @@
                 <div class="d-flex flex-column">
                     <label for="name">Nome</label>
                     <input required id="name" type="text" name="name" value="{{ $restaurant -> name }}">
+                    <span role="alert" id="nameError" aria-hidden="true">
+                       Riempi il campo del nome del ristorante
+                       
+                    </span>
                     <br>
     
                     <label for="description">Descrizione</label>
                     <input required id="input_description" type="text" name="description" value="{{ $restaurant -> description }}">
+                    <span role="alert"   id="inputDescriptionError" aria-hidden="true">
+                        Riempi il campo della descrizione
+                     </span>
                     <br>
     
                     <label for="place">Luogo</label>
-                    <input  type="text" name="place" value="{{ $restaurant -> place }}">
+                    <input id="input_place" type="text" name="place" value="{{ $restaurant -> place }}">
+                    <span role="alert" id="input_placeError" aria-hidden="true">
+                        Aggiungi l'indirizzo
+                     </span>
                     <br>
     
                     <label for="phone_number">Numero di telefono</label>
@@ -33,28 +43,43 @@
     
                     <label for="img">Immagine ristorante</label>
                     <input required id="input_img" type="file" name="img">
+                    <span role="alert" id="input_phoneError" aria-hidden="true">
+                        Aggiungi Recapito telefonico
+                     </span>
                     <br>
     
                     <label for="vat">P.Iva</label>
                     <input  required id="input_vat" type="text" name="vat" value="{{ $restaurant -> vat }}">
+                    <span role="alert" id="input_vatError" aria-hidden="true">
+                        Aggiungi Partita Iva
+                     </span>
                     <br>
     
                     <label for="opening_time">Orario di apertura</label>
                     <input required id="input_opening" type="time" name="opening_time" value="{{ $restaurant -> opening_time }}">
+                    <span role="alert" id="input_openError" aria-hidden="true">
+                        Aggiungi orario di Apertura
+                     </span>
                     <br>
     
                     <label for="closing_time">Orario di chiusura</label>
                     <input required id="input_closing" type="time" name="closing_time" value="{{ $restaurant -> closing_time }}">
+                    <span role="alert" id="input_closingError" aria-hidden="true">
+                        Aggiungi orario di Chiusura
+                     </span>
                     <br>
     
                     <label for="shipping_cost">Costo di spedizione</label>
-                    <input type="number" step="0.01" min="0" name="shipping_cost" value="{{ $restaurant -> shipping_cost }}">
+                    <input  id="shipping_field  type="number" step="0.01" min="0" name="shipping_cost" value="{{ $restaurant -> shipping_cost }}">
+                    <span role="alert" id="input_shippingError" aria-hidden="true">
+                        Aggiungi Spesa di spedizione
+                     </span>
                     <br>
     
                     <label for="closing_day">Giorno di chiusura</label>
-                    <select name="closing_day">
+                    <select required id="day_off" name="closing_day">
                         @foreach ($dayOfWeek as $day => $giorno)
-                            <option value="{{ $day }}" {{ $restaurant -> closing_day == $day ? 'selected' : '' }}>{{ $giorno }}</option>
+                            <option  value="{{ $day }}" {{ $restaurant -> closing_day == $day ? 'selected' : '' }}>{{ $giorno }}</option>
                         @endforeach
                     </select>
                     <br>
@@ -62,9 +87,12 @@
                 <div class="d-flex col" >
                     <div >
                      <label><h3>Categorie :</h3></label>
+                     <span role="alert" id="input_categoryError" aria-hidden="true">
+                        Seleziona una categoria
+                      </span>
                      <br>
                      @foreach ($categories as $category)
-                         <input type="checkbox" name="category_id[]" value="{{ $category -> id }}" id="{{ $category -> id }}"
+                         <input  class="category" type="checkbox" name="category_id[]" value="{{ $category -> id }}" id="{{ $category -> id }}"
                          @foreach ($restaurant -> categories as $restaurantCategory)
                              @checked ($restaurantCategory -> id == $category -> id)
                          @endforeach

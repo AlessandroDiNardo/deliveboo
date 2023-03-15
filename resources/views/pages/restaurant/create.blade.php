@@ -16,7 +16,7 @@
 
                    <span role="alert" id="nameError" aria-hidden="true">
                        Riempi il campo del nome del ristorante
-                       <button type="button" class="btn-close-white" aria-label="Close"></button>
+                       
                     </span>
                 </div>
             
