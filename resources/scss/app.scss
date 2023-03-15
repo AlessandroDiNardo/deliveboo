@@ -2,6 +2,7 @@
 @import "./general/general.scss";
 @import "partials/profile/headerApp.scss";
 @import "partials/profile/welcome.scss";
+@import "partials/profile/create.scss";
 
 .my_bg {
     background: url('https://ci-aws-media.s3-accelerate.amazonaws.com/2022/02/Rabobank-foodservice-lead-image-crop.jpg');
@@ -20,6 +21,7 @@
     padding: 50px;
     border-radius: 15px;
     color: white;
+    padding-top: 5%;
 
     input[type=text],
     input[type=time],
@@ -36,7 +38,7 @@
 
 input[type=submit] {
     background-color: white;
-    color: #ff0000;
+    color: #06c167;
     border: black;
     border-radius: 5px;
 }
@@ -65,4 +67,7 @@ ul {
   input{
     outline: none;
   }
+
+ 
+ 
   
