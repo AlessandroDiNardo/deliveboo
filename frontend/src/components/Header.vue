@@ -31,7 +31,9 @@ export default {
                     </button>
                     <button class=" mx-2  rounded-5 p-1 bg-white border-0">
                         <a class="  text-decoration-none text-primary  link_nav  " href="#">
-                            <i class="bi bi-cart mx-1"></i>
+                            <RouterLink :to="{ name: 'payment' }">
+                                <font-awesome-icon icon="fa-solid fa-cart-shopping" />
+                            </RouterLink>
                         </a>
                     </button>
                 </div>
