@@ -85,8 +85,8 @@ export default {
                                     @click="getRestaurants()">Filter</button>
                             </div>
                         </div>
-
-                        <h3>Cerca il tuo ristorante, cibo o piatto preferito!</h3>
+                    </div>
+                    <h3>Cerca il tuo ristorante, cibo o piatto preferito!</h3>
                 </section>
             </div>
 
@@ -189,4 +189,5 @@ ul {
 .btn-color {
     background-color: $main-color;
     border: none;
-}</style>
+}
+</style>
