@@ -1,12 +1,8 @@
 <script>
 import axios from "axios";
-import singleRestaurant from "./singleRestaurant.vue";
 
 export default {
     name: "pageRestaurants",
-    components: {
-        singleRestaurant
-    },
     data() {
         return {
             categories: [],
@@ -119,6 +115,7 @@ export default {
 
 .main {
     background-color: $bg-main;
+    padding-bottom: 50px;
 }
 
 .video_container {
@@ -129,7 +126,7 @@ export default {
 .restaurant_section {
 
     height: 600px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .ms_container,
