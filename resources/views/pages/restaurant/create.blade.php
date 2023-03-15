@@ -81,7 +81,8 @@
                 <div>
                     
                     <select required id="day_off" name="closing_day">
-                        <option value="Monday" selected>Lunedì</option>
+                        <option value="" >Seleziona un Giorno</option>
+                        <option value="Monday" >Lunedì</option>
                         <option value="Tuesday">Martedi</option>
                         <option value="Wednesday">Mercoledì</option>
                         <option value="Thursday">Giovedì</option>
