@@ -12,6 +12,8 @@ submit.addEventListener("click", validate);
 function validate(e) {
   // e.preventDefault();
 
+  //Variabili input create
+
   const firstNameField = document.getElementById("name");
   const descriptionField = document.getElementById("input_description");
   const placeField = document.getElementById("input_place");
@@ -25,9 +27,11 @@ function validate(e) {
   const imgField = document.getElementById("input_img");
   const categoryField = document.querySelectorAll(".category");
  
+// Variabili input Edit/Update
+
   let valid = true;
 
-   if (!firstNameField.value) {
+   if (firstNameField.value.trim() ==="") {
      const nameError = document.getElementById("nameError");
      nameError.classList.add("visible");
      firstNameField.classList.add("invalid");
@@ -35,15 +39,16 @@ function validate(e) {
      nameError.setAttribute("aria-invalid", true);
      
    }
-  if (!descriptionField.value) {
+  if (descriptionField.value.trim()==="") {
     const inputDescriptionError = document.getElementById("inputDescriptionError");
     inputDescriptionError.classList.add("visible");
     descriptionField.classList.add("invalid");
     inputDescriptionError.setAttribute("aria-hidden", false);
     inputDescriptionError.setAttribute("aria-invalid", true);
   }
+ 
   
-  if (!phoneField.value) {
+  if (phoneField.value.trim()==="") {
     const inputPhoneError = document.getElementById("input_phoneError");
     inputPhoneError.classList.add("visible");
     phoneField.classList.add("invalid");
@@ -51,7 +56,7 @@ function validate(e) {
     inputPhoneError.setAttribute("aria-invalid", true);
   }
 
-  if (!placeField.value) {
+  if (placeField.value.trim()==="") {
     const inputPlaceError = document.getElementById("input_placeError");
     inputPlaceError.classList.add("visible");
     placeField.classList.add("invalid");
@@ -60,7 +65,7 @@ function validate(e) {
   }
 
   
-  if (!vatField.value) {
+  if (vatField.value.trim()==="") {
     const inputVatError = document.getElementById("input_vatError");
     inputVatError.classList.add("visible");
     vatField.classList.add("invalid");
@@ -89,14 +94,14 @@ function validate(e) {
      inputDescriptionError.setAttribute("aria-hidden", false);
      inputDescriptionError.setAttribute("aria-invalid", true);
   }
-  if (!openingField.value) {
+  if (openingField.value.trim()==="") {
     const inputOpeningError = document.getElementById("input_openError");
     inputOpeningError.classList.add("visible");
     openingField.classList.add("invalid");
     inputOpeningError.setAttribute("aria-hidden", false);
     inputOpeningError.setAttribute("aria-invalid", true);
   }
-  if (!closingField.value) {
+  if (closingField.value.trim()==="") {
     const inputClosingError = document.getElementById("input_closingError");
     inputClosingError.classList.add("visible");
     closingField.classList.add("invalid");
@@ -105,7 +110,7 @@ function validate(e) {
   }
   
   
- if (!dayOffField.value) {
+ if (dayOffField.value ==="") {
    const inputDayOffError = document.getElementById("input_dayOffError");
    inputDayOffError.classList.add("visible");
    dayOffField.classList.add("invalid");
@@ -121,33 +126,36 @@ function validate(e) {
  }
   
 
-  if (!imgField.value) {
-    const inputImgError = document.getElementById("input_imgError");
-    inputImgError.classList.add("visible");
-    imgField.classList.add("invalid");
-    inputImgError.setAttribute("aria-hidden", false);
-    inputImgError.setAttribute("aria-invalid", true);
-  }
-  let isChecked = false;
-    categoryField.forEach((category) => {
-      if (category.checked) {
+   if (!imgField.value) {
+     const inputImgError = document.getElementById("input_imgError");
+     inputImgError.classList.add("visible");
+     imgField.classList.add("invalid");
+     inputImgError.setAttribute("aria-hidden", false);
+     inputImgError.setAttribute("aria-invalid", true);
+   }
+ 
+     let isChecked = false;
+   categoryField.forEach((category) => {
+     if (category.checked) {
        isChecked = true;
-      
-      }
-    }
-     );
-  
-    if (!isChecked) {
-      const inputCategoryError = document.querySelector('#input_categoryError');
-      inputCategoryError.classList.add("visible");
-      inputCategoryError.setAttribute("aria-hidden", false);
-      inputCategoryError.setAttribute("aria-invalid", true);
-     } else {
-      const inputCategoryError = document.querySelector('#input_categoryError');
-      inputCategoryError.classList.remove("visible");
-      inputCategoryError.setAttribute("aria-hidden", true);
-      inputCategoryError.setAttribute("aria-invalid", false);
+       
      }
+   }
+   );
+
+   if (!isChecked) {
+       const inputCategoryError = document.querySelector('#input_categoryError');
+       inputCategoryError.classList.add("visible");
+       inputCategoryError.setAttribute("aria-hidden", false);
+       
+       inputCategoryError.setAttribute("aria-invalid", true);
+   
+   } else {
+       const inputCategoryError = document.querySelector('#input_categoryError');
+       inputCategoryError.classList.remove("visible");
+      
+       inputCategoryError.setAttribute("aria-hidden", true);
+       inputCategoryError.setAttribute("aria-invalid", false);}
   return valid;
 
  

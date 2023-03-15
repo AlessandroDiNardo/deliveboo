@@ -114,7 +114,7 @@
                       </span>
                     @foreach ($categories as $category)
                     <li>
-                        <input required class="category" type="checkbox" name="category_id[]" value="{{ $category -> id }}" id="{{ $category -> id }}" class="mb-2 mx-2">
+                        <input  class="category" type="checkbox" name="category_id[]" value="{{ $category -> id }}" id="{{ $category -> id }}" class="mb-2 mx-2">
                         <label for="{{ $category -> id }}">{{ $category -> name }}</label>
                     </li>
                    
