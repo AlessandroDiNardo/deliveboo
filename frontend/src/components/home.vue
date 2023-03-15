@@ -14,6 +14,5 @@ export default {
     <main>
         <Section />
         <Section1 />
-        <router-view></router-view>
     </main>
 </template>
