@@ -1,111 +1,185 @@
 <script>
+import axios from "axios";
+
 export default {
+    name: "pageRestaurants",
+
     data() {
         return {
-            resturants: [{
-                'Type': 'Carne',
-                'image': '../../public/img/home/carne-pregiata.webp'
-            },
-            {
-                'Type': 'Pesce',
-                'image': '../../public/img/home/secondi-piatti-di-pesce-1200x675.avif'
-            },
-            {
-                'Type': 'Italiana',
-                'image': '../../public/img/home/italiana.webp'
-            },
-            {
-                'Type': 'Pizza',
-                'image': '../../public/img/home/pizza.jpg'
-            },
-            {
-                'Type': 'Messicana',
-                'image': '../../public/img/home/messico.webp'
-            },
-            {
-                'Type': 'Hamburgeria',
-                'image': '../../public/img/home/Hamburgeria.webp'
-            },
-            ]
+            categories: [],
+            filteredCategories: [],
+            filteredRestaurants: [],
         }
     },
+
+    mounted() {
+
+        this.getRestaurants();
+
+        this.getCategories();
+    },
+
+    methods: {
+        getRestaurants() {
+            axios.get('http://localhost:8000/api/v1/restaurants/search', { params: { categories: this.filteredCategories } })
+                .then(res => {
+                    const data = res.data;
+                    const success = data.success;
+                    this.filteredRestaurants = data.response;
+                })
+                .catch(err => console.error(err));
+        },
+
+        getCategories() {
+            axios.get('http://localhost:8000/api/v1/categories/all')
+                .then(res => {
+                    const data = res.data;
+                    const success = data.success;
+                    this.categories = data.response;
+                })
+                .catch(err => console.error(err));
+        },
+
+
+    },
+
+    computed: {
+    }
 }
 </script>
 
 <template>
-    <section>
-        <div class="video_container m-0 p-0 bg-black ">
-            <video class="video_bg" src="../../public/img/home/jumbo-video.mp4" autoplay loop muted></video>
-        </div>
-    </section>
-    <section>
-        <div class="container-fluid" id="title_position">
-            <h2 class="title_color"> I Nostri Ristoranti</h2>
-        </div>
-        <div class="container-fluid  row justify-content-center py-5 col-11 m-auto " id="Wrapper_Container">
-            <div class="row " data-aos="fade-down" data-aos-duration="1200">
-                <div class="col-md-4 " v-for="resturant in resturants">
-                    <div class="card mb-4  layover_op" id="card_img" style="border:none;color:white;">
-                        <img class="card-img-top  " style=" width: 100%; max-height:250px display: block;"
-                            :src="resturant.image">
-                        <h4 class="bg-black type_resturant">
-                            <a class="text-decoration-none text-white" href="#">
-                                {{ resturant.Type }}
-                            </a>
-                        </h4>
+    <main>
+        <section>
+            <div class="video_container m-0 p-0 bg-black ">
+                <video class="video_bg" src="../../public/img/home/jumbo-video.mp4" autoplay loop muted></video>
+            </div>
+        </section>
+        <section class="restaurant_section">
+            <!-- header main content -->
+            <div class=" header_restaurant border border-1 header_main_cont bg-white p-3">
+                <section class=" ms_container d-flex justify-content-between align-items-center px-5 py-3">
+                    <div class="side-bar">
+                        <button class="btn btn-color btn-primary" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasWithBothOptions"
+                            aria-controls="offcanvasWithBothOptions">Filtri</button>
 
+                        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1"
+                            id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                            <h3>Filtra per categorie</h3>
+
+                            <div class="offcanvas-body">
+                                <ul class=" filter_cont d-flex flex-wrap justify-content-center align-items-center gap-4">
+                                    <li v-for="category in this.categories" :key="category.id">
+                                        {{ category.name }}
+                                        <input type="checkbox" :id="'category_' + category.id" :value="category.id"
+                                            v-model="filteredCategories">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="d-flex justify-content-end align-items-end p-5">
+                                <button type="button" class="btn btn-color btn-outline-success"
+                                    @click="getRestaurants()">Filter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Cerca il tuo ristorante, cibo o piatto preferito!</h3>
+                </section>
+            </div>
+
+            <!-- main content -->
+            <section>
+                <div class=" ms_container py-5 d-flex flex-wrap justify-content-center align-items-center gap-4">
+                    <div class="card ms_card" v-for="restaurant in this.filteredRestaurants">
+                        <div class="img_cont">
+                            <img :src="restaurant.img" class="card-img-top" alt="">
+                        </div>
+                        <div class="card-body-cont">
+                            <h5 class="card-title">{{ restaurant.name }}</h5>
+                            <p class="card-text">{{ restaurant.description }}</p>
+                            <a href="#" class="btn btn-color btn-primary">Vai al ristorante</a>
+                        </div>
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
+            </section>
+        </section>
+    </main>
 </template>
 
-<style lang="scss">
-.card_bg {
-    background-color: #333;
+<style lang="scss" scoped>
+@use '../assets/scss/general.scss' as *;
+@use '../assets/scss/partials/variables.scss' as *;
+
+main {
+    background-color: $bg-main;
 }
 
-.card_text {
+.restaurant_section {
 
-    text-align: center;
+    height: 600px;
+    overflow-y: scroll;
 }
 
-#title_position {
-    position: relative;
+.ms_container,
+.log_section {
+    padding: 20px 0;
 }
 
-.title_color {
-    color: white;
-    width: 100%;
-    text-align: center;
-    background-color: #069e24;
-    position: absolute;
-    font-weight: 900;
-
-    padding: 5px;
-    z-index: 5;
-    left: 0%;
-    top: -14px;
+.ms_search_bar {
+    width: 250px;
+    height: 50px;
+    border: 1px solid rgb(0, 0, 0);
 }
 
-.type_resturant {
-    position: absolute;
-    width: 100%;
-    max-height: 190px;
-    text-align: center;
-    padding: 22% 0%;
-    opacity: 0;
-    transition: ease-in 0.3s;
+.ms_search_icon {
+    background-color: $bg-main;
+}
 
-    &:hover {
-        opacity: 0.8;
+.ms_card {
+    width: 370px;
+    height: 400px;
+
+    .img_cont {
+        height: 200px;
+        width: 368px;
+
+        img {
+            height: 200px;
+            width: 368px;
+        }
     }
 
+    .card-body-cont {
+        height: 200px;
+        width: 350px;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        gap: 5px;
+        flex-direction: column;
+        padding: 10px 20px;
+
+        .btn {
+            position: absolute;
+            bottom: 2%;
+        }
+    }
 }
 
-#card_img img {
-    max-height: 190px;
+
+.filter_cont {
+    width: 100%;
+    padding: 0px 30px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.btn-color {
+    background-color: $main-color;
+    border: none;
 }
 </style>

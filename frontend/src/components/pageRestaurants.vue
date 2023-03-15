@@ -21,7 +21,7 @@ export default {
 
     methods: {
         getRestaurants() {
-            axios.get('http://localhost:8000/api/v1/restaurants/search', { params: { categories : this.filteredCategories }})
+            axios.get('http://localhost:8000/api/v1/restaurants/search', { params: { categories: this.filteredCategories } })
                 .then(res => {
                     const data = res.data;
                     const success = data.success;
@@ -50,6 +50,11 @@ export default {
 
 <template>
     <main>
+        <section>
+            <div class="video_container m-0 p-0 bg-black ">
+                <video class="video_bg" src="../../public/img/home/jumbo-video.mp4" autoplay loop muted></video>
+            </div>
+        </section>
         <!-- header main content -->
         <div class=" border border-1 header_main_cont">
             <section class=" ms_container d-flex justify-content-between align-items-center px-5 py-3">
@@ -65,12 +70,14 @@ export default {
                             <ul class=" filter_cont d-flex flex-wrap justify-content-center align-items-center gap-4">
                                 <li v-for="category in this.categories" :key="category.id">
                                     {{ category.name }}
-                                    <input type="checkbox" :id="'category_' + category.id" :value="category.id" v-model="filteredCategories">
+                                    <input type="checkbox" :id="'category_' + category.id" :value="category.id"
+                                        v-model="filteredCategories">
                                 </li>
                             </ul>
                         </div>
                         <div class="d-flex justify-content-end align-items-end p-5">
-                            <button type="button" class="btn btn-color btn-outline-success" @click="getRestaurants()">Filter</button>
+                            <button type="button" class="btn btn-color btn-outline-success"
+                                @click="getRestaurants()">Filter</button>
                         </div>
                     </div>
                 </div>
@@ -85,7 +92,7 @@ export default {
                 <div class="card ms_card" v-for="restaurant in this.filteredRestaurants">
                     <img :src="restaurant.img" class="card-img-top" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">{{restaurant.name}}</h5>
+                        <h5 class="card-title">{{ restaurant.name }}</h5>
                         <p class="card-text">{{ restaurant.description }}</p>
                         <a href="#" class="btn btn-color btn-primary">Go somewhere</a>
                     </div>
