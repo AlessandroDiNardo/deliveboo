@@ -18,3 +18,66 @@
         }
     }
 }
+
+header {
+    position: absolute;
+    top: 0;
+    background: transparent;
+    width: 100%;
+    z-index: 1;
+}
+
+.Logo_filter {
+    filter: invert(57%) sepia(70%) saturate(1956%) hue-rotate(108deg) brightness(91%) contrast(95%);
+}
+
+#font_logo {
+
+    font-weight: 900;
+    color: #069e24;
+
+
+}
+
+.btn_nav {
+    background-color: #069e24;
+    font-weight: 600;
+    border: none;
+
+    &:hover {
+        border: #ffffff 1px solid;
+        color: #00eb56;
+
+
+    }
+}
+
+.link_nav {
+    color: white;
+}
+
+.btn_nav .link_nav:hover {
+    color: #069e24;
+}
+
+.green{
+    color: #00eb56;
+
+    &:hover {
+        color: #00eb56;
+
+
+    }
+
+}
+
+@media (max-width: 767px) {
+    button {
+        margin: 10px 0;
+    }
+    .home{
+        margin-left: 90px ;
+
+    }
+  }
+
