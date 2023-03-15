@@ -10,3 +10,6 @@ Route::get('/v1/restaurants/search', [ApiController::class, 'getRestaurants']);
 
 Route::get('/v1/categories/all', [ApiController::class, 'getCategories']);
 
+Route::get('/v1/products/all', [ApiController::class, 'getProducts']);
+
+
