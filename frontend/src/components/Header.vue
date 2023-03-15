@@ -4,7 +4,7 @@ import { RouterLink, RouterView } from 'vue-router';
 export default {
     data() {
         return {
-            image: '../../public/img/home/Logo-Deliveboo.png'
+            image: '/img/home/Logo-Deliveboo.png'
         }
     },
 }
@@ -17,10 +17,11 @@ export default {
     <header>
         <nav class="navbar  bg-transparent w-75 m-auto">
             <div class="container-fluid">
-                <a class="navbar-brand bg-transparent" href="#">
-                    <RouterLink :to="{ name: 'home' }">
+                <a class="navbar-brand bg-transparent d-flex gap-3 align-items-center" href="#">
+                    <RouterLink :to="{ name: 'home' }" class="d-flex gap-3 align-items-center">
                         <img :src="image" alt="Logo" width="40" height="34"
                             class="d-inline-block align-text-top Logo_filter">
+                        <h1>Deliveboo</h1>
                     </RouterLink>
                 </a>
                 <div>
@@ -48,34 +49,35 @@ export default {
 
 // stile Intestazione 
 header {
+    background-color: black;
     position: absolute;
     top: 0;
-    background: $black;
+    // background: $black;
     width: 100%;
     z-index: 1;
 }
 
 .Logo_filter {
-    filter: invert(57%) sepia(70%) saturate(1956%) hue-rotate(108deg) brightness(91%) contrast(95%);
+    filter: invert(45%) sepia(70%) saturate(1956%) hue-rotate(108deg) brightness(91%) contrast(95%);
 }
 
 #font_logo {
 
     font-weight: 900;
-    color: #069e24;
+    color: $main-color;
 
 
 }
 
 .btn_nav {
-    background-color: #069e24;
+    background-color: $main-color;
     font-weight: 600;
     transition: ease-in-out 1s;
     border: none;
 
     &:hover {
         background-color: white;
-        border: #00eb56 1px solid;
+        border: $main-color 1px solid;
 
 
     }
@@ -87,7 +89,7 @@ header {
 }
 
 .btn_nav .link_nav:hover {
-    color: #069e24;
+    color: $main-color;
 }
 
 //Stile Video
@@ -96,5 +98,12 @@ header {
 
     width: 100%;
     opacity: 0.5;
+}
+
+a {
+    h1 {
+        font-weight: 800;
+        color: $main-color;
+    }
 }
 </style>
