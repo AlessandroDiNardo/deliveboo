@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @php
-    $dayOfWeek = array('Monday' => 'Lunedi', 'Tuesday' => 'Martedì', 'Wednesday' => 'Mercoledì', 'Thursday' => 'Giovedì', 'Friday' => 'Venerdì', 'Saturday' => 'Sabato', 'Sunday' => 'Domenica',)
+    $dayOfWeek = array(''=>'Seleziona un Giorno','Monday' => 'Lunedi', 'Tuesday' => 'Martedì', 'Wednesday' => 'Mercoledì', 'Thursday' => 'Giovedì', 'Friday' => 'Venerdì', 'Saturday' => 'Sabato', 'Sunday' => 'Domenica',)
 @endphp
 
 @section('content')
@@ -39,12 +39,15 @@
     
                     <label for="phone_number">Numero di telefono</label>
                     <input required id="input_phone" type="text" name="phone_number" value="{{ $restaurant -> phone_number }}">
+                    <span role="alert" id="input_phoneError" aria-hidden="true">
+                        Aggiungi Numero Telefono
+                     </span>
                     <br>
     
                     <label for="img">Immagine ristorante</label>
                     <input required id="input_img" type="file" name="img">
-                    <span role="alert" id="input_phoneError" aria-hidden="true">
-                        Aggiungi Recapito telefonico
+                    <span role="alert" id="input_imgError" aria-hidden="true">
+                        Aggiungi Immagine
                      </span>
                     <br>
     

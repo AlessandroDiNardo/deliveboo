@@ -29,6 +29,18 @@ function validate(e) {
  
 // Variabili input Edit/Update
 
+const nameUpdate = document.getElementById("name_update");
+// const descriptionField = document.getElementById("input_description");
+// const placeField = document.getElementById("input_place");
+// const phoneField = document.getElementById("input_phone");
+// const vatField = document.getElementById("input_vat");
+// const shippingField = document.querySelector('#shipping_field');
+// const shippingError = document.querySelector('#input_shippingError');
+// const openingField = document.getElementById("input_opening");
+// const closingField = document.getElementById("input_closing");
+// const dayOffField = document.getElementById("day_off");
+// const imgField = document.getElementById("input_img");
+// const categoryField = document.querySelectorAll(".category");
 
   let valid = true;
 
@@ -40,6 +52,9 @@ function validate(e) {
      nameError.setAttribute("aria-invalid", true);
      
    }
+
+   
+
   if (descriptionField.value.trim()==="") {
     const inputDescriptionError = document.getElementById("inputDescriptionError");
     inputDescriptionError.classList.add("visible");
@@ -96,11 +111,12 @@ function validate(e) {
      inputDescriptionError.setAttribute("aria-invalid", true);
   }
   if (openingField.value.trim()==="") {
-    const inputOpeningError = document.getElementById("input_openError");
-    inputOpeningError.classList.add("visible");
-    openingField.classList.add("invalid");
-    inputOpeningError.setAttribute("aria-hidden", false);
-    inputOpeningError.setAttribute("aria-invalid", true);
+    // const inputOpeningError = document.getElementById("input_openError");
+    // inputOpeningError.classList.add("visible");
+    // openingField.classList.add("invalid");
+    // inputOpeningError.setAttribute("aria-hidden", false);
+    // inputOpeningError.setAttribute("aria-invalid", true);
+    alert("no")
   }
   if (closingField.value.trim()==="") {
     const inputClosingError = document.getElementById("input_closingError");
