@@ -33,22 +33,25 @@ Route::middleware('auth')->group(function () {
 });
 
 // CRUD RISTORANTE
-Route::middleware('auth')->group(function () {
-    Route::get('/restaurant/create', [RestaurantController::class, 'create'])->name('restaurant.create');
-    Route::post('/restaurant/store', [RestaurantController::class, 'store'])->name('restaurant.store');
+Route::middleware(['auth', 'can:view,restaurant'])->group(function () {
     Route::get('/restaurant/edit/{restaurant}', [RestaurantController::class, 'edit'])->name('restaurant.edit');
     Route::post('/restaurant/update/{restaurant}', [RestaurantController::class, 'update'])->name('restaurant.update');
     Route::get('/restaurant/delete/{restaurant}', [RestaurantController::class, 'delete'])->name('restaurant.delete');
 });
 
 // CRUD PRODOTTI
-Route::middleware('auth')->group(function () {
-    Route::get('/product/showall', [ProductController::class, 'showAll'])->name('product.showAll');
-    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
-    Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+Route::middleware(['auth', 'can:view,product'])->group(function () {
     Route::get('/product/edit/{product}', [ProductController::class, 'edit'])->name('product.edit');
     Route::post('/product/update/{product}', [ProductController::class, 'update'])->name('product.update');
     Route::get('/product/delete/{product}', [ProductController::class, 'delete'])->name('product.delete');
 });
 
+// SHOW ALL PRODUCT AND RESTAURANT
+Route::middleware('auth')->group(function (){
+    Route::get('/restaurant/create', [RestaurantController::class, 'create'])->name('restaurant.create');
+    Route::post('/restaurant/store', [RestaurantController::class, 'store'])->name('restaurant.store');
+    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+    Route::get('/product/showall', [ProductController::class, 'showAll'])->name('product.showAll');
+});
 require __DIR__.'/auth.php';
