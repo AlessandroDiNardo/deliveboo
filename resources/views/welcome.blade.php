@@ -12,7 +12,7 @@
         <p class="fs-5">
             Order what you want, wait at home until your order arrives and then eat it, your evening will improve!
         </p>
-        <a href="https://packagist.org/packages/pacificdev/laravel_9_preset" class="btn btn-lg ms_btn" type="button">Go to Deliveboo</a>
+        <a href="http://localhost:5174/" class="btn btn-lg ms_btn" type="button">Go to Deliveboo</a>
     </div>
 </div>
 @endsection
