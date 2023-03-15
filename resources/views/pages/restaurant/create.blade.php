@@ -54,8 +54,8 @@
                 </div>
 
                 <label for="shipping_cost">Spesa spedizione</label>
-                <div>
-                    <input required id="input_shipping" type="number" step="0.01" min="0" max="5"  required name="shipping_cost">
+                 <div>
+                    <input required class="shipping_field" type="number" step="0.01" min="0" max="5"  required name="shipping_cost">
                     <span role="alert" id="input_shippingError" aria-hidden="true">
                         Aggiungi Spesa di spedizione
                      </span>

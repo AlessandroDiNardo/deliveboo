@@ -17,7 +17,8 @@ function validate(e) {
   const placeField = document.getElementById("input_place");
   const phoneField = document.getElementById("input_phone");
   const vatField = document.getElementById("input_vat");
-  const shippingField =document.querySelector("#input_shippingError");
+  const shippingField = document.querySelector('.shipping_field');
+  const shippingError = document.querySelector('#input_shippingError');
   const openingField = document.getElementById("input_opening");
   const closingField = document.getElementById("input_closing");
   const dayOffField = document.getElementById("day_off");
@@ -67,23 +68,19 @@ function validate(e) {
     inputVatError.setAttribute("aria-invalid", true);
   }
   
-   if  ( isNaN(shippingField.value) || shippingField.value == "") {
+ 
+  if (shippingField.value.trim() === '' || isNaN(shippingField.value)) {
     
-    
-    // const inputShippingError = document.getElementById("input_shippingError");
-    // inputShippingError.classList.add("visible");
-    // shippingField.classList.add("invalid");
-    // inputShippingError.setAttribute("aria-hidden", false);
-    // inputShippingError.setAttribute("aria-invalid", true);
-    alert("Non Selezionata")
-  }
-   else   {
-    // const inputShippingError = document.getElementById("input_shippingError");
-    // inputShippingError.classList.remove("visible");
-    // shippingField.classList.remove("invalid");
-    // inputShippingError.setAttribute("aria-hidden", true);
-    // inputShippingError.setAttribute("aria-invalid", false);
-    alert("Selezionata")
+    shippingError.classList.add("visible");
+    shippingField.classList.add("invalid");
+    shippingError.setAttribute("aria-hidden", false);
+    shippingError.setAttribute("aria-invalid", true);
+   
+  } else {
+    shippingError.classList.remove("visible");
+    shippingField.classList.remove("invalid");
+    shippingError.setAttribute("aria-hidden", true);
+    shippingError.setAttribute("aria-invalid", false);
   }
   if (!placeField.value) {
     const inputDescriptionError = document.getElementById("inputDescriptionError");
