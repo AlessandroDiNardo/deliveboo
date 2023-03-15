@@ -16,7 +16,7 @@ class ProductPolicy
      * @param  \App\Models\User  $user
      * @return mixed
      */
-    public function viewAny(User $user)
+    public function view(User $user)
     {
         return true;
     }
