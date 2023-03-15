@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import App from './App.vue';
-import Restaurants from './components/pageRestaurants.vue';
-import Dishes from './components/pageDishes.vue';
+import Restaurant from './components/singleRestaurant.vue';
 import Payment from './components/pagePayment.vue';
 
 const router = createRouter({
@@ -14,15 +13,11 @@ const router = createRouter({
             component: App
         },
         {
-            path: '/restaurant',
+            path: '/restaurant/products/:id',
             name: 'restaurant',
-            component: Restaurants
+            component: Restaurant
         },
-        {
-            path: '/dishes',
-            name: 'dishes',
-            component: Dishes
-        },
+
         {
             path: '/payment',
             name: 'payment',
