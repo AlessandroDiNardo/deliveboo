@@ -1,9 +1,12 @@
 <script>
 import axios from "axios";
-import SingleRestaurant from "./singleRestaurant.vue";
+import singleRestaurant from "./singleRestaurant.vue";
 
 export default {
     name: "pageRestaurants",
+    components: {
+        singleRestaurant
+    },
     data() {
         return {
             categories: [],
@@ -44,17 +47,11 @@ export default {
         }
     },
     computed: {},
-    components: { SingleRestaurant }
 }
 </script>
 
 <template>
-    <main>
-        <section>
-            <div class="video_container m-0 p-0 bg-black ">
-                <video class="video_bg" src="../../public/img/home/jumbo-video.mp4" autoplay loop muted></video>
-            </div>
-        </section>
+    <section class="main">
         <section class="restaurant_section">
             <!-- header main content -->
             <div class=" header_restaurant border border-1 header_main_cont bg-white p-3">
@@ -101,9 +98,9 @@ export default {
                             <h5 class="card-title">{{ restaurant.name }}</h5>
                             <p class="card-text">{{ restaurant.description }}</p>
                             <span v-for="category in restaurant.categories"> {{ category.name }}, &nbsp;</span>
-                            <RouterLink :to="{ name: 'restaurant', params: { id: restaurant.id } }">
+                            <router-link :to="{ name: 'restaurant', params: { id: restaurant.id } }">
                                 vai al ristorante
-                            </RouterLink>
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -113,15 +110,20 @@ export default {
         <div v-if="$route.name === 'restaurant'">
             <SingleRestaurant />
         </div>
-    </main>
+    </section>
 </template>
 
 <style lang="scss" scoped>
 @use '../assets/scss/general.scss' as *;
 @use '../assets/scss/partials/variables.scss' as *;
 
-main {
+.main {
     background-color: $bg-main;
+}
+
+.video_container {
+    position: relative;
+    bottom: 6%;
 }
 
 .restaurant_section {
