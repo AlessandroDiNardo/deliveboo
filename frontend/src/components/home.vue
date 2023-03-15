@@ -1,10 +1,10 @@
 <script >
-import Section from './Section.vue';
+import pageRestaurants from './pageRestaurants.vue';
 import Section1 from './Section1.vue';
 
 export default {
     components: {
-        Section,
+        pageRestaurants,
         Section1,
     },
 }
@@ -12,7 +12,7 @@ export default {
 
 <template>
     <main>
-        <Section />
+        <pageRestaurants />
         <Section1 />
     </main>
 </template>
