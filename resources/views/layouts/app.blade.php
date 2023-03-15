@@ -22,12 +22,12 @@
 <body>
     <div id="app">
         <header>
-            <nav class="navbar navbar-expand-md navbar-light  shadow-sm bg-dark">
+            <nav class="navbar  navbar-expand-md navbar-light shadow-sm bg-dark">
                 <div class="container">
-                    <img alt="Logo" width="40" height="34" class="d-inline-block align-text-top Logo_filter">
+                    <img src="{{Vite::asset('resources/img/Logo-Delivebo.png')}}" alt="logo"  class="d-inline-block align-text-top Logo_filter">
                     <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                         <div class="logo_laravel">
-                            <h3 class="mx-2" id="font_logo">Deliveboo </h3>
+                            <h1 class="mx-2" id="font_logo">Deliveboo </h1>
                         </div>
                         {{-- config('app.name', 'Laravel') --}}
                     </a>
