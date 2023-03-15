@@ -24,7 +24,7 @@
         <header class="headerHome">
             <nav class="navbar  navbar-expand-md navbar-light shadow-sm bg-dark">
                 <div class="container">
-                    <img src="{{Vite::asset('resources/img/Logo-Delivebo.png')}}" alt="logo"  class="d-inline-block align-text-top Logo_filter">
+                    <img src="{{Vite::asset('resources/img/Logo-Delivebo.png')}}" alt="logo"  class="d-inline-block align-text-center Logo_filter">
                     <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                         <div class="logo_laravel">
                             <h1 class="mx-2" id="font_logo">Deliveboo </h1>
@@ -33,7 +33,7 @@
                     </a>
 
                     <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon text-success"></span>
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
