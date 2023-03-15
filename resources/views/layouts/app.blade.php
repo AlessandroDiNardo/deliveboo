@@ -79,12 +79,12 @@
                 </div>
             </div>
         </nav>
-        @include('components.errors')
+    </div>
+    @include('components.errors')
 
         <main class="">
             @yield('content')
         </main>
-    </div>
 </body>
 
 </html>
