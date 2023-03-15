@@ -4,7 +4,7 @@
 <section class="d-flex justify-content-center py-5 my_bg">
     <form class="form" name="create" method="POST" action="{{ route('restaurant.store') }}" enctype="multipart/form-data">
         @csrf
-        <div class="d-flex">
+        <div class="d-flex justify-content-center">
                 <img class="Logo_filter" src="https://cdn.iconscout.com/icon/free/png-256/deliveroo-3442893-2875354.png" alt="logo" width="50" height="50"> 
                 <h1>Aggiungi il tuo locale</h1>
         </div>
@@ -114,7 +114,7 @@
                       </span>
                     @foreach ($categories as $category)
                     <li>
-                        <input required id="input_category" type="checkbox" name="category_id[]" value="{{ $category -> id }}" id="{{ $category -> id }}" class="mb-2 mx-2">
+                        <input required class="category" type="checkbox" name="category_id[]" value="{{ $category -> id }}" id="{{ $category -> id }}" class="mb-2 mx-2">
                         <label for="{{ $category -> id }}">{{ $category -> name }}</label>
                     </li>
                    

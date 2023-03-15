@@ -105,7 +105,7 @@ function validate(e) {
   }
   
   
- if (dayOffField.value="") {
+ if (!dayOffField.value) {
    const inputDayOffError = document.getElementById("input_dayOffError");
    inputDayOffError.classList.add("visible");
    dayOffField.classList.add("invalid");
