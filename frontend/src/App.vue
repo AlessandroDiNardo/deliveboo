@@ -1,13 +1,13 @@
 <script >
 import Header from './components/Header.vue';
-import appMain from './components/appMain.vue';
+import AppMain from './components/appMain.vue';
 import Footer from './components/Footer.vue';
 
 export default {
   components: {
     Header,
-    appMain,
-    Footer,
+    AppMain,
+    Footer
   },
   data() {
     return {
@@ -26,28 +26,24 @@ export default {
 </script>
 
 <template>
-  <div>
-    <!-- Mettiamo il v-if con operatore not al booleano di isLoaded che per default è false -->
+  <!-- Mettiamo il v-if con operatore not al booleano di isLoaded che per default è false -->
 
-    <div class="text-center bg-white" v-if="!isLoaded">
+  <div class="text-center bg-white" v-if="!isLoaded">
 
-      <div class="Flex_Load">
-        <div class="pos_img">
-          <img class="img_loading animate__animated animate__flash " src="../public/img/Logo-Deliveboo.png" alt="">
-        </div>
-
+    <div class="Flex_Load">
+      <div class="pos_img">
+        <img class="img_loading animate__animated animate__flash " src="../public/img/Logo-Deliveboo.png" alt="">
       </div>
-    </div>
 
-    <!-- Terminato il Loader apparirà la pagina principale   -->
-
-    <div v-else>
-      <Header />
-      <main>
-        <appMain />
-      </main>
-      <Footer />
     </div>
+  </div>
+
+  <!-- Terminato il Loader apparirà la pagina principale   -->
+
+  <div v-else>
+    <Header />
+    <AppMain />
+    <Footer />
   </div>
 </template>
 
