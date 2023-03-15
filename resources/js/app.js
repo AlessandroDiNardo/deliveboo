@@ -17,7 +17,7 @@ function validate(e) {
   const placeField = document.getElementById("input_place");
   const phoneField = document.getElementById("input_phone");
   const vatField = document.getElementById("input_vat");
-  const shippingField = document.querySelector('.shipping_field');
+  const shippingField = document.querySelector('#shipping_field');
   const shippingError = document.querySelector('#input_shippingError');
   const openingField = document.getElementById("input_opening");
   const closingField = document.getElementById("input_closing");
@@ -105,12 +105,19 @@ function validate(e) {
   }
   
   
- if (!dayOffField.value) {
+ if (dayOffField.value="") {
    const inputDayOffError = document.getElementById("input_dayOffError");
    inputDayOffError.classList.add("visible");
    dayOffField.classList.add("invalid");
   inputDayOffError.setAttribute("aria-hidden", false);
   inputDayOffError.setAttribute("aria-invalid", true);
+ }
+ else{
+  const inputDayOffError = document.getElementById("input_dayOffError");
+   inputDayOffError.classList.remove("visible");
+   dayOffField.classList.remove("invalid");
+  inputDayOffError.setAttribute("aria-hidden", true);
+  inputDayOffError.setAttribute("aria-invalid", false);
  }
   
 
@@ -250,6 +257,3 @@ function validate(e) {
 //   } else {
 //     document.querySelector('#input_categoryError').setAttribute('aria-hidden', true);
 //   }})
-
-
-

@@ -54,8 +54,8 @@
                 </div>
 
                 <label for="shipping_cost">Spesa spedizione</label>
-                 <div>
-                    <input required class="shipping_field" type="number" step="0.01" min="0" max="5"  required name="shipping_cost">
+                <div>
+                    <input required id="shipping_field" type="number" step="0.01" min="1" max="5"  requred name="shipping_cost">
                     <span role="alert" id="input_shippingError" aria-hidden="true">
                         Aggiungi Spesa di spedizione
                      </span>
@@ -79,7 +79,16 @@
 
                 <label for="closing_day">Giorno di chiusura</label>
                 <div>
-                    <input required id="day_off" type="text" name="closing_day">
+                    
+                    <select required id="day_off" name="closing_day">
+                        <option value="Monday" selected>Lunedì</option>
+                        <option value="Tuesday">Martedi</option>
+                        <option value="Wednesday">Mercoledì</option>
+                        <option value="Thursday">Giovedì</option>
+                        <option value="Friday">Venerdì</option>
+                        <option value="Saturday">Sabato</option>
+                        <option value="Sunday">Domenica</option>
+                      </select>
                     <span role="alert" id="input_dayOffError" aria-hidden="true">
                         Aggiungi giorno di Chiusura
                      </span>
@@ -105,7 +114,7 @@
                       </span>
                     @foreach ($categories as $category)
                     <li>
-                        <input  class="category" type="checkbox" name="category_id[]" value="{{ $category -> id }}" id="{{ $category -> id }}" class="mb-2 mx-2">
+                        <input required id="input_category" type="checkbox" name="category_id[]" value="{{ $category -> id }}" id="{{ $category -> id }}" class="mb-2 mx-2">
                         <label for="{{ $category -> id }}">{{ $category -> name }}</label>
                     </li>
                    
