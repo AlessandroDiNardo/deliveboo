@@ -8,8 +8,6 @@
     </div>
     <div class="container-fluid  row justify-content-center py-5 col-11 m-auto " id="Wrapper_Container">
       <div class="row">
-
-
         <div class="col-md-4 ">
           <div class="card mb-4  ms_card" style="background-color:#ff8100;border:none;color:white;">
             <img class="card-img-top" alt="Thumbnail [100%x225]"
