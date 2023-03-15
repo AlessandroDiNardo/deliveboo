@@ -1,7 +1,6 @@
 @import "/resources/scss/general/general.scss";
 
 .headerHome {
-    background-color: $main-color;
     color: $black;
 
     h1 {
@@ -19,24 +18,21 @@
     }
 }
 
-header {
-    position: absolute;
-    top: 0;
-    background: transparent;
-    width: 100%;
-    z-index: 1;
-}
 
-.Logo_filter {
+
+.Logo_filter{
     filter: invert(57%) sepia(70%) saturate(1956%) hue-rotate(108deg) brightness(91%) contrast(95%);
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+    padding: 2px;
+    text-align: center;
 }
 
 #font_logo {
-
     font-weight: 900;
     color: #069e24;
-
-
 }
 
 .btn_nav {
@@ -47,8 +43,6 @@ header {
     &:hover {
         border: #ffffff 1px solid;
         color: #00eb56;
-
-
     }
 }
 
@@ -65,8 +59,6 @@ header {
 
     &:hover {
         color: #00eb56;
-
-
     }
 
 }
@@ -75,9 +67,4 @@ header {
     button {
         margin: 10px 0;
     }
-    .home{
-        margin-left: 90px ;
-
-    }
   }
-

@@ -21,7 +21,7 @@
 
 <body>
     <div id="app">
-        <header>
+        <header class="headerHome">
             <nav class="navbar  navbar-expand-md navbar-light shadow-sm bg-dark">
                 <div class="container">
                     <img src="{{Vite::asset('resources/img/Logo-Delivebo.png')}}" alt="logo"  class="d-inline-block align-text-top Logo_filter">
