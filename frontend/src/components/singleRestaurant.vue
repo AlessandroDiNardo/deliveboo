@@ -13,9 +13,9 @@ export default {
         }
     },
     methods: {
-        
+
         getProducts() {
-            axios.get('http://localhost:8000/api/v1/products/all', { params: {restaurantId: this.$route.params.id} })
+            axios.get('http://localhost:8000/api/v1/products/all', { params: { restaurantId: this.$route.params.id } })
                 .then(res => {
                     const data = res.data;
                     const success = data.success;
@@ -34,8 +34,8 @@ export default {
     },
     mounted() {
         this.getProducts();
-        
-        this.runNow() 
+
+        this.runNow()
     },
 }
 </script>
@@ -52,14 +52,15 @@ export default {
                         <h2> {{ restaurant.name }}</h2>
                         <p class="fs-5">{{ restaurant.description }}</p>
                         <p class="fs-5">
-                            <span class="btn btn-success me-2" v-for="category in restaurant.categories"> {{ category.name }}</span>
+                            <span class="btn btn-success me-2" v-for="category in restaurant.categories"> {{ category.name
+                            }}</span>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="ms_container py-5 d-flex flex-wrap justify-content-center align-items-center gap-5">
-            <div class="ms_card" style="width: ;" v-for="product in products">
+            <div class="ms_card" v-for="product in products">
                 <img :src="product.img" class="card-img-top" alt="...">
                 <div class="card-body-cont">
                     <h5 class="card-title">{{ product.name }}</h5>
