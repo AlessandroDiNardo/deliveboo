@@ -13,38 +13,44 @@ class ApiController extends Controller
 {
     public function getRestaurants(Request $request) {
         // checking categories in GET
-        $categories = $request -> categories;
+        $categories = $request -> get('categories');
 
         // saving all instances of Restaurant if no filter received as categories
-        $restaurants = Restaurant::all();
+        $restaurants = Restaurant::with('categories');
 
         // if there are...
         if ($categories) {
+
             $restaurants = null;
 
             foreach ($categories as $category) {
-                // if restaurants is empty
-                if (is_null($restaurants)) {
+                
+                if(is_null($restaurants)) {
 
-                    $restaurants = Restaurant::whereHas('categories', function ($q) use ($category) {
+                    $restaurants = Restaurant::with('categories') -> whereHas('categories', function ($q) use ($category) {
                         
                         $q->where('category_id', $category);
-
-                    })->get();
+        
+                    });
                 }
-                // if not...
-                $restaurants = $restaurants ->merge(Restaurant::whereHas('categories', function ($q) use ($category) {
-                    
+
+                $restaurants = $restaurants -> whereHas('categories', function ($q) use ($category) {
+                        
                     $q->where('category_id', $category);
-                    
-                })->get());
+    
+                });
             }
+
         }
+
+        $restaurants = $restaurants -> get();
 
 
         return response() -> json([
             'success' => true,
-            'response' => $restaurants,
+            'response' => [
+                'restaurants' => $restaurants,
+            ]
         ]);
     }
 

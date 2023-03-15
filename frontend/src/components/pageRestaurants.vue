@@ -21,7 +21,11 @@ export default {
                 .then(res => {
                     const data = res.data;
                     const success = data.success;
-                    this.filteredRestaurants = data.response;
+                    const response = data.response.restaurants;
+
+                    if (success) {
+                        this.filteredRestaurants = response
+                    }
                 })
                 .catch(err => console.error(err));
         },
@@ -34,6 +38,10 @@ export default {
                 })
                 .catch(err => console.error(err));
         },
+
+        resetCheckboxes() {
+            this.filteredCategories = [];
+        }
     },
     computed: {},
     components: { SingleRestaurant }
@@ -70,13 +78,15 @@ export default {
                                 </ul>
                             </div>
                             <div class="d-flex justify-content-end align-items-end p-5">
+                                <button type="button" class="btn btn-danger btn-outline-warning"
+                                    @click="resetCheckboxes()">Reset</button>
+
                                 <button type="button" class="btn btn-color btn-outline-success"
                                     @click="getRestaurants()">Filter</button>
                             </div>
                         </div>
-                    </div>
 
-                    <h3>Cerca il tuo ristorante, cibo o piatto preferito!</h3>
+                        <h3>Cerca il tuo ristorante, cibo o piatto preferito!</h3>
                 </section>
             </div>
 
@@ -90,6 +100,7 @@ export default {
                         <div class="card-body-cont">
                             <h5 class="card-title">{{ restaurant.name }}</h5>
                             <p class="card-text">{{ restaurant.description }}</p>
+                            <span v-for="category in restaurant.categories"> {{ category.name }}, &nbsp;</span>
                             <RouterLink :to="{ name: 'restaurant', params: { id: restaurant.id } }">
                                 vai al ristorante
                             </RouterLink>
@@ -178,5 +189,4 @@ ul {
 .btn-color {
     background-color: $main-color;
     border: none;
-}
-</style>
+}</style>
