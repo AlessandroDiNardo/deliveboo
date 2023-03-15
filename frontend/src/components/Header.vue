@@ -43,11 +43,14 @@ export default {
 </template>
 
 <style lang="scss">
+@use '../assets/scss/general.scss' as *;
+@use '../assets/scss/partials/variables.scss' as *;
+
 // stile Intestazione 
 header {
     position: absolute;
     top: 0;
-    background: transparent;
+    background: $black;
     width: 100%;
     z-index: 1;
 }
