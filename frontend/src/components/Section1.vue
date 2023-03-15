@@ -10,8 +10,8 @@
       <div class="row">
 
 
-        <div class="col-md-4">
-          <div class="card mb-4  " style="background-color:#ff8100;border:none;color:white;">
+        <div class="col-md-4 ">
+          <div class="card mb-4  ms_card" style="background-color:#ff8100;border:none;color:white;">
             <img class="card-img-top" alt="Thumbnail [100%x225]"
               style="  width: 100%; display: block;  clip-path: polygon(0 0, 100% 0, 100% 68%, 0 90%); "
               src="../../public/img/home/Ristoranti.jpg">
@@ -21,7 +21,7 @@
               </h1>
               <p>Diventa partner di Deliveroo e raggiungi sempre più clienti. Ci occupiamo noi della consegna, così che la
                 tua unica preoccupazione sia continuare a preparare il miglior cibo.</p>
-              <div class="text-center">
+              <div class="btn">
                 <button class="bg-primary border-0 rounded-2 p-2">
                   <a href="" class="text-decoration-none text-white">Scopri di più</a>
                 </button>
@@ -31,8 +31,8 @@
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="card mb-4  " style="background-color:#069e24;border:none;color:white;">
+        <div class="col-md-4 ">
+          <div class="card mb-4  ms_card" style="background-color:#069e24;border:none;color:white;">
             <img class="card-img-top" alt="Thumbnail [100%x225]"
               style=" width: 100%; display: block;  clip-path: polygon(0 0, 100% 0, 100% 68%, 0 90%); "
               src="../../public/img/home/Lavora.jpg">
@@ -42,8 +42,8 @@
               </h1>
               <p>La nostra missione è trasformare il modo in cui le persone mangiano. È un obiettivo ambizioso, come noi,
                 e ci servono persone che ci aiutino a raggiungerlo. </p>
-              <div class="text-center">
-                <button class="bg-primary border-0 rounded-2 p-2 ">
+              <div class="btn">
+                <button class="bg-primary border-0 rounded-2 p-2">
                   <a href="" class="text-decoration-none text-white">Scopri di più</a>
                 </button>
               </div>
@@ -52,8 +52,8 @@
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="card mb-4  " style="background-color:#ff483b;border:none;color:white;">
+        <div class="col-md-4 ">
+          <div class="card mb-4  ms_card" style="background-color:#ff483b;border:none;color:white;">
             <img class="card-img-top" alt="Thumbnail [100%x225]"
               style=" width: 100%; display: block;  clip-path: polygon(0 0, 100% 0, 100% 68%, 0 90%); "
               src="../../public/img/home/rider.jpg">
@@ -62,8 +62,8 @@
                 Riders
               </h1>
               <p>Diventa un rider: flessibilità, ottimi guadagni e un mondo di vantaggi per te.</p>
-              <div class="text-center">
-                <button class="bg-primary border-0 rounded-2 p-2 btn_m">
+              <div class="btn">
+                <button class="bg-primary border-0 rounded-2 p-2">
                   <a href="" class="text-decoration-none text-white">Scopri di più</a>
                 </button>
               </div>
@@ -78,9 +78,13 @@
   </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .work_us {
   background-color: white;
+}
+
+.ms_card {
+  height: 700px;
 }
 
 .clip {
@@ -103,7 +107,10 @@
   color: white;
 }
 
-.btn_m {
-  margin-top: 13%;
+.btn {
+  position: absolute;
+  bottom: 2%;
+  left: 0;
+  width: 100%;
 }
 </style>
