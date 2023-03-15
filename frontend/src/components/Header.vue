@@ -18,7 +18,7 @@ export default {
         <nav class="navbar  bg-transparent w-75 m-auto">
             <div class="container-fluid">
                 <a class="navbar-brand bg-transparent d-flex gap-3 align-items-center" href="#">
-                    <RouterLink :to="{ name: 'home' }" class="d-flex gap-3 align-items-center">
+                    <RouterLink :to="{ name: 'home' }" class="d-flex gap-3 align-items-center text-decoration-none">
                         <img :src="image" alt="Logo" width="40" height="34"
                             class="d-inline-block align-text-top Logo_filter">
                         <h1>Deliveboo</h1>
