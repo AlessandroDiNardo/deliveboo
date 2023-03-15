@@ -62,4 +62,17 @@ class ApiController extends Controller
             'response' => $categories,
         ]);
     }
+
+    public function getProducts(Request $request) {
+        $restaurantId = $request -> get('restaurantId');
+
+        $restaurant = Restaurant::with('products', 'categories') -> find($restaurantId);
+
+        return response() -> json([
+            'success' => true,
+            'response' => [
+                'restaurant' => $restaurant
+            ],
+        ]);
+    }
 }

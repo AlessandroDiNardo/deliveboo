@@ -8,34 +8,34 @@ export default {
     data() {
         return {
 
-            restaurants: [],
+            restaurant: [],
             products: []
         }
     },
     methods: {
-        getRestaurants() {
-            axios.get('http://localhost:8000/api/v1/restaurants/search', { params: { categories: this.filteredCategories } })
-                .then(res => {
-                    const data = res.data;
-                    const success = data.success;
-                    this.filteredRestaurants = data.response;
-                })
-                .catch(err => console.error(err));
-        },
+        
         getProducts() {
-            axios.get('http://localhost:8000/api/v1/products/all')
+            axios.get('http://localhost:8000/api/v1/products/all', { params: {restaurantId: this.$route.params.id} })
                 .then(res => {
                     const data = res.data;
                     const success = data.success;
-                    this.categories = data.response;
+                    const result = data.response.restaurant;
+
+                    if (success) {
+                        this.restaurant = result;
+                        this.products = result.products;
+                    }
                 })
                 .catch(err => console.error(err));
         },
+
+        runNow() {
+        }
     },
     mounted() {
-
-        this.getRestaurants();
-        this.getProducts()
+        this.getProducts();
+        
+        this.runNow() 
     },
 }
 </script>
@@ -46,107 +46,28 @@ export default {
             <div class="ms_container py-5">
                 <div class="d-flex justify-content-start align-items-start gap-5 mt-5">
                     <div class="card_img">
-                        <img src="../../public/pizza.jpg" alt="">
+                        <img :src="restaurant.img" alt="">
                     </div>
                     <div class="d-flex row justify-content-center align-items-center lh-lg">
-                        <h2>Il messicano</h2>
-                        <p class="fs-5">Miglior ristorante messicano in italia dal 1926!</p>
-                        <p class="fs-5">Messicano, Dolci, Pasta</p>
+                        <h2> {{ restaurant.name }}</h2>
+                        <p class="fs-5">{{ restaurant.description }}</p>
+                        <p class="fs-5">
+                            <span class="btn btn-success me-2" v-for="category in restaurant.categories"> {{ category.name }}</span>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="ms_container py-5 d-flex flex-wrap justify-content-center align-items-center gap-5">
-            <div class="ms_card" style="width: ;">
-                <img src="../../public/pizza.jpg" class="card-img-top" alt="...">
+            <div class="ms_card" style="width: ;" v-for="product in products">
+                <img :src="product.img" class="card-img-top" alt="...">
                 <div class="card-body-cont">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
+                        {{ product.ingredients }}
                     </p>
                     <div class="d-flex justify-content-between align-items-center info_card" style="width: 100%;">
-                        <strong class="text-danger">12.00$</strong>
-                        <a href="#" class="btn btn-primary">
-                            <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="ms_card" style="width: ;">
-                <img src="../../public/pizza.jpg" class="card-img-top" alt="...">
-                <div class="card-body-cont">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center info_card" style="width: 100%;">
-                        <strong class="text-danger">12.00$</strong>
-                        <a href="#" class="btn btn-primary">
-                            <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="ms_card" style="width: ;">
-                <img src="../../public/pizza.jpg" class="card-img-top" alt="...">
-                <div class="card-body-cont">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center info_card" style="width: 100%;">
-                        <strong class="text-danger">12.00$</strong>
-                        <a href="#" class="btn btn-primary">
-                            <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="ms_card" style="width: ;">
-                <img src="../../public/pizza.jpg" class="card-img-top" alt="...">
-                <div class="card-body-cont">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center info_card" style="width: 100%;">
-                        <strong class="text-danger">12.00$</strong>
-                        <a href="#" class="btn btn-primary">
-                            <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="ms_card" style="width: ;">
-                <img src="../../public/pizza.jpg" class="card-img-top" alt="...">
-                <div class="card-body-cont">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center info_card" style="width: 100%;">
-                        <strong class="text-danger">12.00$</strong>
-                        <a href="#" class="btn btn-primary">
-                            <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="ms_card" style="width: ;">
-                <img src="../../public/pizza.jpg" class="card-img-top" alt="...">
-                <div class="card-body-cont">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center info_card" style="width: 100%;">
-                        <strong class="text-danger">12.00$</strong>
+                        <strong class="text-danger">{{ product.price }} €</strong>
                         <a href="#" class="btn btn-primary">
                             <font-awesome-icon icon="fa-solid fa-cart-shopping" />
                         </a>

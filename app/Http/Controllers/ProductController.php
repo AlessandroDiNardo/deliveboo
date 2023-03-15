@@ -18,7 +18,7 @@ class ProductController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->authorizeResource(Product::class);
     }
     
     public function showAll(Request $request) {
