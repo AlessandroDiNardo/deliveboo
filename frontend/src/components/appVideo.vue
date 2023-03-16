@@ -6,7 +6,7 @@ export default {
 
 <template>
     <div class="video_container m-0 p-0 bg-black ">
-        <video class="video_bg" src="../../public/img/home/jumbo-video.mp4" autoplay loop muted></video>
+        <video class="video_bg" src="../../public/img/home/video-jumbo1.mp4" autoplay loop muted></video>
     </div>
 </template>
 
