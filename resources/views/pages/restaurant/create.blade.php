@@ -47,32 +47,32 @@
 
                 <label for="vat">Piva</label>
                 <div>
-                    <input required id="input_vat" type="text" name="vat">
-                    <span role="alert" id="input_vatError" aria-hidden="true">
+                    <input required class="input_vat" type="text" name="vat">
+                    <span role="alert" class="input_vatError" aria-hidden="true">
                         Aggiungi Partita Iva
                      </span>
                 </div>
 
                 <label for="shipping_cost">Spesa spedizione</label>
                 <div>
-                    <input required id="shipping_field" type="number" step="0.01" min="0" max="5"  required name="shipping_cost">
-                    <span role="alert" id="input_shippingError" aria-hidden="true">
+                    <input required class="shipping_field" type="number" step="0.01" min="0" max="5"  required name="shipping_cost">
+                    <span role="alert" class="input_shippingError" aria-hidden="true">
                         Aggiungi Spesa di spedizione
                      </span>
                 </div>       
 
                 <label for="opening_time">Orario di Apertura</label>
                 <div>
-                    <input required id="input_opening" type="time" name="opening_time">
-                    <span role="alert" id="input_openError" aria-hidden="true">
+                    <input required class="input_opening" type="time" name="opening_time">
+                    <span role="alert" class="input_openError" aria-hidden="true">
                         Aggiungi orario di Apertura
                      </span>
                 </div>   
 
                 <label for="closing_time">Orario di Chiusura</label>
                 <div>
-                    <input required id="input_closing" type="time" name="closing_time">
-                    <span role="alert" id="input_closingError" aria-hidden="true">
+                    <input required class="input_closing" type="time" name="closing_time">
+                    <span role="alert" class="input_closingError" aria-hidden="true">
                         Aggiungi orario di Chiusura
                      </span>
                 </div>
@@ -80,7 +80,7 @@
                 <label for="closing_day">Giorno di chiusura</label>
                 <div>
                     
-                    <select required id="day_off" name="closing_day">
+                    <select required class="day_off" name="closing_day">
                         <option value="" >Seleziona un Giorno</option>
                         <option value="Monday" >Lunedì</option>
                         <option value="Tuesday">Martedi</option>
@@ -90,15 +90,15 @@
                         <option value="Saturday">Sabato</option>
                         <option value="Sunday">Domenica</option>
                       </select>
-                    <span role="alert" id="input_dayOffError" aria-hidden="true">
+                    <span role="alert" class="input_dayOffError" aria-hidden="true">
                         Aggiungi giorno di Chiusura
                      </span>
                 </div>
 
                 <label for="img">Inserisci un immagine</label><br><br>
                 <div>
-                    <input required id="input_img" type="file" name="img">
-                    <span role="alert" id="input_imgError" aria-hidden="true">
+                    <input required class="input_img" type="file" name="img">
+                    <span role="alert" class="input_imgError" aria-hidden="true">
                         Aggiungi un immagine
                      </span>
                 </div>
@@ -110,7 +110,7 @@
                 
                 <ul>
                     <h3>Categorie:</h3>
-                    <span role="alert" id="input_categoryError" aria-hidden="true">
+                    <span role="alert" class="input_categoryError" aria-hidden="true">
                         Seleziona una categoria
                       </span>
                     @foreach ($categories as $category)
@@ -123,7 +123,7 @@
                 </ul>
             </div>
         </div>
-        <input id="submit" type="submit"  value="CREATE NEW RESTAURANT" class="text-center">
+        <input  class="submit_form" type="submit"  value="CREATE NEW RESTAURANT" class="text-center">
      
     </form>
 </section>
