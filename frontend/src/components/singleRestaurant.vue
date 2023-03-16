@@ -160,7 +160,7 @@ export default {
             <div class="restaurant_cont d-flex flex-wrap justify-content-start align-items-center gap-4">
                 <div class="ms_card" v-for="product in products">
                     <img :src="product.img" class="card-img-top" alt="...">
-                    <div class="card-body-cont">
+                    <div class="card-body-cont" style="height: 100%;">
                         <h5 class="card-title">{{ product.name }}</h5>
                         <p class="card-text">
                             {{ product.ingredients }}
@@ -263,6 +263,7 @@ section {
     img {
         height: 250px;
         width: 350px;
+        border-radius: 20px;
     }
 }
 
@@ -271,11 +272,17 @@ section {
     height: 450px;
     border: 1px $black;
     border-radius: 1px;
-    border: 1px solid black;
+    border: 1px solid rgb(255, 255, 255);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 
     img {
         height: 250px;
         width: 348px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
     }
 
     .card-body-cont {
@@ -285,10 +292,13 @@ section {
         gap: 5px;
         flex-direction: column;
         padding: 10px 20px;
+        position: relative;
 
         .info_card {
-            position: relative;
-            top: 25%;
+            position: absolute;
+            top: 34%;
+            left: 0;
+            padding: 0 30px;
 
             .btn {
                 background-color: #06c167;
