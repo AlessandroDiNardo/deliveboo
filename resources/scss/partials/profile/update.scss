@@ -1,0 +1,49 @@
+@import "/resources/scss/general/general.scss";
+
+.Logo_filter{
+    filter: invert(57%) sepia(70%) saturate(1956%) hue-rotate(108deg) brightness(91%) contrast(95%);
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+    padding: 2px;
+    text-align: center;
+}
+
+
+
+@media screen and (max-width: 840px) {
+    .form-group {
+      width: 90%;
+    }
+    #category {
+      padding-right: 40%;
+    }
+  }
+  
+  @media screen and (max-width: 770px) {
+    #input{
+      padding-left: 100px;
+    }
+    #category {
+      padding-right: 40%;
+    }
+    #name, #input_description, #input_place, #input_phone, #input_vat, #input_shipping, #input_opening, #input_closing, #day_off, #input_img{
+      width: 430px;
+    }
+  }
+  
+  @media screen and (max-width: 680px) {
+    #category {
+      padding-right: 40%;
+    }
+    #name, #input_description, #input_place, #input_phone, #input_vat, #input_shipping, #input_opening, #input_closing, #day_off, #input_img{
+      width: 400px;
+    }
+  }
+  
+  @media screen and (max-width: 570px) {
+    #name, #input_description, #input_place, #input_phone, #input_vat, #input_shipping, #input_opening, #input_closing, #day_off, #input_img{
+      width: 350px;
+    }
+  }
