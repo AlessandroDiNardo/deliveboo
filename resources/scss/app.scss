@@ -45,7 +45,7 @@ ul {
     list-style: none;
 }
 
-#nameError ,#nameUpdateError,#inputDescriptionError,#input_placeError,#input_phoneError,#input_vatError,#input_shippingError,#input_openError,#input_closingError,#input_dayOffError,#input_imgError,#input_categoryError {
+.nameError ,.inputDescriptionError,.input_placeError,.input_phoneError,#input_vatError,#input_shippingError,#input_openError,#input_closingError,#input_dayOffError,#input_imgError,#input_categoryError {
     display: none;
     font-size: 1em;
     text-align: center;
@@ -54,7 +54,7 @@ ul {
     border-radius: 15px;
   }
   
-  #nameError.visible,#nameUpdateError.visible,#inputDescriptionError.visible,#input_placeError.visible,#input_phoneError.visible,#input_vatError.visible,#input_shippingError.visible,#input_openError.visible,#input_closingError.visible,#input_dayOffError.visible, #input_imgError.visible,#input_categoryError.visible{
+  .nameError.visible,.inputDescriptionError.visible,.input_placeError.visible,.input_phoneError.visible,#input_vatError.visible,#input_shippingError.visible,#input_openError.visible,#input_closingError.visible,#input_dayOffError.visible, #input_imgError.visible,#input_categoryError.visible{
     display: block;
 
   }

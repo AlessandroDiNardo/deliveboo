@@ -11,15 +11,21 @@
         @csrf
     
         <label for="name">Nome</label>
-        <input type="text" name="name">
+        <input required  id="name" type="text" name="name">
+        <span role="alert" id="nameError" aria-hidden="true">
+            Riempi il campo del nome del Piatto
+         </span>
         <br>
     
         <label for="ingredients">Ingredienti</label>
-        <input type="text" name="ingredients">
+        <input required id="ingredients" type="text" name="ingredients">
+        <span role="alert" id="ingredentsError" aria-hidden="true">
+            Riempi il campo del nome del Piatto
+         </span>
         <br>
     
         <label for="price">Prezzo</label>
-        <input type="number" name="price">
+        <input  step="0.01" min="0" max="5" type="number" name="price">
         <br>
     
         <label for="img">Immagine</label>
@@ -28,12 +34,13 @@
     
         <label for="visible">Disponibilità</label>
         <select name="visible">
+        <option value="" selected>Seleziona Disponibilità</option>   
         <option value="1" selected>Disponibile</option>
         <option value="0">Non Disponibile</option>
         </select>
         <br>
     
-        <input type="submit" value="CREA UN NUOVO PIATTO">
+        <input class="my-2" id="submit" type="submit" value="CREA UN NUOVO PIATTO">
     </form>
 </section>
 @endsection

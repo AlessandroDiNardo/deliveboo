@@ -14,10 +14,10 @@ function validate(e) {
 
   //Variabili input create
 
-  const firstNameField = document.getElementById("name");
-  const descriptionField = document.getElementById("input_description");
-  const placeField = document.getElementById("input_place");
-  const phoneField = document.getElementById("input_phone");
+  const firstNameField = document.querySelector(".name_create");
+   const description = document.querySelector(".input_description")
+  const placeField = document.querySelector(".input_place");
+  const phoneField = document.querySelector(".input_phone");
   const vatField = document.getElementById("input_vat");
   const shippingField = document.querySelector('#shipping_field');
   const shippingError = document.querySelector('#input_shippingError');
@@ -27,53 +27,59 @@ function validate(e) {
   const imgField = document.getElementById("input_img");
   const categoryField = document.querySelectorAll(".category");
  
-// Variabili input Edit/Update
+// Variabili input Create Product
 
-const nameUpdate = document.getElementById("name_update");
-// const descriptionField = document.getElementById("input_description");
-// const placeField = document.getElementById("input_place");
-// const phoneField = document.getElementById("input_phone");
-// const vatField = document.getElementById("input_vat");
-// const shippingField = document.querySelector('#shipping_field');
-// const shippingError = document.querySelector('#input_shippingError');
-// const openingField = document.getElementById("input_opening");
-// const closingField = document.getElementById("input_closing");
-// const dayOffField = document.getElementById("day_off");
-// const imgField = document.getElementById("input_img");
-// const categoryField = document.querySelectorAll(".category");
+const ingredientsField = document.getElementById("ingredients")
+
 
   let valid = true;
 
-   if (firstNameField.value.trim() ==="") {
-     const nameError = document.getElementById("nameError");
-     nameError.classList.add("visible");
-     firstNameField.classList.add("invalid");
-     nameError.setAttribute("aria-hidden", false);
-     nameError.setAttribute("aria-invalid", true);
+    if (firstNameField.value.trim() ==="") {
+      const nameError = document.querySelector(".nameError");
+      nameError.classList.add("visible");
+      firstNameField.classList.add("invalid");
+      nameError.setAttribute("aria-hidden", false);
+      nameError.setAttribute("aria-invalid", true);
      
-   }
+    }
+   
 
    
 
-  if (descriptionField.value.trim()==="") {
-    const inputDescriptionError = document.getElementById("inputDescriptionError");
+   if (description.value.trim()==="") {
+    const inputDescriptionError = document.querySelector(".inputDescriptionError");
     inputDescriptionError.classList.add("visible");
-    descriptionField.classList.add("invalid");
+    description.classList.add("invalid");
     inputDescriptionError.setAttribute("aria-hidden", false);
     inputDescriptionError.setAttribute("aria-invalid", true);
-  }
+    
+   }
+   else{
+    const inputDescriptionError = document.querySelector(".inputDescriptionError");
+    inputDescriptionError.classList.remove("visible");
+    description.classList.remove("invalid");
+    inputDescriptionError.setAttribute("aria-hidden", true);
+    inputDescriptionError.setAttribute("aria-invalid", false);
+   }
  
   
-  if (phoneField.value.trim()==="") {
-    const inputPhoneError = document.getElementById("input_phoneError");
-    inputPhoneError.classList.add("visible");
-    phoneField.classList.add("invalid");
-    inputPhoneError.setAttribute("aria-hidden", false);
-    inputPhoneError.setAttribute("aria-invalid", true);
-  }
+    if (phoneField.value.trim()==="") {
+      const inputPhoneError = document.querySelector(".input_phoneError");
+      inputPhoneError.classList.add("visible");
+      phoneField.classList.add("invalid");
+      inputPhoneError.setAttribute("aria-hidden", false);
+      inputPhoneError.setAttribute("aria-invalid", true);
+    }
+    else  {
+      const inputPhoneError = document.querySelector(".input_phoneError");
+      inputPhoneError.classList.remove("visible");
+      phoneField.classList.remove("invalid");
+      inputPhoneError.setAttribute("aria-hidden", true);
+      inputPhoneError.setAttribute("aria-invalid", false);
+    }
 
   if (placeField.value.trim()==="") {
-    const inputPlaceError = document.getElementById("input_placeError");
+    const inputPlaceError = document.querySelector(".input_placeError");
     inputPlaceError.classList.add("visible");
     placeField.classList.add("invalid");
     inputPlaceError.setAttribute("aria-hidden", false);
@@ -81,99 +87,107 @@ const nameUpdate = document.getElementById("name_update");
   }
 
   
-  if (vatField.value.trim()==="") {
-    const inputVatError = document.getElementById("input_vatError");
-    inputVatError.classList.add("visible");
-    vatField.classList.add("invalid");
-    inputVatError.setAttribute("aria-hidden", false);
-    inputVatError.setAttribute("aria-invalid", true);
-  }
+//   if (vatField.value.trim()==="") {
+//     const inputVatError = document.getElementById("input_vatError");
+//     inputVatError.classList.add("visible");
+//     vatField.classList.add("invalid");
+//     inputVatError.setAttribute("aria-hidden", false);
+//     inputVatError.setAttribute("aria-invalid", true);
+//   }
   
  
-  if (shippingField.value.trim() === '' || isNaN(shippingField.value)) {
+//   if (shippingField.value.trim() === '' || isNaN(shippingField.value)) {
     
-    shippingError.classList.add("visible");
-    shippingField.classList.add("invalid");
-    shippingError.setAttribute("aria-hidden", false);
-    shippingError.setAttribute("aria-invalid", true);
+//     shippingError.classList.add("visible");
+//     shippingField.classList.add("invalid");
+//     shippingError.setAttribute("aria-hidden", false);
+//     shippingError.setAttribute("aria-invalid", true);
    
-  } else {
-    shippingError.classList.remove("visible");
-    shippingField.classList.remove("invalid");
-    shippingError.setAttribute("aria-hidden", true);
-    shippingError.setAttribute("aria-invalid", false);
-  }
-  if (!placeField.value) {
-    const inputDescriptionError = document.getElementById("inputDescriptionError");
-    inputDescriptionError.classList.add("visible");
-    shippingField.classList.add("invalid");
-     inputDescriptionError.setAttribute("aria-hidden", false);
-     inputDescriptionError.setAttribute("aria-invalid", true);
-  }
-  if (openingField.value.trim()==="") {
-    // const inputOpeningError = document.getElementById("input_openError");
-    // inputOpeningError.classList.add("visible");
-    // openingField.classList.add("invalid");
-    // inputOpeningError.setAttribute("aria-hidden", false);
-    // inputOpeningError.setAttribute("aria-invalid", true);
-    alert("no")
-  }
-  if (closingField.value.trim()==="") {
-    const inputClosingError = document.getElementById("input_closingError");
-    inputClosingError.classList.add("visible");
-    closingField.classList.add("invalid");
-    inputClosingError.setAttribute("aria-hidden", false);
-    inputClosingError.setAttribute("aria-invalid", true);
-  }
+//   } else {
+//     shippingError.classList.remove("visible");
+//     shippingField.classList.remove("invalid");
+//     shippingError.setAttribute("aria-hidden", true);
+//     shippingError.setAttribute("aria-invalid", false);
+//   }
+//   if (!placeField.value) {
+//     const inputDescriptionError = document.getElementById("inputDescriptionError");
+//     inputDescriptionError.classList.add("visible");
+//     shippingField.classList.add("invalid");
+//      inputDescriptionError.setAttribute("aria-hidden", false);
+//      inputDescriptionError.setAttribute("aria-invalid", true);
+//   }
+//   if (openingField.value.trim()==="") {
+//     const inputOpeningError = document.getElementById("input_openError");
+//     inputOpeningError.classList.add("visible");
+//     openingField.classList.add("invalid");
+//     inputOpeningError.setAttribute("aria-hidden", false);
+//     inputOpeningError.setAttribute("aria-invalid", true);
+//   }
+//   if (closingField.value.trim()==="") {
+//     const inputClosingError = document.getElementById("input_closingError");
+//     inputClosingError.classList.add("visible");
+//     closingField.classList.add("invalid");
+//     inputClosingError.setAttribute("aria-hidden", false);
+//     inputClosingError.setAttribute("aria-invalid", true);
+//   }
   
   
- if (dayOffField.value ==="") {
-   const inputDayOffError = document.getElementById("input_dayOffError");
-   inputDayOffError.classList.add("visible");
-   dayOffField.classList.add("invalid");
-  inputDayOffError.setAttribute("aria-hidden", false);
-  inputDayOffError.setAttribute("aria-invalid", true);
- }
- else{
-  const inputDayOffError = document.getElementById("input_dayOffError");
-   inputDayOffError.classList.remove("visible");
-   dayOffField.classList.remove("invalid");
-  inputDayOffError.setAttribute("aria-hidden", true);
-  inputDayOffError.setAttribute("aria-invalid", false);
- }
+//  if (dayOffField.value ==="") {
+//    const inputDayOffError = document.getElementById("input_dayOffError");
+//    inputDayOffError.classList.add("visible");
+//    dayOffField.classList.add("invalid");
+//   inputDayOffError.setAttribute("aria-hidden", false);
+//   inputDayOffError.setAttribute("aria-invalid", true);
+//  }
+//  else{
+//   const inputDayOffError = document.getElementById("input_dayOffError");
+//    inputDayOffError.classList.remove("visible");
+//    dayOffField.classList.remove("invalid");
+//   inputDayOffError.setAttribute("aria-hidden", true);
+//   inputDayOffError.setAttribute("aria-invalid", false);
+//  }
   
 
-   if (!imgField.value) {
-     const inputImgError = document.getElementById("input_imgError");
-     inputImgError.classList.add("visible");
-     imgField.classList.add("invalid");
-     inputImgError.setAttribute("aria-hidden", false);
-     inputImgError.setAttribute("aria-invalid", true);
-   }
+//    if (!imgField.value) {
+//      const inputImgError = document.getElementById("input_imgError");
+//      inputImgError.classList.add("visible");
+//      imgField.classList.add("invalid");
+//      inputImgError.setAttribute("aria-hidden", false);
+//      inputImgError.setAttribute("aria-invalid", true);
+//    }
  
-     let isChecked = false;
-   categoryField.forEach((category) => {
-     if (category.checked) {
-       isChecked = true;
+//      let isChecked = false;
+//    categoryField.forEach((category) => {
+//      if (category.checked) {
+//        isChecked = true;
        
-     }
-   }
-   );
+//      }
+//    }
+//    );
 
-   if (!isChecked) {
-       const inputCategoryError = document.querySelector('#input_categoryError');
-       inputCategoryError.classList.add("visible");
-       inputCategoryError.setAttribute("aria-hidden", false);
+//    if (!isChecked) {
+//        const inputCategoryError = document.querySelector('#input_categoryError');
+//        inputCategoryError.classList.add("visible");
+//        inputCategoryError.setAttribute("aria-hidden", false);
        
-       inputCategoryError.setAttribute("aria-invalid", true);
+//        inputCategoryError.setAttribute("aria-invalid", true);
    
-   } else {
-       const inputCategoryError = document.querySelector('#input_categoryError');
-       inputCategoryError.classList.remove("visible");
+//    } else {
+//        const inputCategoryError = document.querySelector('#input_categoryError');
+//        inputCategoryError.classList.remove("visible");
       
-       inputCategoryError.setAttribute("aria-hidden", true);
-       inputCategoryError.setAttribute("aria-invalid", false);}
-  return valid;
+//        inputCategoryError.setAttribute("aria-hidden", true);
+//        inputCategoryError.setAttribute("aria-invalid", false);
+      
+//       }
+
+      //Condizioni Create Product Validation
+
+     
+ 
+ 
+ 
+       return valid;
 
  
 }
