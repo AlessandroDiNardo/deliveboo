@@ -39,7 +39,7 @@
         <br>
     
         <label for="visible">Disponibilità</label>
-        <select  class="disponibility my-2"name="visible">
+        <select  class="disponibility my-2  text-center"name="visible">
             @foreach ($visible as $boolean => $value)
                 <option value="{{ $boolean }}" {{ $product -> visible == $boolean ? 'selected' : '' }}>{{ $value }}</option>
             @endforeach

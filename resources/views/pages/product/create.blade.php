@@ -32,14 +32,14 @@
         <br>
     
         <label for="img">Immagine</label>
-        <input class="imgProduct" type="file" name="img">
+        <input required class="imgProduct" type="file" name="img">
         <span role="alert" class="imgError" aria-hidden="true">
             Aggiungi un Immagine
          </span>
         <br>
     
         <label for="visible">Disponibilità</label>
-        <select class="disponibility my-2" name="visible">
+        <select required class="disponibility my-2   text-center" name="visible">
         <option value="" selected>Seleziona Disponibilità</option>   
         <option value="1" selected>Disponibile</option>
         <option value="0">Non Disponibile</option>
