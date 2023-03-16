@@ -11,8 +11,8 @@
         @csrf
     
         <label for="name">Nome</label>
-        <input required  id="name" type="text" name="name">
-        <span role="alert" id="nameError" aria-hidden="true">
+        <input required class="nameProduct" id="name" type="text" name="name">
+        <span role="alert" class="nameProductError" aria-hidden="true">
             Riempi il campo del nome del Piatto
          </span>
         <br>
@@ -40,7 +40,7 @@
         </select>
         <br>
     
-        <input class="my-2" id="submit" type="submit" value="CREA UN NUOVO PIATTO">
+        <input class="my-2"  type="submit" value="CREA UN NUOVO PIATTO">
     </form>
 </section>
 @endsection
