@@ -142,16 +142,21 @@ export default {
                     <div class="d-flex row justify-content-center align-items-center lh-lg">
                         <h2> {{ restaurant.name }}</h2>
                         <p class="fs-5">{{ restaurant.description }}</p>
-                        <p class="fs-5">
-                            <span class="btn btn-success me-2" v-for="category in restaurant.categories"> {{ category.name
-                            }}</span>
+                        <p> {{ restaurant.place }}</p>
+                        <p> Orario: {{ restaurant.opening_time }} - {{ restaurant.closing_time }}
                         </p>
+                        <p> Giorno di chiusura: {{ restaurant.closing_day }}</p>
+                        <div class="d-flex justify-conten-start align-items-center gap-2">
+                            <div class="btn btn-success me-2" v-for="category in restaurant.categories">
+                                {{ category.name }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-between align-teims-center gap-5 px-5">
-            <div class="ms_container py-5 d-flex flex-wrap justify-content-start align-items-center gap-4">
+        <div class="d-flex justify-content-evenly align-teims-center gap-5 px-5">
+            <div class="restaurant_cont py-5 d-flex flex-wrap justify-content-start align-items-center gap-4">
                 <div class="ms_card" v-for="product in products">
                     <img :src="product.img" class="card-img-top" alt="...">
                     <div class="card-body-cont">
@@ -170,8 +175,7 @@ export default {
             </div>
             <div>
                 <ul class="cart_container">
-                    <li v-for="(item, index) in cartItems" :key="index"
-                        class="p-3 border-bottom border-ligh bg-secondary bg-opacity-50">
+                    <li v-for="(item, index) in cartItems" :key="index">
                         <span>{{ item.name }}.</span>
 
                         <div class="d-flex justify-content-between align-teims-center pt-2">
@@ -193,26 +197,27 @@ export default {
                             </div>
                         </div>
                     </li>
-                    <div v-if="this.cartItems.length != 0" class="p-3 d-flex justify-content-between align-items-center">
+                    <div v-if="this.cartItems.length != 0"
+                        class="p-3 d-flex justify-content-between align-items-start flew-wrap gap-5">
                         <div>
                             <!-- <p>Totale prodotti: {{ formatPrice(totalProducts) }}</p> -->
-                            <p>Costo di spedizione: {{ formatPrice(shippingCost) }}</p>
-                            <p>Totale: {{ formatPrice(total) }}</p>
+                            <p>
+                                <span class="text-danger">Costo di spedizione: </span>
+                                <span> {{ formatPrice(shippingCost) }}</span>
+                            </p>
+                            <p>
+                                <span class="text-danger">Totale: </span>
+                                <span>{{ formatPrice(total) }} </span>
+                            </p>
+                            <RouterLink :to="{ name: 'payment' }">
+                                <div class="btn btn-success mt-5">Checkout</div>
+                            </RouterLink>
                         </div>
-                        <button class="btn btn-danger" @click="emptyCart">
+                        <button class="btn btn-danger" @click="emptyCart" style="width:50px;">
                             <font-awesome-icon icon="fa-solid fa-trash" />
                         </button>
                     </div>
-                    <RouterLink :to="{ name: 'payment' }">
-                        <div class="btn btn-success">Checkout</div>
-                    </RouterLink>
                 </ul>
-
-                <div v-if="this.cartItems.length != 0">
-                    <span>
-
-                    </span>
-                </div>
             </div>
         </div>
     </section>
@@ -228,7 +233,7 @@ section {
 }
 
 .ms_container {
-    max-width: 1320px;
+    max-width: 1630px;
 }
 
 .card_img {
@@ -286,5 +291,12 @@ section {
     margin-top: 50px;
     background-color: white;
     list-style-type: none;
+    border-radius: 20px;
+
+    li {
+        padding: 10px;
+        background-color: rgb(196, 196, 196);
+        border-bottom: 1px solid white;
+    }
 }
 </style>
