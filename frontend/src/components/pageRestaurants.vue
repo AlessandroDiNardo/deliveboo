@@ -93,8 +93,8 @@ export default {
                         <div class="card-body-cont">
                             <h5 class="card-title">{{ restaurant.name }}</h5>
                             <p class="card-text">{{ restaurant.description }}</p>
-                            <span v-for="category in restaurant.categories"> {{ category.name }}, &nbsp;</span>
-                            <router-link :to="{ name: 'restaurant', params: { id: restaurant.id } }">
+                            <router-link :to="{ name: 'restaurant', params: { id: restaurant.id } }"
+                                class="btn btn-success">
                                 vai al ristorante
                             </router-link>
                         </div>

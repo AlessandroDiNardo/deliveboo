@@ -44,6 +44,9 @@ export default {
     <section>
         <div class="border-bottom border-light">
             <div class="ms_container py-5">
+                <RouterLink :to="{ name: 'home' }" class="btn btn-success mb-3">
+                    <font-awesome-icon icon="fa-solid fa-person-walking-arrow-loop-left" /> Torna alla Home!
+                </RouterLink>
                 <div class="d-flex justify-content-start align-items-start gap-5 mt-5">
                     <div class="card_img">
                         <img :src="restaurant.img" alt="">
@@ -94,12 +97,12 @@ section {
 
 .card_img {
 
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 350px;
 
     img {
-        height: 200px;
-        width: 200px;
+        height: 250px;
+        width: 350px;
     }
 }
 
