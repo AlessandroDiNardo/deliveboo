@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="d-flex justify-content-center py-5 ">
+<section class="d-flex justify-content-center py-5 my_bg ">
     <form class="form form-group" name="create" method="POST" action="{{ route('restaurant.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="d-flex flex-wrap justify-content-center align-items-center">

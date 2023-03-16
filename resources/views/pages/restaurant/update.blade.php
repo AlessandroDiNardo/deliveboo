@@ -10,35 +10,35 @@
     @csrf
 
     <label for="name">Nome</label>
-    <input type="text" name="name" value="{{ $restaurant -> name }}">
+    <input type="text" id="name" name="name" value="{{ $restaurant -> name }}">
     <br>
 
     <label for="description">Descrizione</label>
-    <input type="text" name="description" value="{{ $restaurant -> description }}">
+    <input type="text" id="input_description" name="description" value="{{ $restaurant -> description }}">
     <br>
 
     <label for="place">Luogo</label>
-    <input type="text" name="place" value="{{ $restaurant -> place }}">
+    <input type="text" id="input_place" name="place" value="{{ $restaurant -> place }}">
     <br>
 
     <label for="phone_number">Numero di telefono</label>
-    <input type="text" name="phone_number" value="{{ $restaurant -> phone_number }}">
+    <input type="text" id="input_phone" name="phone_number" value="{{ $restaurant -> phone_number }}">
     <br>
 
     <label for="img">Immagine ristorante</label>
-    <input type="file" name="img">
+    <input type="file" id="input_img" name="img">
     <br>
 
     <label for="vat">P.Iva</label>
-    <input type="text" name="vat" value="{{ $restaurant -> vat }}">
+    <input type="text" id="input_vat" name="vat" value="{{ $restaurant -> vat }}">
     <br>
 
     <label for="opening_time">Orario di apertura</label>
-    <input type="time" name="opening_time" value="{{ $restaurant -> opening_time }}">
+    <input type="time" id="input_opening" name="opening_time" value="{{ $restaurant -> opening_time }}">
     <br>
 
     <label for="closing_time">Orario di chiusura</label>
-    <input type="time" name="closing_time" value="{{ $restaurant -> closing_time }}">
+    <input type="time" id="input_closing" name="closing_time" value="{{ $restaurant -> closing_time }}">
     <br>
 
     <label for="shipping_cost">Costo di spedizione</label>
@@ -65,6 +65,6 @@
         <br>
     @endforeach
 
-    <input type="submit" value="Aggiorna">
+    <input type="submit" value="Aggiorna"  class=" text-center p-1">
 </form>
 @endsection
