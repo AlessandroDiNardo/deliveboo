@@ -243,6 +243,7 @@ section {
     height: 500px;
     overflow-y: scroll;
     padding-left: 90px;
+    max-width: 1320px;
 }
 
 .restaurant_cont::-webkit-scrollbar {
@@ -305,7 +306,7 @@ section {
 
 .cart_container {
 
-    width: 800px;
+    width: 400px;
     list-style-type: none;
     border-radius: 20px;
     margin-bottom: 50px;
@@ -321,6 +322,7 @@ section {
     height: 300px;
     overflow-y: scroll;
     border: 1px solid white;
+    margin-top: 24px;
 }
 
 .order_cont::-webkit-scrollbar {
