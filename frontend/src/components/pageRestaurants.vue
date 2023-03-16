@@ -81,7 +81,7 @@ export default {
                             <p class="card-text">{{ restaurant.description }}</p>
                             <router-link :to="{ name: 'restaurant', params: { id: restaurant.id } }"
                                 class="btn btn-success">
-                                vai al ristorante
+                                Vai al ristorante
                             </router-link>
                         </div>
                     </div>

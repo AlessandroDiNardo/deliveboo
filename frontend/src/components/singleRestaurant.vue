@@ -10,8 +10,8 @@ export default {
 
             restaurant: [],
             products: [],
-            cartItems: [], 
-            shippingCost : "",
+            cartItems: [],
+            shippingCost: "",
         }
     },
     methods: {
@@ -38,7 +38,7 @@ export default {
                 // controlla se restaurant_id del prodotto che si sta aggiungendo è uguale a quello dell'ultimo prodotto nell'array
                 if (product.restaurant_id != this.cartItems[this.cartItems.length - 1].restaurant_id) {
                     return false
-                } 
+                }
             }
             return true
         },
@@ -48,21 +48,21 @@ export default {
 
                 // controlla se il prodotto è già nel carrello
                 const existingItemIndex = this.cartItems.findIndex(item => item.id === product.id);
-    
+
                 if (existingItemIndex >= 0) {
                     // se il prodotto esiste già nel carrello, aggiorna solo la quantità
                     this.cartItems[existingItemIndex].quantity++;
                 } else {
                     // altrimenti, aggiungi il prodotto al carrello
                     this.cartItems.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    quantity: 1,
-                    restaurant_id : product.restaurant_id
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        quantity: 1,
+                        restaurant_id: product.restaurant_id
                     });
 
-                    console.log(this.cartItems[this.cartItems.length -1])
+                    console.log(this.cartItems[this.cartItems.length - 1])
                 }
                 // aggiorna il carrello nel local storage
                 localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
@@ -78,7 +78,7 @@ export default {
             localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
         },
 
-        removeQuantityOne(index) { 
+        removeQuantityOne(index) {
             // riduci di una unità quantità prodotto
             this.cartItems[index].quantity--;
 
@@ -118,11 +118,11 @@ export default {
 
     computed: {
         totalProducts() {
-            return this.cartItems.reduce((acc, product) => acc + product.price*product.quantity, 0);
+            return this.cartItems.reduce((acc, product) => acc + product.price * product.quantity, 0);
         },
 
         total() {
-            return parseFloat(this.totalProducts)+ parseFloat(this.shippingCost); 
+            return parseFloat(this.totalProducts) + parseFloat(this.shippingCost);
         },
     }
 }
@@ -150,52 +150,70 @@ export default {
                 </div>
             </div>
         </div>
-        <div class="ms_container py-5 d-flex flex-wrap justify-content-center align-items-center gap-5">
-            <div class="ms_card" v-for="product in products">
-                <img :src="product.img" class="card-img-top" alt="...">
-                <div class="card-body-cont">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">
-                        {{ product.ingredients }}
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center info_card" style="width: 100%;">
-                        <strong class="text-danger">{{ product.price }} €</strong>
-                        <button class="btn btn-primary" @click="addToCart(product)">
-                            <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                        </button>
+        <div class="d-flex justify-content-between align-teims-center gap-5 px-5">
+            <div class="ms_container py-5 d-flex flex-wrap justify-content-start align-items-center gap-4">
+                <div class="ms_card" v-for="product in products">
+                    <img :src="product.img" class="card-img-top" alt="...">
+                    <div class="card-body-cont">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">
+                            {{ product.ingredients }}
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center info_card" style="width: 100%;">
+                            <strong class="text-danger">{{ product.price }} €</strong>
+                            <button class="btn btn-primary" @click="addToCart(product)">
+                                <font-awesome-icon icon="fa-solid fa-cart-shopping" />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <div>
+                <ul class="cart_container">
+                    <li v-for="(item, index) in cartItems" :key="index"
+                        class="p-3 border-bottom border-ligh bg-secondary bg-opacity-50">
+                        <span>{{ item.name }}.</span>
 
-        <ul>
-            <li v-for="(item, index) in cartItems" :key="index">
-                <span>
-                    {{ item.name }} - 
+                        <div class="d-flex justify-content-between align-teims-center pt-2">
+                            <div class="d-flex justify-content-start align-items-center gap-2 py-1">
+                                <span class="text-danger">
+                                    - {{ item.price * item.quantity }} €
+                                </span>
 
-                    <button class="btn btn-primary" @click="removeQuantityOne(index)"><font-awesome-icon icon="fa-solid fa-minus" /></button>
+                            </div>
+                            <div class="d-flex justify-content-start align-items-center gap-3 py-1">
+                                <button class="btn btn-warning" @click="removeQuantityOne(index)"><font-awesome-icon
+                                        icon="fa-solid fa-minus" /> </button>
+                                <span> x{{ item.quantity }}</span>
+                                <button class="btn btn-success fs-6" @click="addToCart(item)"><font-awesome-icon
+                                        icon="fa-solid fa-plus" />
+                                </button>
+                                <button class="btn btn-danger" @click="removeFromCart(index)"><font-awesome-icon
+                                        icon="fa-solid fa-x" /></button>
+                            </div>
+                        </div>
+                    </li>
+                    <div v-if="this.cartItems.length != 0" class="p-3 d-flex justify-content-between align-items-center">
+                        <div>
+                            <!-- <p>Totale prodotti: {{ formatPrice(totalProducts) }}</p> -->
+                            <p>Costo di spedizione: {{ formatPrice(shippingCost) }}</p>
+                            <p>Totale: {{ formatPrice(total) }}</p>
+                        </div>
+                        <button class="btn btn-danger" @click="emptyCart">
+                            <font-awesome-icon icon="fa-solid fa-trash" />
+                        </button>
+                    </div>
+                    <RouterLink :to="{ name: 'payment' }">
+                        <div class="btn btn-success">Checkout</div>
+                    </RouterLink>
+                </ul>
 
-                        x{{ item.quantity }} 
+                <div v-if="this.cartItems.length != 0">
+                    <span>
 
-                    <button class="btn btn-primary" @click="addToCart(item)"><font-awesome-icon icon="fa-solid fa-plus" /></button>
-                    
-                    - {{ item.price*item.quantity }} € 
-                </span>
-                <button @click="removeFromCart(index)">Rimuovi dal Carrello</button>
-            </li>
-            <div v-if="this.cartItems.length != 0">
-                <button class="btn btn-danger" @click="emptyCart">Svuota Carrello</button>
-                
-                <p>Totale prodotti: {{ formatPrice(totalProducts) }}</p>
-                <p>Costo di spedizione: {{ formatPrice(shippingCost) }}</p>
-                <p>Totale: {{ formatPrice(total) }}</p>
+                    </span>
+                </div>
             </div>
-        </ul>
-
-        <div v-if="this.cartItems.length != 0">
-            <span>
-
-            </span>
         </div>
     </section>
 </template>
@@ -210,7 +228,7 @@ section {
 }
 
 .ms_container {
-    max-width: 1500px;
+    max-width: 1320px;
 }
 
 .card_img {
@@ -260,5 +278,13 @@ section {
             }
         }
     }
+}
+
+.cart_container {
+
+    width: 400px;
+    margin-top: 50px;
+    background-color: white;
+    list-style-type: none;
 }
 </style>
