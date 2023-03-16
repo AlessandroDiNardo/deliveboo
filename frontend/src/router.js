@@ -19,7 +19,7 @@ const router = createRouter({
         },
 
         {
-            path: '/payment',
+            path: '/payment/',
             name: 'payment',
             component: Payment
         }
