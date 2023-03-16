@@ -24,19 +24,37 @@ export default {
                         <h1>Deliveboo</h1>
                     </RouterLink>
                 </a>
-                <div>
+                <div class="d-flex justify-content-center align-items-center ">
                     <button class=" mx-2  btn_nav rounded-2 p-1">
                         <a class="  text-decoration-none  link_nav  " href="http://localhost:8000/register">
                             Area Riservata
                         </a>
                     </button>
-                    <button class=" mx-2  rounded-5 p-1 bg-white border-0">
-                        <a class="  text-decoration-none text-primary  link_nav  " href="#">
-                            <RouterLink :to="{ name: 'payment' }">
-                                <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                            </RouterLink>
+                    <div class="dropdown">
+                        <a class="btn_nav_cart dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <font-awesome-icon icon="fa-solid fa-cart-shopping" />
                         </a>
-                    </button>
+                        <ul class="dropdown-menu mt-3" style="width: 250px;">
+                            <a class="dropdown-item mb-2" href="#">Riepilogo ordine:</a>
+                            <li
+                                class="d-flex justify-content-between align-items-center px-3 bg-secondary bg-opacity-25 border-bottom border-light">
+                                <div>Cryspy McBacon</div>
+                                <div>1x</div>
+                            </li>
+                            <li
+                                class="d-flex justify-content-between align-items-center px-3 bg-secondary bg-opacity-25 border-bottom border-light">
+                                <div>Big Mac</div>
+                                <div>3x</div>
+                            </li>
+                            <li class="mt-5 d-flex justify-content-between align-items-center gap-3 px-3">
+                                <RouterLink :to="{ name: 'payment' }">
+                                    <div class="btn btn-success">Checkout</div>
+                                </RouterLink>
+                                <div> 11.85$</div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -62,11 +80,8 @@ header {
 }
 
 #font_logo {
-
     font-weight: 900;
     color: $main-color;
-
-
 }
 
 .btn_nav {
@@ -78,8 +93,6 @@ header {
     &:hover {
         background-color: white;
         border: $main-color 1px solid;
-
-
     }
 }
 
@@ -90,6 +103,17 @@ header {
 
 .btn_nav .link_nav:hover {
     color: $main-color;
+}
+
+.btn_nav_cart {
+    background-color: $main-color;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+
+    &:hover {
+        color: white;
+    }
 }
 
 //Stile Video
