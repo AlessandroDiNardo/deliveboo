@@ -19,19 +19,19 @@ class CategorySeeder extends Seeder
     {
         
         $categories = [
-            'italiano', /*1*/
-            'cinese', /*2*/
-            'americano',/*3*/
-            'giappponese',/*4*/
-            'indiano',/*5*/
-            'messicano',/*6*/
-            'kebab',/*7*/
-            'hamburger',/*8*/
-            'pizza',/*9*/
-            'pasta',/*10*/
-            'vegetariano',/*11*/
-            'dolci',/*12*/
-            'pesce',/*13*/
+            'Italiano', /*1*/
+            'Cinese', /*2*/
+            'Americano',/*3*/
+            'Giappponese',/*4*/
+            'Indiano',/*5*/
+            'Messicano',/*6*/
+            'Kebab',/*7*/
+            'Hamburger',/*8*/
+            'Pizza',/*9*/
+            'Pasta',/*10*/
+            'Vegetariano',/*11*/
+            'Dolci',/*12*/
+            'Pesce',/*13*/
         ];
 
         foreach ($categories as $category) {

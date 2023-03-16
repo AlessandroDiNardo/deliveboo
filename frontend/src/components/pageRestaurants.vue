@@ -40,6 +40,7 @@ export default {
 
         resetCheckboxes() {
             this.filteredCategories = [];
+            this.getRestaurants();
         }
     },
     computed: {},
@@ -48,44 +49,29 @@ export default {
 
 <template>
     <section class="main">
-        <section class="restaurant_section">
-            <!-- header main content -->
-            <div class=" header_restaurant border border-1 header_main_cont bg-white p-3">
-                <section class=" ms_container d-flex justify-content-between align-items-center px-5 py-3">
-                    <div class="side-bar">
-                        <button class="btn btn-color btn-primary" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasWithBothOptions"
-                            aria-controls="offcanvasWithBothOptions">Filtri</button>
-
-                        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1"
-                            id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-                            <h3>Filtra per categorie</h3>
-
-                            <div class="offcanvas-body">
-                                <ul class=" filter_cont d-flex flex-wrap justify-content-center align-items-center gap-4">
-                                    <li v-for="category in this.categories" :key="category.id">
-                                        {{ category.name }}
-                                        <input type="checkbox" :id="'category_' + category.id" :value="category.id"
-                                            v-model="filteredCategories">
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="d-flex justify-content-end align-items-end p-5">
-                                <button type="button" class="btn btn-danger btn-outline-warning"
-                                    @click="resetCheckboxes()">Reset</button>
-
-                                <button type="button" class="btn btn-color btn-outline-success"
-                                    @click="getRestaurants()">Filter</button>
-                            </div>
-                        </div>
-                    </div>
+        <!-- main content -->
+        <section class="ms_container d-flex justify-content-between align-items-center gap-5">
+            <div class="d-flex row justify-content-end align-items-end" style="width: 400px; height: 620px;">
+                <div class="pt-5 px-3 bg-light border_cont" style="height:200px;">
                     <h3>Cerca il tuo ristorante, cibo o piatto preferito!</h3>
-                </section>
-            </div>
+                    <div class="d-flex justify-content-start align-items-start gap-3 mt-3">
+                        <button type="button" class="btn btn-warning" @click="resetCheckboxes()">Reset</button>
 
-            <!-- main content -->
-            <section>
-                <div class=" ms_container py-5 d-flex flex-wrap justify-content-center align-items-center gap-4">
+                        <button type="button" class="btn btn-success" @click="getRestaurants()">Filter</button>
+                    </div>
+                </div>
+                <div class="category_cont">
+                    <ul class=" d-flex justify-content-start align-items-start row">
+                        <li v-for="category in this.categories" :key="category.id" style="width: 100%;">
+                            <input type="checkbox" :id="'category_' + category.id" :value="category.id"
+                                v-model="filteredCategories">
+                            <span class="mx-3">{{ category.name }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="restaurant-overflow">
+                <div class="ms_container d-flex flex-wrap justify-content-start align-content-center gap-3">
                     <div class="card ms_card" v-for="restaurant in this.filteredRestaurants">
                         <div class="img_cont">
                             <img :src="restaurant.img" class="card-img-top" alt="">
@@ -100,12 +86,8 @@ export default {
                         </div>
                     </div>
                 </div>
-
-            </section>
+            </div>
         </section>
-        <div v-if="$route.name === 'restaurant'">
-            <SingleRestaurant />
-        </div>
     </section>
 </template>
 
@@ -118,43 +100,58 @@ export default {
     padding-bottom: 50px;
 }
 
-.video_container {
-    position: relative;
-    bottom: 6%;
+.border_cont {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
-.restaurant_section {
-
-    height: 600px;
-    overflow-y: auto;
+.restaurant-overflow {
+    height: 700px;
+    overflow-y: scroll;
+    margin-top: 80px;
 }
 
-.ms_container,
-.log_section {
-    padding: 20px 0;
+.restaurant-overflow::-webkit-scrollbar {
+    display: none;
 }
 
-.ms_search_bar {
-    width: 250px;
-    height: 50px;
-    border: 1px solid rgb(0, 0, 0);
+.restaurant-overflow {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
-.ms_search_icon {
-    background-color: $bg-main;
+.category_cont {
+    width: 400px;
+    height: 500px;
+    overflow-y: scroll;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.category_cont::-webkit-scrollbar {
+    display: none;
+}
+
+.category_cont {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .ms_card {
-    width: 370px;
+    width: 340px;
     height: 400px;
 
     .img_cont {
         height: 200px;
-        width: 368px;
+        width: 338px;
 
         img {
             height: 200px;
-            width: 368px;
+            width: 338px;
         }
     }
 
@@ -175,14 +172,20 @@ export default {
     }
 }
 
-
-.filter_cont {
-    width: 100%;
-    padding: 0px 30px;
-}
-
 ul {
     list-style-type: none;
+
+    li {
+        background-color: rgb(186, 185, 185);
+        padding: 20px;
+        border-bottom: 1px solid white;
+        transition: 0.8s;
+
+        &:hover {
+            background-color: white;
+            border-bottom: 1px solid rgb(186, 185, 185);
+        }
+    }
 }
 
 .btn-color {
