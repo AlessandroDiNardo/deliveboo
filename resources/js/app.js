@@ -29,9 +29,6 @@ function validate(e) {
  
 // Variabili input Create Product
 
-const ingredientsField = document.getElementById("ingredients")
-
-
   let valid = true;
 
     if (firstNameField.value.trim() ==="") {
@@ -216,12 +213,94 @@ const ingredientsField = document.getElementById("ingredients")
        inputCategoryError.setAttribute("aria-hidden", true);
      inputCategoryError.setAttribute("aria-invalid", false);
     }
+
+    if (!isChecked) {
+      const inputCategoryError = document.querySelector('.input_categoryError');
+      inputCategoryError.classList.add("visible");
+      inputCategoryError.setAttribute("aria-hidden", false);
+     
+      inputCategoryError.setAttribute("aria-invalid", true);
+ 
+  } else {
+      const inputCategoryError = document.querySelector('.input_categoryError');
+      inputCategoryError.classList.remove("visible");
+    
+     inputCategoryError.setAttribute("aria-hidden", true);
+   inputCategoryError.setAttribute("aria-invalid", false);
+  }
+  
       
        
 
-      //Condizioni Create Product Validation
+   
 
-     
+      // if (firstNameField.value.trim() ==="") {
+      //   const nameError = document.querySelector(".nameError");
+      //   nameError.classList.add("visible");
+      //   firstNameField.classList.add("invalid");
+      //   nameError.setAttribute("aria-hidden", false);
+      //   nameError.setAttribute("aria-invalid", true);
+       
+      // }
+      // else {
+      //   const nameError = document.querySelector(".nameError");
+      //   nameError.classList.remove("visible");
+      //   firstNameField.classList.remove("invalid");
+      //   nameError.setAttribute("aria-hidden", false);
+      //   nameError.setAttribute("aria-invalid", true);
+       
+      // }
+
+      // if (firstNameField.value.trim() ==="") {
+      //   const nameError = document.querySelector(".nameError");
+      //   nameError.classList.add("visible");
+      //   firstNameField.classList.add("invalid");
+      //   nameError.setAttribute("aria-hidden", false);
+      //   nameError.setAttribute("aria-invalid", true);
+       
+      // }
+      // else {
+      //   const nameError = document.querySelector(".nameError");
+      //   nameError.classList.remove("visible");
+      //   firstNameField.classList.remove("invalid");
+      //   nameError.setAttribute("aria-hidden", false);
+      //   nameError.setAttribute("aria-invalid", true);
+       
+      // }
+
+      // if (firstNameField.value.trim() ==="") {
+      //   const nameError = document.querySelector(".nameError");
+      //   nameError.classList.add("visible");
+      //   firstNameField.classList.add("invalid");
+      //   nameError.setAttribute("aria-hidden", false);
+      //   nameError.setAttribute("aria-invalid", true);
+       
+      // }
+      // else {
+      //   const nameError = document.querySelector(".nameError");
+      //   nameError.classList.remove("visible");
+      //   firstNameField.classList.remove("invalid");
+      //   nameError.setAttribute("aria-hidden", false);
+      //   nameError.setAttribute("aria-invalid", true);
+       
+      // }
+
+      // if (firstNameField.value.trim() ==="") {
+      //   const nameError = document.querySelector(".nameError");
+      //   nameError.classList.add("visible");
+      //   firstNameField.classList.add("invalid");
+      //   nameError.setAttribute("aria-hidden", false);
+      //   nameError.setAttribute("aria-invalid", true);
+       
+      // }
+      // else {
+      //   const nameError = document.querySelector(".nameError");
+      //   nameError.classList.remove("visible");
+      //   firstNameField.classList.remove("invalid");
+      //   nameError.setAttribute("aria-hidden", false);
+      //   nameError.setAttribute("aria-invalid", true);
+       
+      // }
  
  
  
@@ -334,3 +413,5 @@ const ingredientsField = document.getElementById("ingredients")
 //   } else {
 //     document.querySelector('#input_categoryError').setAttribute('aria-hidden', true);
 //   }})
+
+

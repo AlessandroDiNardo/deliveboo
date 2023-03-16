@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.Products')
 
 @section('content')
 
@@ -18,29 +18,38 @@
         <br>
     
         <label for="ingredients">Ingredienti</label>
-        <input required id="ingredients" type="text" name="ingredients">
-        <span role="alert" id="ingredentsError" aria-hidden="true">
-            Riempi il campo del nome del Piatto
+        <input required class="ingredients" type="text" name="ingredients">
+        <span role="alert" class="ingredentsError" aria-hidden="true">
+           Inserisci almeno un ingrediente
          </span>
         <br>
     
         <label for="price">Prezzo</label>
-        <input  step="0.01" min="0" max="5" type="number" name="price">
+        <input required class="price"  step="0.01" min="0" max="30" type="number" name="price">
+         <span role="alert" class="priceError" aria-hidden="true">
+            Aggiungi il prezzo
+         </span>
         <br>
     
         <label for="img">Immagine</label>
-        <input type="file" name="img">
+        <input class="imgProduct" type="file" name="img">
+        <span role="alert" class="imgError" aria-hidden="true">
+            Aggiungi un Immagine
+         </span>
         <br>
     
         <label for="visible">Disponibilità</label>
-        <select name="visible">
+        <select class="disponibility my-2" name="visible">
         <option value="" selected>Seleziona Disponibilità</option>   
         <option value="1" selected>Disponibile</option>
         <option value="0">Non Disponibile</option>
         </select>
+         <span role="alert" class="disponibilityError" aria-hidden="true">
+           Aggiungi un campo
+         </span>
         <br>
     
-        <input class="my-2"  type="submit" value="CREA UN NUOVO PIATTO">
+        <input class="my-2 submit  "  type="submit" value="CREA UN NUOVO PIATTO">
     </form>
 </section>
 @endsection
