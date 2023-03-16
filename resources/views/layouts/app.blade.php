@@ -24,15 +24,15 @@
         <header class="headerHome">
             <nav class="navbar  navbar-expand-md navbar-light shadow-sm bg-dark">
                 <div class="container">
-                    <img src="{{Vite::asset('resources/img/Logo-Delivebo.png')}}" alt="logo"  class="d-inline-block align-text-center Logo_filter">
+                    <img src="{{Vite::asset('resources/img/Logo-Delivebo.png')}}" alt="logo"  class="Logo_filter">
                     <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                         <div class="logo_laravel">
-                            <h1 class="mx-2" id="font_logo">Deliveboo </h1>
+                            <h3 class="mx-2" id="font_logo">Deliveboo </h3>
                         </div>
                         {{-- config('app.name', 'Laravel') --}}
                     </a>
 
-                    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <button class="navbar-toggler bg-green text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon text-success"></span>
                     </button>
 
@@ -49,21 +49,21 @@
                             <!-- Authentication Links -->
                             @guest
                             <li class="nav-item">
-                                <button class=" mx-2 btn_nav rounded-2 p-2">
+                                <button class=" mx-2 btn_nav rounded-2 p-1">
                                    <a class="text-white text-decoration-none  link_nav" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </button>
                             </li>
                        
                             @if (Route::has('register'))
                             <li class="nav-item">
-                                <button class=" mx-2 btn_nav rounded-2 p-2">
+                                <button class=" mx-2 btn_nav rounded-2 p-1">
                                    <a class="  text-white text-decoration-none  link_nav" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </button>
                             </li>
                             @endif
                             @else
                             <li class="nav-item dropdown green">
-                                <a id="navbarDropdown " class="nav-link ms_link dropdown-toggle text-success" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown " class="nav-link ms_link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 

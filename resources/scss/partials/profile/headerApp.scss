@@ -22,11 +22,10 @@
 
 .Logo_filter{
     filter: invert(57%) sepia(70%) saturate(1956%) hue-rotate(108deg) brightness(91%) contrast(95%);
-    width: 60px;
-    height: 60px;
+    width: 75px;
+    height: 75px;
     object-fit: contain;
-    border-radius: 50%;
-    padding: 2px;
+    padding-top: 27px;
     text-align: center;
 }
 
@@ -63,10 +62,18 @@
 
 }
 
+.bg-green{
+    background-color: #069e24;
+}
+
 @media (max-width: 767px) {
     button {
         margin: 10px 0;
     }
+    #font_logo{
+        padding-left: 10px;
+    }
+
   }
 
 
