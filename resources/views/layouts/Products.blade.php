@@ -63,7 +63,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item green" href="{{ url('profile') }}">{{__('Order')}}</a>
+                                    <a class="dropdown-item text-success" href="{{ url('profile') }}">{{__('Profile')}}</a>
+                                    <a class="dropdown-item green" href="{{ url('order') }}">{{__('Order')}}</a>
                                     <a class="dropdown-item green" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -78,15 +79,14 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
-        </nav>
-    </div>
-    @include('components.errors')
+            </nav>
+        </header>
+        @include('components.errors')
 
         <main class="">
             @yield('content')
         </main>
+    </div>
 </body>
-
 </html>
 
