@@ -177,7 +177,7 @@ export default {
                         <div class="d-flex justify-content-between align-teims-center pt-2">
                             <div class="d-flex justify-content-start align-items-center gap-2 py-1">
                                 <span class="text-danger">
-                                    - {{ item.price * item.quantity }} €
+                                    {{ item.price * item.quantity }} €
                                 </span>
 
                             </div>
@@ -202,10 +202,10 @@ export default {
                         <button class="btn btn-danger" @click="emptyCart">
                             <font-awesome-icon icon="fa-solid fa-trash" />
                         </button>
+                        <RouterLink :to="{ name: 'payment' }">
+                            <div class="btn btn-success">Checkout</div>
+                        </RouterLink>
                     </div>
-                    <RouterLink :to="{ name: 'payment' }">
-                        <div class="btn btn-success">Checkout</div>
-                    </RouterLink>
                 </ul>
 
                 <div v-if="this.cartItems.length != 0">
