@@ -7,12 +7,13 @@
 @section('content')
     
     <section class="d-flex justify-content-center py-5 my_bg">
-       
         <form class="form" method="POST" action="{{ route('restaurant.update', $restaurant) }}" enctype="multipart/form-data">
+       @csrf 
+
             <div class="d-flex">
                 <img class="Logo_filter" src="https://cdn.iconscout.com/icon/free/png-256/deliveroo-3442893-2875354.png" alt="logo" width="50" height="50"> 
                 <h1>Modifica il tuo locale</h1>
-        </div>
+            </div>
               <div class="d-flex gap-5">
                 <div class="d-flex flex-column">
                     <label for="name">Nome</label>
