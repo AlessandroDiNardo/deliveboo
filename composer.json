@@ -10,7 +10,8 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "pacificdev/laravel_9_preset": "^1.1"
+        "pacificdev/laravel_9_preset": "^1.1",
+        "braintree/braintree_php" : "6.11.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
