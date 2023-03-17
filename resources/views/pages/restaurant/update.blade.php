@@ -10,7 +10,7 @@
         <form class="form" method="POST" action="{{ route('restaurant.update', $restaurant) }}" enctype="multipart/form-data">
        @csrf 
 
-            <div class="d-flex">
+            <div class="d-flex justify-content-center align-items-center pb-3">
                 <img class="Logo_filter" src="https://cdn.iconscout.com/icon/free/png-256/deliveroo-3442893-2875354.png" alt="logo" width="50" height="50"> 
                 <h1>Modifica il tuo locale</h1>
             </div>
