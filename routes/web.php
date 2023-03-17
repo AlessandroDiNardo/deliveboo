@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 // imported Controllers
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,5 +55,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
     Route::get('/product/showall', [ProductController::class, 'showAll'])->name('product.showAll');
+
+    Route::get('/order/show', [OrderController::class, 'show'])->name('order.show');
 });
 require __DIR__.'/auth.php';
