@@ -1,6 +1,58 @@
 <script>
+import axios from 'axios';
+
 export default {
-    name: "pagePayment"
+    name: "pagePayment",
+
+    data() {
+        return {
+            clientToken: null,
+            paymentMethodNonce: null,
+        }
+    },
+
+    mounted() {
+        axios.get('http://localhost:8000/api/v1/braintree/client-token')
+            .then(res => {
+                const data = res.data;
+                const success = data.success;
+                const result = data.response;
+
+                if (success) {
+                    this.clientToken = result;
+                    console.log(this.clientToken);
+                }
+
+                const form = document.getElementById('payment-form');
+
+                braintree.dropin.create({
+                    authorization: this.clientToken,
+                    container: '#dropin-container'
+                    }, (error, dropinInstance) => {
+                        if (error) console.error(error);
+
+                        form.addEventListener('submit', event => {
+                            event.preventDefault();
+
+                            dropinInstance.requestPaymentMethod((error, payload) => {
+                            if (error) console.error(error);
+
+                            // Step four: when the user is ready to complete their
+                            //   transaction, use the dropinInstance to get a payment
+                            //   method nonce for the user's selected payment method, then add
+                            //   it a the hidden field before submitting the complete form to
+                            //   a server-side integration
+                            document.getElementById('nonce').value = payload.nonce;
+                            
+                            
+                            });
+                        });
+                    });
+            })  
+            .catch(error => {
+                console.error(error);
+            });
+    }
 }
 </script>
 
@@ -47,7 +99,7 @@ export default {
             <div class="row d-flex justify-content-between py-5">
                 <div class="col-md-7 col-lg-5 col-xl-4">
 
-                    <div class="card" style="border-radius: 15px;">
+                    <!-- <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-4">
                             <form>
                                 <h5 class="text-center mb-3">Pay with card</h5>
@@ -87,7 +139,19 @@ export default {
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> -->
+
+                    
+                    <form id="payment-form" action="/route/on/your/server" method="post">
+                        <!-- Putting the empty container you plan to pass to
+                        `braintree.dropin.create` inside a form will make layout and flow
+                        easier to manage -->
+                        <div id="dropin-container"></div>
+                        <input type="submit" />
+                        <input type="hidden" id="nonce" name="payment_method_nonce"/>
+                    </form>
+                        
+                    
                 </div>
             </div>
         </div>
