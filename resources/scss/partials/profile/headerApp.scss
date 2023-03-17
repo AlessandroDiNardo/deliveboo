@@ -4,12 +4,13 @@
     color: $black;
 
     h1 {
-        font-weight: 700;
+        font-weight: 800;
+        color: $main-color;
     }
 
     .ms_link {
-        color: $black;
-        font-size: 15px;
+        color: $main-color;
+        font-size: 18px;
         font-weight: 700;
 
         &:hover {
@@ -20,8 +21,8 @@
 
 
 
-.Logo_filter{
-    filter: invert(57%) sepia(70%) saturate(1956%) hue-rotate(108deg) brightness(91%) contrast(95%);
+.Logo_filter {
+    filter: invert(45%) sepia(70%) saturate(1956%) hue-rotate(108deg) brightness(91%) contrast(95%);
     width: 75px;
     height: 75px;
     object-fit: contain;
@@ -29,19 +30,19 @@
     text-align: center;
 }
 
-#font_logo {
+.font_logo {
     font-weight: 900;
-    color: #069e24;
+    color: $main-color;
 }
 
 .btn_nav {
-    background-color: #069e24;
+    background-color: $main-color;
     font-weight: 600;
     border: none;
 
     &:hover {
         border: #ffffff 1px solid;
-        color: #00eb56;
+        color: $main-color;
     }
 }
 
@@ -50,20 +51,20 @@
 }
 
 .btn_nav .link_nav:hover {
-    color: #069e24;
+    color: $main-color;
 }
 
-.green{
-    color: #00eb56;
+.green {
+    color: $main-color;
 
     &:hover {
-        color: #00eb56;
+        color: $main-color;
     }
 
 }
 
-.bg-green{
-    background-color: #069e24;
+.bg-green {
+    background-color: $main-color;
 }
 
 
@@ -72,10 +73,9 @@
     button {
         margin: 10px 0;
     }
-    #font_logo{
+
+    #font_logo {
         padding-left: 10px;
     }
 
-  }
-
-
+}

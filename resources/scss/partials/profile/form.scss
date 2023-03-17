@@ -1,0 +1,102 @@
+@import "/resources/scss/general/general.scss";
+
+.my_bg {
+    background: url('https://ci-aws-media.s3-accelerate.amazonaws.com/2022/02/Rabobank-foodservice-lead-image-crop.jpg');
+    background-size: cover;
+}
+
+.form {
+    border: white solid 3px;
+    background-color: $main-color;
+    filter: opacity(0.8);
+    max-width: 800px;
+    padding: 50px;
+    border-radius: 15px;
+    color: white;
+    padding-top: 2.8%;
+
+    input[type=text],
+    input[type=time],
+    input[type=number],
+    input[type=file] {
+        background-color: transparent;
+        border: none;
+        border-bottom: 3px solid white;
+        color: white;
+        margin-bottom: 10px;
+        width: 500px;
+    }
+}
+
+input[type=submit] {
+    background-color: #ffffff;
+    color: #ff0000;
+    border: black;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+ul {
+    list-style: none;
+}
+
+.nameError,
+.inputDescriptionError,
+.input_placeError,
+.input_phoneError,
+.input_vatError,
+.input_shippingError,
+.input_openError,
+.input_closingError,
+.input_dayOffError,
+.input_imgError,
+.input_categoryError,
+.nameProductError,
+.imgError,
+.disponibilityError,
+.ingredentsError,
+.priceError {
+    display: none;
+    font-size: 1em;
+    text-align: center;
+    background-color: steelblue;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.nameError.visible,
+.inputDescriptionError.visible,
+.input_placeError.visible,
+.input_phoneError.visible,
+.input_vatError.visible,
+.input_shippingError.visible,
+.input_openError.visible,
+.input_closingError.visible,
+.input_dayOffError.visible,
+.input_imgError.visible,
+.input_categoryError.visible,
+.nameProductError.visible,
+.imgError.visible,
+.disponibilityError.visible,
+.ingredentsError.visible,
+.priceError.visible {
+    display: block;
+
+}
+
+input.invalid {
+    border-color: red;
+}
+
+input {
+    outline: none;
+}
+
+.text_cont {
+    position: relative;
+
+    .btn_cont {
+        position: absolute;
+        top: 40%;
+    }
+}

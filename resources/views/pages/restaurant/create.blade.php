@@ -4,7 +4,7 @@
 <section class="d-flex justify-content-center py-5 my_bg">
     <form class="form" name="create" method="POST" action="{{ route('restaurant.store') }}" enctype="multipart/form-data">
         @csrf
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center pt-3">
                 <img class="Logo_filter" src="https://cdn.iconscout.com/icon/free/png-256/deliveroo-3442893-2875354.png" alt="logo" width="50" height="50"> 
                 <h1>Aggiungi il tuo locale</h1>
         </div>
@@ -79,9 +79,8 @@
 
                 <label for="closing_day">Giorno di chiusura</label>
                 <div>
-                    
-                    <select required class="day_off" name="closing_day">
-                        <option value="" >Seleziona un Giorno</option>
+                    <select required class="day_off py-2 px-4 bg-success border-success rounded-3 text-light" name="closing_day">
+                        <option value="" >Seleziona un Giorno: </option>
                         <option value="Monday" >Lunedì</option>
                         <option value="Tuesday">Martedi</option>
                         <option value="Wednesday">Mercoledì</option>
@@ -95,9 +94,9 @@
                      </span>
                 </div>
 
-                <label for="img">Inserisci un immagine</label><br><br>
+                <label for="img" class="mt-3">Inserisci un immagine</label><br><br>
                 <div>
-                    <input required class="input_img" type="file" name="img">
+                    <input required class="input_img mt-0" type="file" name="img">
                     <span role="alert" class="input_imgError" aria-hidden="true">
                         Aggiungi un immagine
                      </span>

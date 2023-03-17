@@ -27,7 +27,7 @@
                     <img src="{{Vite::asset('resources/img/Logo-Delivebo.png')}}" alt="logo"  class="Logo_filter">
                     <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                         <div class="logo_laravel">
-                            <h3 class="mx-2" id="font_logo">Deliveboo </h3>
+                            <h1>Deliveboo </h1>
                         </div>
                         {{-- config('app.name', 'Laravel') --}}
                     </a>
@@ -39,22 +39,25 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav me-auto">
-                            <li class="nav-item">
-                                <a class="nav-link ms_link" id="font_logo" href="{{url('/') }}">{{ __('Home') }}</a>
-                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link ms_link" ="font_logo" href="{{url('/') }}">{{ __('Home') }}</a>
+                            </li> -->
                         </ul>
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                                <a class="nav-link ms_link" class="font_logo" href="{{url('/') }}">{{ __('Home') }}</a>
+                            </li>
                             <!-- Authentication Links -->
                             @guest
                             <li class="nav-item">
-                                <a class="nav-link ms_link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+                                <a class="nav-link ms_link font_logo" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                             </li>
                        
                             @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link ms_link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                                <a class="nav-link ms_link font_logo" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                             </li>
                             @endif
                             @else
@@ -64,7 +67,6 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item green" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
                                     <a class="dropdown-item green" href="{{ url('profile') }}">{{__('Profile')}}</a>
                                     <a class="dropdown-item green" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
