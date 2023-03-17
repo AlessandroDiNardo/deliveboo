@@ -8,10 +8,47 @@ export default {
         return {
             clientToken: null,
             paymentMethodNonce: null,
+            transaction: {
+                'paymentInfo': {
+                    'payment_method_nonce' : null
+                },
+
+                'orderInfo': {
+                    'buyer_first_name' : null,
+                    'buyer_last_name' : null,
+                    'buyer_email' : null,
+                    'buyer_phone_number' : null,
+                    'address' : null,
+                    'productsIds': []
+                }
+            },
+        }
+    },
+
+    methods: {
+        loadCart() {
+            // carica il carrello dal local storage
+            const cartItems = localStorage.getItem('cartItems');
+            if (cartItems) {
+                let items = JSON.parse(cartItems);
+
+                items.forEach(element => {
+                    for (let index = 0; index < element.quantity; index++) {
+
+                        this.transaction.orderInfo.productsIds.push(element.id);
+                        
+                    }
+
+                    console.log(this.transaction.orderInfo.productsIds);
+                });
+            }
         }
     },
 
     mounted() {
+        this.loadCart();
+
+
         axios.get('http://localhost:8000/api/v1/braintree/client-token')
             .then(res => {
                 const data = res.data;
@@ -27,8 +64,9 @@ export default {
 
                 braintree.dropin.create({
                     authorization: this.clientToken,
-                    container: '#dropin-container'
-                    }, (error, dropinInstance) => {
+                    container: '#dropin-container',
+
+                }, (error, dropinInstance) => {
                         if (error) console.error(error);
 
                         form.addEventListener('submit', event => {
@@ -42,9 +80,21 @@ export default {
                             //   method nonce for the user's selected payment method, then add
                             //   it a the hidden field before submitting the complete form to
                             //   a server-side integration
-                            document.getElementById('nonce').value = payload.nonce;
-                            
-                            
+                            this.paymentMethodNonce = {
+                                'payment_method_nonce' : payload.nonce
+                            }
+
+                            axios.post('http://localhost:8000/api/v1/braintree/transaction', this.paymentMethodNonce)
+                                .then(res => {
+                                    const data = res.data;
+                                    const success = data.success;
+                                    const result = data.response;
+
+                                    if (success) {
+                                        console.log(result.success, result.transaction.status);
+                                    }
+                                })
+                                .catch(err => console.error(err));
                             });
                         });
                     });
@@ -70,7 +120,7 @@ export default {
                                     type="text" placeholder=""> </div>
                             <div class="form-group col-sm-6 flex-column d-flex"> <label
                                     class="form-control-label px-3">Cognome<span class="text-danger"> *</span></label>
-                                <input type="text" placeholder=""> </div>
+                                <input type="text" v-model="cognome" placeholder=""> </div>
                         </div>
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex"> <label
@@ -142,13 +192,12 @@ export default {
                     </div> -->
 
                     
-                    <form id="payment-form" action="/route/on/your/server" method="post">
+                    <form id="payment-form">
                         <!-- Putting the empty container you plan to pass to
                         `braintree.dropin.create` inside a form will make layout and flow
                         easier to manage -->
                         <div id="dropin-container"></div>
                         <input type="submit" />
-                        <input type="hidden" id="nonce" name="payment_method_nonce"/>
                     </form>
                         
                     
