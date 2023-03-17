@@ -19,16 +19,9 @@
               </h1>
               <p>Diventa partner di Deliveroo e raggiungi sempre più clienti. Ci occupiamo noi della consegna, così che la
                 tua unica preoccupazione sia continuare a preparare il miglior cibo.</p>
-              <div class="btn">
-                <button class="bg-primary border-0 rounded-2 p-2">
-                  <a href="" class="text-decoration-none text-white">Scopri di più</a>
-                </button>
-              </div>
             </div>
-
           </div>
         </div>
-
         <div class="col-md-4 ">
           <div class="card mb-4  ms_card" style="background-color:#069e24;border:none;color:white;">
             <img class="card-img-top" alt="Thumbnail [100%x225]"
@@ -40,16 +33,9 @@
               </h1>
               <p>La nostra missione è trasformare il modo in cui le persone mangiano. È un obiettivo ambizioso, come noi,
                 e ci servono persone che ci aiutino a raggiungerlo. </p>
-              <div class="btn">
-                <button class="bg-primary border-0 rounded-2 p-2">
-                  <a href="" class="text-decoration-none text-white">Scopri di più</a>
-                </button>
-              </div>
             </div>
-
           </div>
         </div>
-
         <div class="col-md-4 ">
           <div class="card mb-4  ms_card" style="background-color:#ff483b;border:none;color:white;">
             <img class="card-img-top" alt="Thumbnail [100%x225]"
@@ -60,17 +46,9 @@
                 Riders
               </h1>
               <p>Diventa un rider: flessibilità, ottimi guadagni e un mondo di vantaggi per te.</p>
-              <div class="btn">
-                <button class="bg-primary border-0 rounded-2 p-2">
-                  <a href="" class="text-decoration-none text-white">Scopri di più</a>
-                </button>
-              </div>
             </div>
-
           </div>
         </div>
-
-
       </div>
     </div>
   </section>
