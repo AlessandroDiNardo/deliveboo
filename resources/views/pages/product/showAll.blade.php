@@ -2,8 +2,12 @@
 
 @section('content')
 <section class="py-5">
-    
-    <div class="d-grid gap-2 d-md-flex d-flex justify-content-center pb-5">
+    <div class="container">
+        
+    <div class="d-grid gap-2 d-md-flex d-flex justify-content-start align-items-center pb-5">
+        <a class="btn btn-warning w-1 text-start" href="{{ url('profile') }}">
+             {{__('Torna al Profilo')}}
+        </a>
         <a href="{{ route('product.create') }}" class="btn btn-success w-1 text-center">
             Aggiungi Piatto
         </a>
@@ -12,8 +16,8 @@
     <div class="container d-flex justify-content-center align-items-center flex-wrap gap-5">
         @foreach ( $restaurant -> products as $product)
         <div class="card-deck d-flex align-items-center justify-content-end gap-3 flex-wrap" >
-            <div class="card " style="height:500px; width:300px;">
-                <img src="{{ str_contains($product -> img, 'http') ? $product -> img : asset('storage/' . $product -> img) }}" alt="Card image cap" class=" card-img-top" style="height:200px; width:298px;">
+            <div class="card " style="height:550px; width:300px;">
+                <img src="{{ str_contains($product -> img, 'http') ? $product -> img : asset('storage/' . $product -> img) }}" alt="Card image cap" class=" card-img-top" style="height:250px; width:298px;">
                 <div class="text-start p-3 text_cont" style="width:100%; height:100%;">
                     <h3 class="card-title category font-weight-bold mt-3">{{ $product -> name }}</h3>
                     <h6 class="text-dark">Prezzo: {{ $product -> price }}</h6>
@@ -31,6 +35,7 @@
             </div>
         </div>
         @endforeach 
+    </div>
     </div>
 
 </section>

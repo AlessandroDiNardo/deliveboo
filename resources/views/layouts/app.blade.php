@@ -31,7 +31,7 @@
                         </div>
                     </a>
 
-                    <button class="navbar-toggler bg-green text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <button class="navbar-toggler bg-text-success text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon text-success"></span>
                     </button>
 
@@ -63,8 +63,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item green" href="{{ url('profile') }}">{{__('Order')}}</a>
-                                    <a class="dropdown-item green" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    <a class="dropdown-item text-success" href="{{ url('profile') }}">{{__('Order')}}</a>
+                                    <a class="dropdown-item text-success" href="{{ url('profile') }}">{{__('Profile')}}</a>
+                                    <a class="dropdown-item text-success" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
