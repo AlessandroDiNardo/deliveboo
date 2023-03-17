@@ -1,39 +1,37 @@
-@extends('layouts.app')
+@extends('layouts.Products')
 
 @section('content')
+<section class="py-5">
+    
+    <div class="d-grid gap-2 d-md-flex d-flex justify-content-center pb-5">
+        <a href="{{ route('product.create') }}" class="btn btn-success w-1 text-center">
+            Aggiungi Piatto
+        </a>
+    </div>
 
-<br>
-<div class="d-grid gap-2 d-md-flex d-flex justify-content-center">
-<a href="{{ route('product.create') }}" class="btn btn-success w-1 text-center">
-    Aggiungi Piatto
-</a>
-</div>
-<br>
-
+    <div class="container d-flex justify-content-center align-items-center flex-wrap gap-5">
         @foreach ( $restaurant -> products as $product)
-        <div class="card-deck  d-flex align-items-center justify-content-center gap-3 p-3 " >
-            <div class="card " style="width: 18rem;">
-                <img src="{{ str_contains($product -> img, 'http') ? $product -> img : asset('storage/' . $product -> img) }}" alt="Card image cap" class="col-4 card-img-top">
-                <div class=" text text-center">
+        <div class="card-deck d-flex align-items-center justify-content-end gap-3 flex-wrap" >
+            <div class="card " style="height:500px; width:300px;">
+                <img src="{{ str_contains($product -> img, 'http') ? $product -> img : asset('storage/' . $product -> img) }}" alt="Card image cap" class=" card-img-top" style="height:200px; width:298px;">
+                <div class="text-start p-3 text_cont" style="width:100%; height:100%;">
                     <h3 class="card-title category font-weight-bold mt-3">{{ $product -> name }}</h3>
                     <h6 class="text-dark">Prezzo: {{ $product -> price }}</h6>
                     <h5>Ingredienti:</h5>
                     <p class="card-text font-weight-bold mt-2">{{ $product -> ingredients }}</p>
-                    <a href="#" class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center justify-content-center gap-3 btn_cont" style="height:100%">
                         <a href="{{ route('product.edit', $product) }}" class="btn btn-outline-success my-2">
                             Modifica Piatto
                         </a>
-        
                         <a href="{{ route('product.delete', $product) }}" class="btn btn-outline-danger my-2">
                             Elimina Piatto
                         </a>
-                       
-                    </a>
-                   
+                    </div>
                 </div>
+            </div>
         </div>
-
-        
         @endforeach 
+    </div>
 
-    @endsection
+</section>
+@endsection
