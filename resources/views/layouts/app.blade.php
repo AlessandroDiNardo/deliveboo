@@ -24,12 +24,11 @@
         <header class="headerHome">
             <nav class="navbar  navbar-expand-md navbar-light shadow-sm bg-dark">
                 <div class="container">
-                    <img src="{{Vite::asset('resources/img/Logo-Delivebo.png')}}" alt="logo"  class="Logo_filter">
-                    <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                    <a class="navbar-brand d-flex align-items-center" href="http://localhost:5174/"">
+                        <img src="{{Vite::asset('resources/img/Logo-Delivebo.png')}}" alt="logo"  class="Logo_filter">
                         <div class="logo_laravel">
                             <h1>Deliveboo </h1>
                         </div>
-                        {{-- config('app.name', 'Laravel') --}}
                     </a>
 
                     <button class="navbar-toggler bg-green text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -46,9 +45,6 @@
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                                <a class="nav-link ms_link" class="font_logo" href="{{url('/') }}">{{ __('Home') }}</a>
-                            </li>
                             <!-- Authentication Links -->
                             @guest
                             <li class="nav-item">
@@ -67,17 +63,18 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item green" href="{{ url('profile') }}">{{__('Profile')}}</a>
+                                    <a class="dropdown-item green" href="{{ url('profile') }}">{{__('Order')}}</a>
                                     <a class="dropdown-item green" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
                         @endguest
                     </ul>
                 </div>
