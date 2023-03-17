@@ -22,24 +22,25 @@
 <body>
     <div id="app">
         <header class="headerHome">
-            <nav class="navbar navbar-expand-md navbar-light  shadow-sm">
+            <nav class="navbar  navbar-expand-md navbar-light shadow-sm bg-dark">
                 <div class="container">
+                    <img src="{{Vite::asset('resources/img/Logo-Delivebo.png')}}" alt="logo"  class="Logo_filter">
                     <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                         <div class="logo_laravel">
-                            <h1>DELIVEBOO </h1>
+                            <h3 class="mx-2" id="font_logo">Deliveboo </h3>
                         </div>
                         {{-- config('app.name', 'Laravel') --}}
                     </a>
 
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                        <span class="navbar-toggler-icon"></span>
+                    <button class="navbar-toggler bg-green text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <span class="navbar-toggler-icon text-success"></span>
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <a class="nav-link ms_link" href="{{url('/') }}">{{ __('Home') }}</a>
+                                <a class="nav-link ms_link" id="font_logo" href="{{url('/') }}">{{ __('Home') }}</a>
                             </li>
                         </ul>
 
@@ -50,21 +51,22 @@
                             <li class="nav-item">
                                 <a class="nav-link ms_link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                             </li>
+                       
                             @if (Route::has('register'))
                             <li class="nav-item">
                                 <a class="nav-link ms_link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                             </li>
                             @endif
                             @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link ms_link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="nav-item dropdown green">
+                                <a id="navbarDropdown" class="text-white nav-link ms_link dropdown-toggle"  href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
-                                    <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    <a class="dropdown-item green" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
+                                    <a class="dropdown-item green" href="{{ url('profile') }}">{{__('Profile')}}</a>
+                                    <a class="dropdown-item green" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
@@ -88,3 +90,4 @@
 </body>
 
 </html>
+
