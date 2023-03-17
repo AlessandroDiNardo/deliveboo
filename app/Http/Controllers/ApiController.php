@@ -9,6 +9,10 @@ use App\Models\Restaurant;
 use App\Models\Category;
 use App\Models\Product;
 
+// imported Facades
+use Illuminate\Support\Facades\Storage;
+
+
 class ApiController extends Controller
 {
     public function getRestaurants(Request $request) {
@@ -45,6 +49,14 @@ class ApiController extends Controller
 
         $restaurants = $restaurants -> get();
 
+        foreach ($restaurants as $restaurant) {
+
+            if (str_contains($restaurant -> img, 'restaurantsImg')) {
+
+                $restaurant -> img = Storage::url($restaurant -> img);
+            }
+        }
+
 
         return response() -> json([
             'success' => true,
@@ -67,6 +79,19 @@ class ApiController extends Controller
         $restaurantId = $request -> get('restaurantId');
 
         $restaurant = Restaurant::with('products', 'categories') -> find($restaurantId);
+
+
+        if (str_contains($restaurant -> img, 'restaurantsImg')) {
+
+            $restaurant -> img = Storage::url($restaurant -> img);
+        }
+
+        foreach ($restaurant -> products as $product) {
+            if (str_contains($product -> img, 'productsImg')) {
+
+                $product -> img = Storage::url($product -> img);
+            }
+        }
 
         return response() -> json([
             'success' => true,
