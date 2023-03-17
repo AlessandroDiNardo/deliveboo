@@ -27,9 +27,16 @@ class PaymentController extends Controller
 
     public function transaction(Request $request)
     {
+        $nonceFromTheClient = $request -> payment_method_nonce;
+
+        $transaction = $this->braintree->generateTransaction()->sale([
+            'amount' => '10.00',
+            'paymentMethodNonce' => $nonceFromTheClient,
+        ]);
+
         return response() -> json([
             'success' => true,
-            'response' => $clientToken,
+            'response' => $transaction,
         ]);
     }
 
