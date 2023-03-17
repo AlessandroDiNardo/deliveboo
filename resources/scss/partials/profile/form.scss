@@ -9,7 +9,7 @@
     border: white solid 3px;
     background-color: $main-color;
     filter: opacity(0.8);
-    max-width: 800px;
+    width: 800px;
     padding: 50px;
     border-radius: 15px;
     color: white;
@@ -98,5 +98,71 @@ input {
     .btn_cont {
         position: absolute;
         top: 40%;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .form {
+        width: 80%;
+    }
+
+    .ms_form {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+}
+
+@media screen and (max-width: 720px) {
+
+    input[type=text],
+    input[type=time],
+    input[type=number],
+    input[type=file] {
+        max-width: 430px;
+    }
+}
+
+
+@media screen and (max-width: 680px) {
+
+    input[type=text],
+    input[type=time],
+    input[type=number],
+    input[type=file] {
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 570px) {
+
+    input[type=text],
+    input[type=time],
+    input[type=number],
+    input[type=file] {
+        max-width: 350px;
+    }
+}
+
+@media screen and (max-width: 530px) {
+
+    input[type=text],
+    input[type=time],
+    input[type=number],
+    input[type=file] {
+        max-width: 300px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    input[type=text],
+    input[type=time],
+    input[type=number],
+    input[type=file] {
+        max-width: 250px;
     }
 }

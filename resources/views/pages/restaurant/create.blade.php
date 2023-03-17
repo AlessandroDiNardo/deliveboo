@@ -1,32 +1,28 @@
 @extends('layouts.app')
-
 @section('content')
 <section class="d-flex justify-content-center py-5 my_bg">
-    <form class="form" name="create" method="POST" action="{{ route('restaurant.store') }}" enctype="multipart/form-data">
+    <form class="form form-group" name="create" method="POST" action="{{ route('restaurant.store') }}" enctype="multipart/form-data">
         @csrf
-        <div class="d-flex justify-content-center pt-3">
+        <div class="d-flex justify-content-center align-items-center gap-3 mb-3">
                 <img class="Logo_filter" src="https://cdn.iconscout.com/icon/free/png-256/deliveroo-3442893-2875354.png" alt="logo" width="50" height="50"> 
-                <h1>Aggiungi il tuo locale</h1>
+                <h1 class="">Aggiungi il tuo locale</h1>
         </div>
-        <div class="d-flex gap-4">
-            <div>
+        <div class="d-flex justify-content-center align-items-start gap-5 ms_form">
+            <div class="form-group col-md-7 col-lg-5 col-xl-6">
                 <label for="name">Nome</label>
                 <div>
                     <input required id="name" class="name_create" type="text" name="name" >
-
                    <span role="alert" class="nameError" aria-hidden="true">
                        Riempi il campo del nome del ristorante
-                       
                     </span>
                 </div>
             
                 <label for="description">Descrizione</label>
                 <div>
                     <input required class="input_description" type="text" name="description">
-                    <span role="alert"   class="inputDescriptionError" aria-hidden="true">
+                    <span role="alert" class="inputDescriptionError" aria-hidden="true">
                         Riempi il campo della descrizione
                      </span>
-                    
                 </div>
 
                 <label for="place">Indirizzo</label>
@@ -93,37 +89,32 @@
                         Aggiungi giorno di Chiusura
                      </span>
                 </div>
-
                 <label for="img" class="mt-3">Inserisci un immagine</label><br><br>
                 <div>
-                    <input required class="input_img mt-0" type="file" name="img">
+                    <input required class="input_img" type="file" name="img">
                     <span role="alert" class="input_imgError" aria-hidden="true">
                         Aggiungi un immagine
                      </span>
                 </div>
-
                 <br>
             </div>
-            
-            <div class="d-flex col">
-                
+            <div class="d-flex justify-content-end align-items-end col category">
                 <ul>
                     <h3>Categorie:</h3>
                     <span role="alert" class="input_categoryError" aria-hidden="true">
                         Seleziona una categoria
-                      </span>
+                    </span>
                     @foreach ($categories as $category)
                     <li>
                         <input  class="category" type="checkbox" name="category_id[]" value="{{ $category -> id }}" id="{{ $category -> id }}" class="mb-2 mx-2">
                         <label for="{{ $category -> id }}">{{ $category -> name }}</label>
                     </li>
-                   
                     @endforeach
                 </ul>
             </div>
         </div>
+       
         <input  class="submit_form" type="submit"  value="CREATE NEW RESTAURANT" class="text-center">
-     
     </form>
 </section>
 @endsection
