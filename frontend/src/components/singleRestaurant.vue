@@ -104,6 +104,7 @@ export default {
             this.cartItems = [];
 
             localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+
         },
 
         formatPrice(price) {
@@ -142,19 +143,24 @@ export default {
                     <div class="d-flex row justify-content-center align-items-center lh-lg">
                         <h2> {{ restaurant.name }}</h2>
                         <p class="fs-5">{{ restaurant.description }}</p>
-                        <p class="fs-5">
-                            <span class="btn btn-success me-2" v-for="category in restaurant.categories"> {{ category.name
-                            }}</span>
+                        <p> {{ restaurant.place }}</p>
+                        <p> Orario: {{ restaurant.opening_time }} - {{ restaurant.closing_time }}
                         </p>
+                        <p> Giorno di chiusura: {{ restaurant.closing_day }}</p>
+                        <div class="d-flex justify-conten-start align-items-center gap-2">
+                            <div class="btn btn-success me-2" v-for="category in restaurant.categories">
+                                {{ category.name }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-between align-teims-center gap-5 px-5">
-            <div class="ms_container py-5 d-flex flex-wrap justify-content-start align-items-center gap-4">
+        <div class="d-flex justify-content-evenly align-teims-center gap-5 p-5">
+            <div class="restaurant_cont d-flex flex-wrap justify-content-start align-items-center gap-4">
                 <div class="ms_card" v-for="product in products">
                     <img :src="product.img" class="card-img-top" alt="...">
-                    <div class="card-body-cont">
+                    <div class="card-body-cont" style="height: 100%;">
                         <h5 class="card-title">{{ product.name }}</h5>
                         <p class="card-text">
                             {{ product.ingredients }}
@@ -168,10 +174,9 @@ export default {
                     </div>
                 </div>
             </div>
-            <div>
-                <ul class="cart_container">
-                    <li v-for="(item, index) in cartItems" :key="index"
-                        class="p-3 border-bottom border-ligh bg-secondary bg-opacity-50">
+            <div class="cart_container" v-if="this.cartItems.length != 0">
+                <ul class="order_cont">
+                    <li v-for="(item, index) in cartItems" :key="index">
                         <span>{{ item.name }}.</span>
 
                         <div class="d-flex justify-content-between align-teims-center pt-2">
@@ -179,39 +184,42 @@ export default {
                                 <span class="text-danger">
                                     {{ item.price * item.quantity }} €
                                 </span>
-
                             </div>
                             <div class="d-flex justify-content-start align-items-center gap-3 py-1">
-                                <button class="btn btn-warning" @click="removeQuantityOne(index)"><font-awesome-icon
-                                        icon="fa-solid fa-minus" /> </button>
+                                <button class="btn btn-warning d-flex justify-content-center align-items-center"
+                                    @click="removeQuantityOne(index)" style="width:30px; height: 30px;"><font-awesome-icon
+                                        icon="fa-solid fa-minus" />
+                                </button>
                                 <span> x{{ item.quantity }}</span>
-                                <button class="btn btn-success fs-6" @click="addToCart(item)"><font-awesome-icon
+                                <button class="btn btn-success d-flex justify-content-center align-items-center"
+                                    @click="addToCart(item)" style="width:30px; height: 30px;"><font-awesome-icon
                                         icon="fa-solid fa-plus" />
                                 </button>
-                                <button class="btn btn-danger" @click="removeFromCart(index)"><font-awesome-icon
+                                <button class="btn btn-danger d-flex justify-content-center align-items-center"
+                                    @click="removeFromCart(index)" style="width:30px; height: 30px;"><font-awesome-icon
                                         icon="fa-solid fa-x" /></button>
                             </div>
                         </div>
                     </li>
-                    <div v-if="this.cartItems.length != 0" class="p-3 d-flex justify-content-between align-items-center">
-                        <div>
-                            <!-- <p>Totale prodotti: {{ formatPrice(totalProducts) }}</p> -->
-                            <p>Costo di spedizione: {{ formatPrice(shippingCost) }}</p>
-                            <p>Totale: {{ formatPrice(total) }}</p>
-                        </div>
-                        <button class="btn btn-danger" @click="emptyCart">
-                            <font-awesome-icon icon="fa-solid fa-trash" />
-                        </button>
+                </ul>
+                <div class="p-3 d-flex justify-content-between align-items-start flew-wrap gap-5 bg-light">
+                    <div>
+                        <!-- <p>Totale prodotti: {{ formatPrice(totalProducts) }}</p> -->
+                        <p>
+                            <span class="text-danger">Costo di spedizione: </span>
+                            <span> {{ formatPrice(shippingCost) }}</span>
+                        </p>
+                        <p>
+                            <span class="text-danger">Totale: </span>
+                            <span>{{ formatPrice(total) }} </span>
+                        </p>
                         <RouterLink :to="{ name: 'payment' }">
-                            <div class="btn btn-success">Checkout</div>
+                            <div class="btn btn-success mt-3">Checkout</div>
                         </RouterLink>
                     </div>
-                </ul>
-
-                <div v-if="this.cartItems.length != 0">
-                    <span>
-
-                    </span>
+                    <button class="btn btn-danger" @click="emptyCart" style="width:50px;">
+                        <font-awesome-icon icon="fa-solid fa-trash" />
+                    </button>
                 </div>
             </div>
         </div>
@@ -228,7 +236,23 @@ section {
 }
 
 .ms_container {
+    max-width: 1630px;
+}
+
+.restaurant_cont {
+    height: 500px;
+    overflow-y: scroll;
+    padding-left: 90px;
     max-width: 1320px;
+}
+
+.restaurant_cont::-webkit-scrollbar {
+    display: none;
+}
+
+.restaurant_cont {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .card_img {
@@ -239,6 +263,7 @@ section {
     img {
         height: 250px;
         width: 350px;
+        border-radius: 20px;
     }
 }
 
@@ -247,11 +272,17 @@ section {
     height: 450px;
     border: 1px $black;
     border-radius: 1px;
-    border: 1px solid black;
+    border: 1px solid rgb(255, 255, 255);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 
     img {
         height: 250px;
         width: 348px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
     }
 
     .card-body-cont {
@@ -261,10 +292,13 @@ section {
         gap: 5px;
         flex-direction: column;
         padding: 10px 20px;
+        position: relative;
 
         .info_card {
-            position: relative;
-            top: 25%;
+            position: absolute;
+            top: 34%;
+            left: 0;
+            padding: 0 30px;
 
             .btn {
                 background-color: #06c167;
@@ -283,8 +317,32 @@ section {
 .cart_container {
 
     width: 400px;
-    margin-top: 50px;
-    background-color: white;
     list-style-type: none;
+    border-radius: 20px;
+    margin-bottom: 50px;
+
+    li {
+        padding: 10px;
+        background-color: rgb(196, 196, 196);
+        border-bottom: 1px solid white;
+    }
+}
+
+.order_cont {
+    height: 300px;
+    overflow-y: scroll;
+    border: 1px solid white;
+    margin-top: 24px;
+}
+
+.order_cont::-webkit-scrollbar {
+    display: none;
+}
+
+.order_cont {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 </style>
