@@ -7,95 +7,114 @@
 @section('content')
     
     <section class="d-flex justify-content-center py-5 my_bg">
-        <form class="form" method="POST" action="{{ route('restaurant.update', $restaurant) }}" enctype="multipart/form-data">
+        <form class="form form-group" method="POST" action="{{ route('restaurant.update', $restaurant) }}" enctype="multipart/form-data">
        @csrf 
 
-            <div class="d-flex justify-content-center align-items-center pb-3">
+            <div class="d-flex justify-content-center align-items-center">
                 <img class="Logo_filter" src="https://cdn.iconscout.com/icon/free/png-256/deliveroo-3442893-2875354.png" alt="logo" width="50" height="50"> 
                 <h1>Modifica il tuo locale</h1>
             </div>
-              <div class="d-flex gap-5">
-                <div class="d-flex flex-column">
+              <div class="d-flex justify-content-center align-items-start gap-5 ms_form">
+                <div class="form-group ">
                     <label for="name">Nome</label>
-                    <input required id="name" class="name_create" type="text" name="name" value="{{ $restaurant -> name }}">
-                    <span role="alert" class="nameError" aria-hidden="true">
-                        Riempi il campo del nome del ristorante
-                        
-                     </span>
+                    <div>
+                        <input required id="name" class="name_create" type="text" name="name" value="{{ $restaurant -> name }}">
+                        <span role="alert" class="nameError" aria-hidden="true">
+                            Riempi il campo del nome del ristorante
+                        </span>
+                    </div>
                     <br>
     
                     <label for="description">Descrizione</label>
-                    <input required class="input_description" type="text" name="description" value="{{ $restaurant -> description }}">
-                    <span role="alert"   class="inputDescriptionError" aria-hidden="true">
-                        Riempi il campo della descrizione
-                     </span>
+                    <div>
+                        <input required class="input_description" type="text" name="description" value="{{ $restaurant -> description }}">
+                        <span role="alert"   class="inputDescriptionError" aria-hidden="true">
+                            Riempi il campo della descrizione
+                        </span>
+                    </div>
                     <br>
     
                     <label for="place">Luogo</label>
-                    <input  required class="input_place" type="text" name="place" value="{{ $restaurant -> place }}">
-                    <span role="alert" class="input_placeError" aria-hidden="true">
-                        Aggiungi l'indirizzo
-                     </span>
+                    <div>
+                        <input  required class="input_place" type="text" name="place" value="{{ $restaurant -> place }}">
+                        <span role="alert" class="input_placeError" aria-hidden="true">
+                            Aggiungi l'indirizzo
+                        </span>
+                    </div>
                     <br>
     
                     <label for="phone_number">Numero di telefono</label>
-                    <input required class="input_phone"  type="text" name="phone_number" value="{{ $restaurant -> phone_number }}">
-                    <span role="alert" class="input_phoneError" aria-hidden="true">
-                        Aggiungi Recapito telefonico
-                     </span>
+                    <div>
+                        <input required class="input_phone"  type="text" name="phone_number" value="{{ $restaurant -> phone_number }}">
+                        <span role="alert" class="input_phoneError" aria-hidden="true">
+                            Aggiungi Recapito telefonico
+                        </span>
+                    </div>
                     <br>
 
                     <label for="vat">P.Iva</label>
-                    <input  required class="input_vat" type="text" name="vat" value="{{ $restaurant -> vat }}">
-                    <span role="alert" class="input_vatError" aria-hidden="true">
-                        Aggiungi Partita Iva
-                     </span>
+                    <div>
+                        <input  required class="input_vat" type="text" name="vat" value="{{ $restaurant -> vat }}">
+                        <span role="alert" class="input_vatError" aria-hidden="true">
+                            Aggiungi Partita Iva
+                        </span>
+                    </div>
                     
                     <br>
 
                     <label for="shipping_cost">Costo di spedizione</label>
-                    <input required class="shipping_field" type="number" step="0.01" min="0" name="shipping_cost" value="{{ $restaurant -> shipping_cost }}">
-                    <span role="alert" class="input_shippingError" aria-hidden="true">
-                        Aggiungi Spesa di spedizione
-                     </span>
+                    <div>
+                        <input required class="shipping_field" type="number" step="0.01" min="0" name="shipping_cost" value="{{ $restaurant -> shipping_cost }}">
+                        <span role="alert" class="input_shippingError" aria-hidden="true">
+                            Aggiungi Spesa di spedizione
+                        </span>
+                    </div>
                     <br>
     
                     <label for="opening_time">Orario di apertura</label>
-                    <input required class="input_opening" type="time" name="opening_time" value="{{ $restaurant -> opening_time }}">
-                    <span role="alert" class="input_openError" aria-hidden="true">
-                        Aggiungi orario di Apertura
-                     </span>
+                    <div>
+                        <input required class="input_opening" type="time" name="opening_time" value="{{ $restaurant -> opening_time }}">
+                        <span role="alert" class="input_openError" aria-hidden="true">
+                            Aggiungi orario di Apertura
+                        </span>
+                    </div>
                     <br>
     
                     <label for="closing_time">Orario di chiusura</label>
-                    <input required class="input_closing" type="time" name="closing_time" value="{{ $restaurant -> closing_time }}">
-                    <span role="alert" class="input_closingError" aria-hidden="true">
-                        Aggiungi orario di Chiusura
-                     </span>
+                    <div>
+                        <input required class="input_closing" type="time" name="closing_time" value="{{ $restaurant -> closing_time }}">
+                        <span role="alert" class="input_closingError" aria-hidden="true">
+                            Aggiungi orario di Chiusura
+                        </span>
+                    </div>
                     <br>
     
                     <label for="closing_day">Giorno di chiusura</label>
-                    <select required class="day_off" name="closing_day">
-                        @foreach ($dayOfWeek as $day => $giorno)
-                            <option value="{{ $day }}" {{ $restaurant -> closing_day == $day ? 'selected' : '' }}>{{ $giorno }}</option>
-                        @endforeach
-                    </select>
-                    <span role="alert" class="input_dayOffError" aria-hidden="true">
-                        Aggiungi giorno di Chiusura
-                     </span>
+                    <div>
+                        <select required class="day_off py-2 px-4 bg-success border-success rounded-3 text-light" name="closing_day">
+                            @foreach ($dayOfWeek as $day => $giorno)
+                                <option value="{{ $day }}" {{ $restaurant -> closing_day == $day ? 'selected' : '' }}>{{ $giorno }}</option>
+                            @endforeach
+                        </select>
+                        <span role="alert" class="input_dayOffError" aria-hidden="true">
+                            Aggiungi giorno di Chiusura
+                         </span>
+                    </div>
                      
                     <br>
 
                     <label for="img">Immagine ristorante</label>
-                    <input  required class="input_img" type="file" name="img">
-                    <span role="alert" class="input_imgError" aria-hidden="true">
-                        Aggiungi un immagine
-                     </span>
+                    <div>
+                        <input  required class="input_img" type="file" name="img">
+                        <span role="alert" class="input_imgError" aria-hidden="true">
+                            Aggiungi un immagine
+                         </span>
+                    </div>
                     <br>
                     
                 </div>
-                <div class="d-flex col" >
-                    <div >
+                <div class="d-flex col justify-content-end align-items-start  category" >
+                    <div>
                      <label><h3>Categorie :</h3></label>
                      <br>
                      <span role="alert" class="input_categoryError" aria-hidden="true">
@@ -116,7 +135,7 @@
               </div>
 
               
-            <input class="submit_form" class="btn btn-success my-3" type="submit" value="Aggiorna" class="text-center">
+            <input class="submit_form"  type="submit" value="Aggiorna" class="text-center">
            
         </form>
     </section>
