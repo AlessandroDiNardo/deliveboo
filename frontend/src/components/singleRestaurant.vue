@@ -196,8 +196,9 @@ export default {
                                         icon="fa-solid fa-plus" />
                                 </button>
                                 <button class="btn btn-danger d-flex justify-content-center align-items-center"
-                                    @click="removeFromCart(index)" style="width:30px; height: 30px;"><font-awesome-icon
-                                        icon="fa-solid fa-x" /></button>
+                                    @click="removeFromCart(index)" style="width:30px; height: 30px;">
+                                    <font-awesome-icon icon="fa-solid fa-x" />
+                                </button>
                             </div>
                         </div>
                     </li>
