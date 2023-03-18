@@ -12,11 +12,14 @@ class OrderController extends Controller
 {
     public function show(Request $request) {
 
-        $restaurant = Restaurant::where('user_id', $request -> user() -> id) -> first();
+        $user = Auth::user();
+        $restaurant_id = Restaurant::where('user_id', $user->id)->value('id');
 
-        $product = Product::all();
+        // Recupera gli ordini associati al ristorante e i relativi dettagli dei prodotti
+        $orders = Order::where('restaurant_id', $restaurant_id)
+                    ->with('products')
+                    ->get();
 
-        return view('pages.order.show', compact('restaurant', 'product'));
-    }
+        return view('pages.order.show', compact('orders'));
 }
-
+}
