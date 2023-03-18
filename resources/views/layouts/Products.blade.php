@@ -24,7 +24,7 @@
         <header class="headerHome">
             <nav class="navbar  navbar-expand-md navbar-light shadow-sm bg-dark">
                 <div class="container">
-                    <a class="navbar-brand d-flex align-items-center" href="http://localhost:5174/"">
+                    <a class="navbar-brand d-flex align-items-center" href="http://localhost:5174/">
                         <img src="{{Vite::asset('resources/img/Logo-Delivebo.png')}}" alt="logo"  class="Logo_filter">
                         <div class="logo_laravel">
                             <h1>Deliveboo </h1>
@@ -65,7 +65,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item text-success" href="{{ url('profile') }}">{{__('Profile')}}</a>
                                     <a class="dropdown-item green" href="{{ url('order') }}">{{__('Order')}}</a>
-                                    <a class="dropdown-item green" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    <a class="dropdown-item green" href="http://localhost:5174/" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
