@@ -22,7 +22,7 @@ class OrderSeeder extends Seeder
         $restaurants = Restaurant::orderBy('id') -> get();
 
         foreach ($restaurants as $restaurant) {
-            Order::factory()-> count(2) -> make() -> each(function($o) use($restaurant) {
+            Order::factory()-> count(5) -> make() -> each(function($o) use($restaurant) {
                 $o -> restaurant() -> associate($restaurant);
                 
                 $products = Product::where('restaurant_id', '=', $restaurant -> id) -> inRandomOrder() -> limit(rand(1,5)) -> get();
