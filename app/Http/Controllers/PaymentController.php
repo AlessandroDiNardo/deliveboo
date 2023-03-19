@@ -37,27 +37,36 @@ class PaymentController extends Controller
         // metodo di pagamento
         $nonceFromTheClient = $request -> paymentInfo['payment_method_nonce'];
 
-        // salva orderInfo in $data e rimuovi productsIds
+        // salva orderInfo in $data
         $data = $request -> orderInfo;
-        unset($data['productsIds']);
         
         // salva i productsIds in una variabile
-        $productsIds = $request -> orderInfo['productsIds'];
+        $productsIds = $request -> paymentInfo['productsIds'];
+
         // crea una collection vuota di products
-        $products = collect();
+        // $products = collect();
 
         // creo una variabile in cui calcolare il prezzo totale dell'ordine 
         $orderPrice = 0;
 
         // per ogni id in $productsIds aggiungi il corrispondente prodotto nella collection vuota
-        foreach ($productsIds as $id) {
+        foreach ($productsIds as $key => $id) {
+            // trova il prodotto per id
             $newProduct = Product::where('id', $id) -> first();
 
+            // aggiungi alla somma il prezzo del prodotto
             $orderPrice += $newProduct -> price;
 
-            $products -> push($newProduct);
+            // se il ciclo arriva all'ultimo prodotto
+            if ($key == count($productsIds) - 1) {
+                // aggiungi alla somma lo shipping_cost del ristorante da cui si acquista
+                $orderPrice += Restaurant::where('id', $newProduct -> restaurant_id) -> first() -> shipping_cost;
+            }
+
+            // $products -> push($newProduct);
         }
 
+        // aggiungi la key price con l'intero prezzo all'array $data
         $data['price'] = $orderPrice;
 
         // crea un ordine prendendo i dati da $data e riempiendo quelli vuoti usando la factory
