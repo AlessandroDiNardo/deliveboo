@@ -10,7 +10,8 @@ export default {
             paymentMethodNonce: null,
             transaction: {
                 'paymentInfo': {
-                    'payment_method_nonce' : null
+                    'payment_method_nonce' : null,
+                    'productsIds': [],
                 },
 
                 'orderInfo': {
@@ -19,7 +20,6 @@ export default {
                     'buyer_email' : null,
                     'buyer_phone_number' : null,
                     'address' : null,
-                    'productsIds': [],
                 }
             },
         }
@@ -35,11 +35,11 @@ export default {
                 items.forEach(element => {
                     for (let index = 0; index < element.quantity; index++) {
 
-                        this.transaction.orderInfo.productsIds.push(element.id);
+                        this.transaction.paymentInfo.productsIds.push(element.id);
                         
                     }
 
-                    console.log(this.transaction.orderInfo.productsIds);
+                    console.log(this.transaction.paymentInfo.productsIds);
                 });
             }
         }
