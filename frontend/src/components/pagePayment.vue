@@ -19,7 +19,7 @@ export default {
                     'buyer_email' : null,
                     'buyer_phone_number' : null,
                     'address' : null,
-                    'productsIds': []
+                    'productsIds': [],
                 }
             },
         }
@@ -45,6 +45,14 @@ export default {
         }
     },
 
+    watch: {
+        'transaction.orderInfo.buyer_first_name'(newValue) {
+            if (newValue) {
+                console.log(this.transaction);
+            }
+        }
+    },
+
     mounted() {
         this.loadCart();
 
@@ -57,7 +65,6 @@ export default {
 
                 if (success) {
                     this.clientToken = result;
-                    console.log(this.clientToken);
                 }
 
                 const form = document.getElementById('payment-form');
@@ -80,18 +87,19 @@ export default {
                             //   method nonce for the user's selected payment method, then add
                             //   it a the hidden field before submitting the complete form to
                             //   a server-side integration
-                            this.paymentMethodNonce = {
-                                'payment_method_nonce' : payload.nonce
-                            }
+                            this.transaction.paymentInfo.payment_method_nonce = payload.nonce;
 
-                            axios.post('http://localhost:8000/api/v1/braintree/transaction', this.paymentMethodNonce)
+                            console.log(this.transaction);
+
+                            axios.post('http://localhost:8000/api/v1/braintree/transaction', this.transaction)
                                 .then(res => {
                                     const data = res.data;
                                     const success = data.success;
                                     const result = data.response;
 
                                     if (success) {
-                                        console.log(result.success, result.transaction.status);
+                                        console.log(result);
+                                        // console.log(result.success, result.transaction.status);
                                     }
                                 })
                                 .catch(err => console.error(err));
@@ -130,29 +138,54 @@ export default {
                 <div class="d-flex justify-content-evenly align-items-center gap-5 border border-dark mt-5 py-5 rounded-5">
                     <div>
                         <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label
-                                    class="form-control-label px-3">Nome<span class="text-danger"> *</span></label> <input
-                                    type="text" placeholder=""> </div>
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label
-                                    class="form-control-label px-3">Cognome<span class="text-danger"> *</span></label>
-                                <input type="text" placeholder="">
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label px-3">
+                                    Nome<span class="text-danger"> *</span>
+                                </label> 
+                                
+                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_first_name"> 
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label px-3">
+                                    Cognome <span class="text-danger"> *</span>
+                                </label>
+                                
+                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_last_name">
+                            </div>
+
+                        </div>
+
+                        <div class="row justify-content-between text-left">
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label px-3">
+                                    Email<span class="text-danger"> *</span>
+                                </label> 
+                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_email"> 
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label px-3">
+                                    Numero telefonico<span class="text-danger">*</span>
+                                </label> 
+                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_phone_number"> 
+                            </div>
+
+                        </div>
+
+                        <div class="row justify-content-between text-left">
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label px-3">
+                                    indirizzo<span class="text-danger"> *</span>
+                                </label>
+                                
+                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.address">
                             </div>
                         </div>
-                        <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label
-                                    class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input
-                                    type="text" placeholder=""> </div>
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label
-                                    class="form-control-label px-3">Numero
-                                    telefonico<span class="text-danger">
-                                        *</span></label> <input type="text" placeholder=""> </div>
-                        </div>
-                        <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label
-                                    class="form-control-label px-3">indirizzo<span class="text-danger"> *</span></label>
-                                <input type="text" placeholder="">
-                            </div>
-                        </div>
+
                     </div>
                     <div>
                         <!-- Putting the empty container you plan to pass to `braintree.dropin.create` inside a form will make layout and flow easier to manage -->
