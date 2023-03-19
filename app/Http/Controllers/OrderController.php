@@ -21,5 +21,9 @@ class OrderController extends Controller
                     ->get();
 
         return view('pages.order.show', compact('orders'));
-}
+    }
+
+    public function store($orderData, $productsData) {
+
+    } 
 }
