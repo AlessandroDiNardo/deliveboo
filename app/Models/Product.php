@@ -19,7 +19,6 @@ class Product extends Model
         'price',
         'img',
         'visible',
-
     ];
 
     public function restaurant() {
