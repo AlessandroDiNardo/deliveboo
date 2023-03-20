@@ -2,6 +2,7 @@
 import Header from './components/Header.vue';
 import AppMain from './components/appMain.vue';
 import Footer from './components/Footer.vue';
+import { store } from './store.js'
 
 export default {
   components: {
@@ -11,9 +12,21 @@ export default {
   },
   data() {
     return {
+      store,
       isLoaded: false
     }
   },
+
+  methods: {
+    loadCart() {
+      // carica il carrello dal local storage
+      const cartItems = localStorage.getItem('cartItems');
+      if (cartItems) {
+          store.cartItems = JSON.parse(cartItems);
+      }
+    }
+  },
+
   mounted() {
 
     //metodo che crea un pagina di caricamento
@@ -21,7 +34,25 @@ export default {
     setTimeout(() => {
       this.isLoaded = true
     }, 1000);
+
+    this.loadCart();
+
+    store.getShippingCost();
+
+    console.log(store);
   },
+
+  computed: {
+    totalProducts() {
+      if (store.cartItems != null) {
+        return store.cartItems.reduce((acc, product) => acc + product.price * product.quantity, 0);
+      }
+    },
+
+    total() {
+      return store.total = parseFloat(store.totalProducts) + parseFloat(store.shippingCost);
+    },
+  }
 }
 </script>
 

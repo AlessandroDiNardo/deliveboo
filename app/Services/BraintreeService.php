@@ -18,5 +18,10 @@ class BraintreeService
         return $this->gateway->clientToken()->generate();
     }
 
+    public function generateTransaction()
+    {
+        return $this->gateway->transaction();
+    }
+
     // altre funzioni wrapper per il Braintree PHP SDK
 }

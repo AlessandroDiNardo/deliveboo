@@ -50,6 +50,10 @@
                     Vai ai Prodotti
                 </a>
 
+                <a href="{{ route('order.show') }}" class="btn btn-primary w-25">
+                    Visualizza gli Ordini
+                </a>
+
             </div>
         </header>
         @endif

@@ -21,6 +21,9 @@ class OrderFactory extends Factory
             'price' => fake() -> randomFloat(2, 40, 999),
             'order_date' => fake() -> dateTimeInInterval('-1 years', '+1 years'),
             'rider_phone_number' => fake() -> phoneNumber(),
+            'buyer_first_name' => fake() -> firstName(),
+            'buyer_last_name' => fake() -> lastName(),
+            'buyer_email' => fake() -> email(),
             'buyer_phone_number' => fake() -> phoneNumber(),
             'address' => fake() -> streetAddress()
         ];

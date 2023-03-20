@@ -1,13 +1,25 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router';
 import axios from 'axios';
+import { store } from '.././store.js';
 
 export default {
     data() {
         return {
+            store,
             image: '/img/home/Logo-Deliveboo.png',
         }
-    }
+    },
+
+    methods: {
+
+    },
+
+    mounted() {
+    },
+
+    computed: {
+    },
 }
 
 
@@ -31,27 +43,32 @@ export default {
                             Area Riservata
                         </a>
                     </button>
-                    <div>
-                        <div class="dropdown">
-                            <a class="btn_nav_cart dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                            </a>
-                            <ul class="dropdown-menu mt-3" style="width: 250px;">
-                                <a class="dropdown-item mb-2" href="#">Riepilogo ordine:</a>
-                                <li
-                                    class="d-flex justify-content-between align-items-center px-3 bg-secondary bg-opacity-25 border-bottom border-light">
-                                    <div></div>
-                                    <div></div>
-                                </li>
-                                <li class="mt-5 d-flex justify-content-between align-items-center gap-3 px-3">
-                                    <RouterLink :to="{ name: 'payment' }">
-                                        <div class="btn btn-success">Checkout</div>
-                                    </RouterLink>
-                                    <div class="text-danger"></div>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="dropdown">
+                        <a class="btn_nav_cart dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <font-awesome-icon icon="fa-solid fa-cart-shopping" />
+                        </a>
+                        <ul class="dropdown-menu mt-3" style="width: 250px;">
+                            <a class="dropdown-item mb-2" href="#">Riepilogo ordine:</a>
+                            <li class="d-flex justify-content-between align-items-center px-3 bg-secondary bg-opacity-25 border-bottom border-light"
+                                v-for="item in store.cartItems">
+                                <div>{{ item.name }}</div>
+                                <div>{{ item.quantity }}x</div>
+                                <div>{{ store.formatPrice(item.price * item.quantity) }}</div>
+                            </li>
+                            <li
+                                class="d-flex justify-content-between align-items-center px-3 bg-secondary bg-opacity-25 border-bottom border-light">
+                                <div>Spedizione</div>
+                                <div>{{ store.shippingCost }}€</div>
+                            </li>
+                            <li class="mt-5 d-flex justify-content-between align-items-center gap-3 px-3"
+                                v-if="store.cartItems.length > 0">
+                                <RouterLink :to="{ name: 'restaurant', params: { id: store.cartItems[0].restaurant_id } }">
+                                    <div class="btn btn-success">Modifica Carrello</div>
+                                </RouterLink>
+                                <div> {{ store.formatPrice(store.total()) }}</div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

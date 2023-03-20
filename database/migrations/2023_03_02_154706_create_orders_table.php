@@ -20,6 +20,9 @@ return new class extends Migration
             $table->decimal('price', $precision = 6, $scale = 2);
             $table->dateTime('order_date');
             $table->string('rider_phone_number', 32);
+            $table->string('buyer_first_name', 64);
+            $table->string('buyer_last_name', 64);
+            $table->string('buyer_email', 64);
             $table->string('buyer_phone_number', 32);
             $table->string('address', 128);
 
