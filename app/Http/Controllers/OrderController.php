@@ -23,7 +23,4 @@ class OrderController extends Controller
         return view('pages.order.show', compact('orders'));
     }
 
-    public function store($orderData, $productsData) {
-
-    } 
 }
