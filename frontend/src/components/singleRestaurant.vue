@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { store } from '.././store.js';
 
 export default {
 
@@ -7,11 +8,11 @@ export default {
 
     data() {
         return {
-
+            store,
             restaurant: [],
             products: [],
             cartItems: [],
-            shippingCost: "",
+            shippingCost:"",
         }
     },
     methods: {
@@ -34,12 +35,15 @@ export default {
 
         checkRestaurantCart(product) {
             // se il carrelo ha almeno un elemento...
-            if (this.cartItems.length != 0) {
+            if (store.cartItems.length != 0) {
                 // controlla se restaurant_id del prodotto che si sta aggiungendo è uguale a quello dell'ultimo prodotto nell'array
-                if (product.restaurant_id != this.cartItems[this.cartItems.length - 1].restaurant_id) {
+                if (product.restaurant_id != store.cartItems[store.cartItems.length - 1].restaurant_id) {
                     return false
                 }
-            }
+            } 
+
+            store.shippingCost = this.shippingCost
+
             return true
         },
 
@@ -47,14 +51,14 @@ export default {
             if (this.checkRestaurantCart(product)) {
 
                 // controlla se il prodotto è già nel carrello
-                const existingItemIndex = this.cartItems.findIndex(item => item.id === product.id);
+                const existingItemIndex = store.cartItems.findIndex(item => item.id === product.id);
 
                 if (existingItemIndex >= 0) {
                     // se il prodotto esiste già nel carrello, aggiorna solo la quantità
-                    this.cartItems[existingItemIndex].quantity++;
+                    store.cartItems[existingItemIndex].quantity++;
                 } else {
                     // altrimenti, aggiungi il prodotto al carrello
-                    this.cartItems.push({
+                    store.cartItems.push({
                         id: product.id,
                         name: product.name,
                         price: product.price,
@@ -62,69 +66,62 @@ export default {
                         restaurant_id: product.restaurant_id
                     });
 
-                    console.log(this.cartItems[this.cartItems.length - 1])
+                    // DEBUG
+                    console.log(store.cartItems[store.cartItems.length - 1])
                 }
+
                 // aggiorna il carrello nel local storage
-                localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+                localStorage.setItem('cartItems', JSON.stringify(store.cartItems));
             } else {
                 alert('Non puoi acquistare da un altro ristorante! Completa o cancella il precedente ordine.');
             }
         },
 
         removeFromCart(index) {
-            this.cartItems.splice(index, 1)
+            store.cartItems.splice(index, 1)
+
+            this.resetShippingCost();
 
             // aggiorna il carrello nel local storage
-            localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+            localStorage.setItem('cartItems', JSON.stringify(store.cartItems));
         },
 
         removeQuantityOne(index) {
             // riduci di una unità quantità prodotto
-            this.cartItems[index].quantity--;
+            store.cartItems[index].quantity--;
 
             // se la quantità diventa zero...
-            if (this.cartItems[index].quantity == 0) {
+            if (store.cartItems[index].quantity == 0) {
                 // rimuovi l'oggetto dall'array
-                this.cartItems.splice(index, 1)
+                store.cartItems.splice(index, 1)
+
+                this.resetShippingCost();
 
                 // aggiorna il carrello nel local storage
-                localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-            }
-        },
-
-        loadCart() {
-            // carica il carrello dal local storage
-            const cartItems = localStorage.getItem('cartItems');
-            if (cartItems) {
-                this.cartItems = JSON.parse(cartItems);
+                localStorage.setItem('cartItems', JSON.stringify(store.cartItems));
             }
         },
 
         emptyCart() {
-            this.cartItems = [];
+            store.cartItems = [];
+            this.resetShippingCost();
 
-            localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+            localStorage.setItem('cartItems', JSON.stringify(store.cartItems));
 
         },
 
-        formatPrice(price) {
-            return parseFloat(price).toFixed(2) + '€';
-        },
+        resetShippingCost() {
+            if (store.cartItems = [] || store.cartItems == null || store.cartItems == false) {
+                store.shippingCost = null;
+            }
+        }
     },
 
     mounted() {
-        this.loadCart();
         this.getProducts();
     },
 
     computed: {
-        totalProducts() {
-            return this.cartItems.reduce((acc, product) => acc + product.price * product.quantity, 0);
-        },
-
-        total() {
-            return parseFloat(this.totalProducts) + parseFloat(this.shippingCost);
-        },
     }
 }
 </script>
@@ -174,9 +171,9 @@ export default {
                     </div>
                 </div>
             </div>
-            <div class="cart_container" v-if="this.cartItems.length != 0">
+            <div class="cart_container" v-if="store.cartItems.length != 0">
                 <ul class="order_cont">
-                    <li v-for="(item, index) in cartItems" :key="index">
+                    <li v-for="(item, index) in store.cartItems" :key="index">
                         <span>{{ item.name }}.</span>
 
                         <div class="d-flex justify-content-between align-teims-center pt-2">
@@ -207,11 +204,11 @@ export default {
                         <!-- <p>Totale prodotti: {{ formatPrice(totalProducts) }}</p> -->
                         <p>
                             <span class="text-danger">Costo di spedizione: </span>
-                            <span> {{ formatPrice(shippingCost) }}</span>
+                            <span> {{ store.formatPrice(store.shippingCost) }}</span>
                         </p>
                         <p>
                             <span class="text-danger">Totale: </span>
-                            <span>{{ formatPrice(total) }} </span>
+                            <span>{{ store.formatPrice(store.total()) }} </span>
                         </p>
                         <RouterLink :to="{ name: 'payment' }">
                             <div class="btn btn-success mt-3">Checkout</div>

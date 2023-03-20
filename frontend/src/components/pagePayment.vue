@@ -1,11 +1,13 @@
 <script>
 import axios from 'axios';
+import { store } from '../store';
 
 export default {
     name: "pagePayment",
 
     data() {
         return {
+            store,
             cart: null,
             clientToken: null,
             transaction: {
@@ -42,19 +44,16 @@ export default {
                             
         },
 
-        loadCart() {
-            // carica il carrello dal local storage
-            const cartItems = localStorage.getItem('cartItems');
-            if (cartItems) {
-                this.cart = JSON.parse(cartItems);
+        saveCartToTransaction() {
+            if (store.cartItems != null) {
 
-                this.cart.forEach(element => {
+                store.cartItems.forEach(element => {
                     for (let index = 0; index < element.quantity; index++) {
-
+    
                         this.transaction.paymentInfo.productsIds.push(element.id);
                         
                     }
-
+    
                     // DEBUG
                     console.log(this.transaction.paymentInfo.productsIds);
                 });
@@ -71,7 +70,7 @@ export default {
     },
 
     mounted() {
-        this.loadCart();
+        this.saveCartToTransaction();
 
 
         axios.get('http://localhost:8000/api/v1/braintree/client-token')
@@ -123,10 +122,10 @@ export default {
             <h1 class="text-center fw-bolder">Completa il tuo Ordine!</h1>
             <div class="border border-dark py-3 rounded-5 bg-light" style="width:400px;">
                 <h3 class=" p-3">Riepilogo ordine:</h3>
-                <div class="d-flex justify-content-between align-items-center p-3 bg" v-for="product in this.cart">
-                    <div>{{ product.name }}</div>
-                    <div>{{ product.quantity }}x</div>
-                    <div>{{ product.price*product.quantity }}€</div>
+                <div class="d-flex justify-content-between align-items-center p-3 bg" v-for="item in store.cartItems">
+                    <div>{{ item.name }}</div>
+                    <div>{{ item.quantity }}x</div>
+                    <div>{{ item.price*item.quantity }}€</div>
                 </div>
             </div>
             <form id="payment-form" action="/route/on/your/server" method="post">

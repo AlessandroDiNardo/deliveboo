@@ -1,65 +1,24 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router';
 import axios from 'axios';
+import { store } from '.././store.js';
 
 export default {
     data() {
         return {
+            store,
             image: '/img/home/Logo-Deliveboo.png',
-            cart: null,
-            shippingCost: null,
         }
     },
 
     methods: {
-        loadCart() {
-            // carica il carrello dal local storage
-            const cartItems = localStorage.getItem('cartItems');
-            if (cartItems) {
-                this.cart = JSON.parse(cartItems);
-            }
-        },
 
-        getShippingCost() {
-            if (this.cart != null) {
-
-                axios.get('http://localhost:8000/api/v1/products/all', { params: { restaurantId: this.cart[0].restaurant_id } })
-                    .then(res => {
-                        const data = res.data;
-                        const success = data.success;
-                        const result = data.response.restaurant;
-    
-                        if (success) {
-                            this.shippingCost = result.shipping_cost;
-                        }
-                    })
-                    .catch(err => console.error(err));
-            }
-
-        },
-
-        formatPrice(price) {
-            return parseFloat(price).toFixed(2) + '€';
-        }
     },
 
     mounted() {
-        this.loadCart();
-
-        this.getShippingCost();
     },
 
     computed: {
-        totalProducts() {
-            if (this.cart != null) {
-                
-                return this.cart.reduce((acc, product) => acc + product.price * product.quantity, 0);
-            }
-        },
-
-        total() {
-            return parseFloat(this.totalProducts) + parseFloat(this.shippingCost);
-        },
     }, 
 }
 
@@ -92,21 +51,21 @@ export default {
                         <ul class="dropdown-menu mt-3" style="width: 250px;">
                             <a class="dropdown-item mb-2" href="#">Riepilogo ordine:</a>
                             <li
-                                class="d-flex justify-content-between align-items-center px-3 bg-secondary bg-opacity-25 border-bottom border-light" v-for="item in this.cart">
+                                class="d-flex justify-content-between align-items-center px-3 bg-secondary bg-opacity-25 border-bottom border-light" v-for="item in store.cartItems">
                                 <div>{{ item.name }}</div>
                                 <div>{{ item.quantity }}x</div>
-                                <div>{{ parseFloat(item.price*item.quantity).toFixed(2) }}€</div>
+                                <div>{{ store.formatPrice(item.price*item.quantity) }}</div>
                             </li>
                             <li
                                 class="d-flex justify-content-between align-items-center px-3 bg-secondary bg-opacity-25 border-bottom border-light">
                                 <div>Spedizione</div>
-                                <div>{{ this.shippingCost }}</div>
+                                <div>{{ store.shippingCost }}€</div>
                             </li>
-                            <li class="mt-5 d-flex justify-content-between align-items-center gap-3 px-3">
-                                <RouterLink :to="{ name: 'payment' }">
-                                    <div class="btn btn-success">Checkout</div>
+                            <li class="mt-5 d-flex justify-content-between align-items-center gap-3 px-3" v-if="store.cartItems.length > 0">
+                                <RouterLink :to="{ name: 'restaurant', params: { id: store.cartItems[0].restaurant_id } }">
+                                    <div class="btn btn-success">Modifica Carrello</div>
                                 </RouterLink>
-                                <div> {{ formatPrice(total) }}</div>
+                                <div> {{ store.formatPrice(store.total()) }}</div>
                             </li>
                         </ul>
                     </div>
