@@ -43,8 +43,8 @@
 
                 <label for="vat">Piva</label>
                 <div>
-                    <input required class="input_vat" type="text" name="vat">
-                    <span role="alert" class="input_vatError" aria-hidden="true">
+                    <input required max="1" class="input_vat" type="text" name="vat" >
+                  <span role="alert" class="input_vatError" aria-hidden="true">
                         Aggiungi Partita Iva
                      </span>
                 </div>

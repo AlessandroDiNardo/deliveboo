@@ -27,8 +27,8 @@ function validate(e) {
   const imgField = document.querySelector(".input_img");
   const categoryField = document.querySelectorAll(".category");
  
-// Variabili input Create Product
 
+ 
   let valid = true;
 
     if (firstNameField.value.trim() ==="") {
@@ -234,74 +234,7 @@ function validate(e) {
 
    
 
-      // if (firstNameField.value.trim() ==="") {
-      //   const nameError = document.querySelector(".nameError");
-      //   nameError.classList.add("visible");
-      //   firstNameField.classList.add("invalid");
-      //   nameError.setAttribute("aria-hidden", false);
-      //   nameError.setAttribute("aria-invalid", true);
-       
-      // }
-      // else {
-      //   const nameError = document.querySelector(".nameError");
-      //   nameError.classList.remove("visible");
-      //   firstNameField.classList.remove("invalid");
-      //   nameError.setAttribute("aria-hidden", false);
-      //   nameError.setAttribute("aria-invalid", true);
-       
-      // }
-
-      // if (firstNameField.value.trim() ==="") {
-      //   const nameError = document.querySelector(".nameError");
-      //   nameError.classList.add("visible");
-      //   firstNameField.classList.add("invalid");
-      //   nameError.setAttribute("aria-hidden", false);
-      //   nameError.setAttribute("aria-invalid", true);
-       
-      // }
-      // else {
-      //   const nameError = document.querySelector(".nameError");
-      //   nameError.classList.remove("visible");
-      //   firstNameField.classList.remove("invalid");
-      //   nameError.setAttribute("aria-hidden", false);
-      //   nameError.setAttribute("aria-invalid", true);
-       
-      // }
-
-      // if (firstNameField.value.trim() ==="") {
-      //   const nameError = document.querySelector(".nameError");
-      //   nameError.classList.add("visible");
-      //   firstNameField.classList.add("invalid");
-      //   nameError.setAttribute("aria-hidden", false);
-      //   nameError.setAttribute("aria-invalid", true);
-       
-      // }
-      // else {
-      //   const nameError = document.querySelector(".nameError");
-      //   nameError.classList.remove("visible");
-      //   firstNameField.classList.remove("invalid");
-      //   nameError.setAttribute("aria-hidden", false);
-      //   nameError.setAttribute("aria-invalid", true);
-       
-      // }
-
-      // if (firstNameField.value.trim() ==="") {
-      //   const nameError = document.querySelector(".nameError");
-      //   nameError.classList.add("visible");
-      //   firstNameField.classList.add("invalid");
-      //   nameError.setAttribute("aria-hidden", false);
-      //   nameError.setAttribute("aria-invalid", true);
-       
-      // }
-      // else {
-      //   const nameError = document.querySelector(".nameError");
-      //   nameError.classList.remove("visible");
-      //   firstNameField.classList.remove("invalid");
-      //   nameError.setAttribute("aria-hidden", false);
-      //   nameError.setAttribute("aria-invalid", true);
-       
-      // }
- 
+      
  
  
        return valid;
@@ -309,109 +242,8 @@ function validate(e) {
  
 }
 
-// const form = document.querySelector('.form');
-// const nameField = document.querySelector('#name');
-// const descriptionField = document.querySelector('#input_description');
-// const placeField = document.querySelector('#input_place');
-// const phoneField = document.querySelector('#input_phone');
-// const vatField = document.querySelector('#input_vat');
-// const shippingField = document.querySelector('#input_shipping');
-// const openingField = document.querySelector('#input_opening');
-// const closingField = document.querySelector('#input_closing');
-// const dayOffField = document.querySelector('#day_off');
-// const imgField = document.querySelector('#input_img');
-// const categoryField = document.querySelectorAll('.category');
 
-// form.addEventListener('submit', (event) => {
-//   // Stop form submission
- 
-  
-//   // Validate name field
-//   if (nameField.value.trim() === '') {
-//     document.querySelector('#nameError').setAttribute('aria-hidden', false);
-    
-//   } else {
-//     document.querySelector('#nameError').setAttribute('aria-hidden', true);
-//   }
 
-//   // Validate description field
-//   if (descriptionField.value.trim() === '') {
-//     document.querySelector('#inputDescriptionError').setAttribute('aria-hidden', false);
-//   } else {
-//     document.querySelector('#inputDescriptionError').setAttribute('aria-hidden', true);
-//   }
 
-//   // Validate place field
-//   if (placeField.value.trim() === '') {
-//     document.querySelector('#input_placeError').setAttribute('aria-hidden', false);
-//   } else {
-//     document.querySelector('#input_placeError').setAttribute('aria-hidden', true);
-//   }
-
-//   // Validate phone field
-//   if (phoneField.value.trim() === '') {
-//     document.querySelector('#input_phoneError').setAttribute('aria-hidden', false);
-//   } else {
-//     document.querySelector('#input_phoneError').setAttribute('aria-hidden', true);
-//   }
-
-//   // Validate VAT field
-//   if (vatField.value.trim() === '') {
-//     document.querySelector('#input_vatError').setAttribute('aria-hidden', false);
-//   } else {
-//     document.querySelector('#input_vatError').setAttribute('aria-hidden', true);
-//   }
-
-//   // Validate shipping field
-//   if (shippingField.value.trim() === '') {
-//     document.querySelector('#input_shippingError').setAttribute('aria-hidden', false);
-//   } else {
-//     document.querySelector('#input_shippingError').setAttribute('aria-hidden', true);
-//   }
-
-//   // Validate opening field
-//   if (openingField.value.trim() === '') {
-//     document.querySelector('#input_openError').setAttribute('aria-hidden', false);
-//   } else {
-//     document.querySelector('#input_openError').setAttribute('aria-hidden', true);
-//   }
-
-//   // Validate closing field
-//   if (closingField.value.trim() === '') {
-//     document.querySelector('#input_closingError').setAttribute('aria-hidden', false);
-//   } else {
-//     document.querySelector('#input_closingError').setAttribute('aria-hidden', true);
-//   }
-
-//   // Validate day off field
-//   if (dayOffField.value.trim() === '') {
-//     document.querySelector('#input_dayOffError').setAttribute('aria-hidden', false);
-//   } else {
-//     document.querySelector('#input_dayOffError').setAttribute('aria-hidden', true);
-//   }
-
-//   // Validate image field
-//   if (imgField.value.trim() === '') {
-//     document.querySelector('#input_imgError').setAttribute('aria-hidden', false);
-//   } else {
-//     document.querySelector('#input_imgError').setAttribute('aria-hidden', true);
-//   }
-
-//   // Validate category field
-//   let isChecked = false;
-//   categoryField.forEach((category) => {
-//     if (category.checked) {
-//       isChecked = true;
-//       alert("selezionato")
-//     }
-//   }
-//   );
-
-//   if (!isChecked) {
-//     document.querySelector('#input_categoryError').setAttribute('aria-hidden', false);
-//     alert("non selezionato")
-//   } else {
-//     document.querySelector('#input_categoryError').setAttribute('aria-hidden', true);
-//   }})
 
 

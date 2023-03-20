@@ -48,7 +48,7 @@ export default {
 </script>
 
 <template>
-    <section class="main p-5 ">
+    <section class="main" id="resturant">
         <!-- main content -->
         <section class="ms_container d-flex justify-content-between align-items-center p-4 gap-5">
             <div class="d-flex row justify-content-end align-items-end" style="width: 400px; height: 620px;">
