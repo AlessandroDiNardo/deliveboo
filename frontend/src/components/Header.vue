@@ -60,7 +60,7 @@ export default {
         total() {
             return parseFloat(this.totalProducts) + parseFloat(this.shippingCost);
         },
-    }
+    }, 
 }
 
 
