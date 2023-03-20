@@ -187,13 +187,13 @@ export default {
                             </div>
                             <div class="d-flex justify-content-start align-items-center gap-3 py-1">
                                 <button class="btn btn-warning d-flex justify-content-center align-items-center"
-                                    @click="removeQuantityOne(index)" style="width:30px; height: 30px;"><font-awesome-icon
-                                        icon="fa-solid fa-minus" />
+                                    @click="removeQuantityOne(index)" style="width:30px; height: 30px;">
+                                    <font-awesome-icon icon="fa-solid fa-minus" />
                                 </button>
                                 <span> x{{ item.quantity }}</span>
                                 <button class="btn btn-success d-flex justify-content-center align-items-center"
-                                    @click="addToCart(item)" style="width:30px; height: 30px;"><font-awesome-icon
-                                        icon="fa-solid fa-plus" />
+                                    @click="addToCart(item)" style="width:30px; height: 30px;">
+                                    <font-awesome-icon icon="fa-solid fa-plus" />
                                 </button>
                                 <button class="btn btn-danger d-flex justify-content-center align-items-center"
                                     @click="removeFromCart(index)" style="width:30px; height: 30px;">

@@ -111,6 +111,7 @@ export default {
     },
 
     mounted() {
+        this.loadCart();
         this.getProducts();
     },
 
@@ -147,7 +148,7 @@ export default {
                         </a>
                     </button>
                     <div>
-                        <div class="dropdown">
+                        <div class="dropdown" v-if="this.cartItems.length != 0">
                             <a class="btn_nav_cart dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <font-awesome-icon icon="fa-solid fa-cart-shopping" />
