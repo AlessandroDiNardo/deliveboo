@@ -48,9 +48,9 @@ export default {
 </script>
 
 <template>
-    <section class="main">
+    <section class="main p-5 ">
         <!-- main content -->
-        <section class="ms_container d-flex justify-content-between align-items-center gap-5">
+        <section class="ms_container d-flex justify-content-between align-items-center p-4 gap-5">
             <div class="d-flex row justify-content-end align-items-end" style="width: 400px; height: 620px;">
                 <div class="pt-5 px-3 bg-light border_cont" style="height:200px;">
                     <h3>Cerca il tuo ristorante, cibo o piatto preferito!</h3>
@@ -70,9 +70,9 @@ export default {
                     </ul>
                 </div>
             </div>
-            <div class="restaurant-overflow">
+            <div id="carte" class="restaurant-overflow gap-2">
                 <div class="ms_container d-flex flex-wrap justify-content-start align-content-center gap-3">
-                    <div class="card ms_card" v-for="restaurant in this.filteredRestaurants">
+                    <div class="card ms_card"  v-for="restaurant in this.filteredRestaurants">
                         <div class="img_cont">
                             <img :src="restaurant.img" class="card-img-top" alt="">
                         </div>
@@ -144,6 +144,7 @@ export default {
 .ms_card {
     width: 340px;
     height: 400px;
+   
 
     .img_cont {
         height: 200px;
@@ -192,4 +193,5 @@ ul {
     background-color: $main-color;
     border: none;
 }
+
 </style>
