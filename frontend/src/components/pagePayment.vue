@@ -24,18 +24,33 @@ export default {
                     'address' : null,
                 }
             },
+
+            transactionSubmitted: false,
+            transactionLoading: false,
+            transactionSuccess: false,
         }
     },
 
     methods: {
         transactionCall() {
+            this.transactionSubmitted = true;
+            this.transactionLoading = true;
+
             axios.post('http://localhost:8000/api/v1/braintree/transaction', this.transaction)
                 .then(res => {
                     const data = res.data;
                     const success = data.success;
                     const result = data.response;
 
+                    console.log(success);
+
                     if (success) {
+                        this.transactionLoading = false;
+
+                        if(result.transaction.success) {
+                            this.transactionSuccess= true;
+                        }
+
                         console.log(result.transaction.success, result.order);
                         // console.log(result.success, result.transaction.status);
                     }
@@ -57,14 +72,6 @@ export default {
                     // DEBUG
                     console.log(this.transaction.paymentInfo.productsIds);
                 });
-            }
-        }
-    },
-
-    watch: {
-        'transaction.orderInfo.buyer_first_name'(newValue) {
-            if (newValue) {
-                console.log(this.transaction);
             }
         }
     },
@@ -100,6 +107,7 @@ export default {
 
                             this.transaction.paymentInfo.payment_method_nonce = payload.nonce;
 
+                            
                             // DEBUG
                             console.log(this.transaction);
 
@@ -117,7 +125,7 @@ export default {
 
 
 <template>
-    <section>
+    <section v-if="!transactionSubmitted">
         <div class="ms_container">
             <h1 class="text-center fw-bolder">Completa il tuo Ordine!</h1>
             <div class="border border-dark py-3 rounded-5 bg-light" style="width:400px;">
@@ -190,6 +198,31 @@ export default {
                 </div>
             </form>
         </div>
+    </section>
+
+    <section class="ms_container" v-else>
+        <section class="ms_container" v-if="transactionLoading">
+            <h1>
+
+                Loading
+            </h1>
+        </section>
+
+        <section class="ms_container" v-if="!transactionLoading">
+            <section class="ms_container" v-if="transactionSuccess">
+                <h1>
+
+                    pagamento completato
+                </h1>
+            </section>
+
+            <section class="ms_container" v-else>
+                <h1>
+                    pagamento fallito
+
+                </h1>
+            </section>
+        </section>
     </section>
 </template>
 
