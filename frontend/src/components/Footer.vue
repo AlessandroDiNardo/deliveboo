@@ -51,7 +51,7 @@ export default {
                     </a>
                 </li>
             </ul>
-            <ul class="rounded-2">
+            <ul class="rounded-2 ">
                 <li>
                     <h6 class="text-start">Porta deliveboo con te</h6>
                 </li>
