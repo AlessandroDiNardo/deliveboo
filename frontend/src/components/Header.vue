@@ -6,123 +6,7 @@ export default {
     data() {
         return {
             image: '/img/home/Logo-Deliveboo.png',
-            restaurant: [],
-            products: [],
-            cartItems: [],
-            shippingCost: "",
         }
-    },
-    methods: {
-
-        getProducts() {
-            axios.get('http://localhost:8000/api/v1/products/all', { params: { restaurantId: this.$route.params.id } })
-                .then(res => {
-                    const data = res.data;
-                    const success = data.success;
-                    const result = data.response.restaurant;
-
-                    if (success) {
-                        this.restaurant = result;
-                        this.products = result.products;
-                        this.shippingCost = result.shipping_cost;
-                    }
-                })
-                .catch(err => console.error(err));
-        },
-
-        checkRestaurantCart(product) {
-            // se il carrelo ha almeno un elemento...
-            if (this.cartItems.length != 0) {
-                // controlla se restaurant_id del prodotto che si sta aggiungendo è uguale a quello dell'ultimo prodotto nell'array
-                if (product.restaurant_id != this.cartItems[this.cartItems.length - 1].restaurant_id) {
-                    return false
-                }
-            }
-            return true
-        },
-
-        addToCart(product) {
-            if (this.checkRestaurantCart(product)) {
-
-                // controlla se il prodotto è già nel carrello
-                const existingItemIndex = this.cartItems.findIndex(item => item.id === product.id);
-
-                if (existingItemIndex >= 0) {
-                    // se il prodotto esiste già nel carrello, aggiorna solo la quantità
-                    this.cartItems[existingItemIndex].quantity++;
-                } else {
-                    // altrimenti, aggiungi il prodotto al carrello
-                    this.cartItems.push({
-                        id: product.id,
-                        name: product.name,
-                        price: product.price,
-                        quantity: 1,
-                        restaurant_id: product.restaurant_id
-                    });
-
-                    console.log(this.cartItems[this.cartItems.length - 1])
-                }
-                // aggiorna il carrello nel local storage
-                localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-            } else {
-                alert('Non puoi acquistare da un altro ristorante! Completa o cancella il precedente ordine.');
-            }
-        },
-
-        removeFromCart(index) {
-            this.cartItems.splice(index, 1)
-
-            // aggiorna il carrello nel local storage
-            localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-        },
-
-        removeQuantityOne(index) {
-            // riduci di una unità quantità prodotto
-            this.cartItems[index].quantity--;
-
-            // se la quantità diventa zero...
-            if (this.cartItems[index].quantity == 0) {
-                // rimuovi l'oggetto dall'array
-                this.cartItems.splice(index, 1)
-
-                // aggiorna il carrello nel local storage
-                localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-            }
-        },
-
-        loadCart() {
-            // carica il carrello dal local storage
-            const cartItems = localStorage.getItem('cartItems');
-            if (cartItems) {
-                this.cartItems = JSON.parse(cartItems);
-            }
-        },
-
-        emptyCart() {
-            this.cartItems = [];
-
-            localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-
-        },
-
-        formatPrice(price) {
-            return parseFloat(price).toFixed(2) + '€';
-        },
-    },
-
-    mounted() {
-        this.loadCart();
-        this.getProducts();
-    },
-
-    computed: {
-        totalProducts() {
-            return this.cartItems.reduce((acc, product) => acc + product.price * product.quantity, 0);
-        },
-
-        total() {
-            return parseFloat(this.totalProducts) + parseFloat(this.shippingCost);
-        },
     }
 }
 
@@ -148,23 +32,23 @@ export default {
                         </a>
                     </button>
                     <div>
-                        <div class="dropdown" v-if="this.cartItems.length != 0">
+                        <div class="dropdown">
                             <a class="btn_nav_cart dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <font-awesome-icon icon="fa-solid fa-cart-shopping" />
                             </a>
                             <ul class="dropdown-menu mt-3" style="width: 250px;">
                                 <a class="dropdown-item mb-2" href="#">Riepilogo ordine:</a>
-                                <li class="d-flex justify-content-between align-items-center px-3 bg-secondary bg-opacity-25 border-bottom border-light"
-                                    v-for="(item, index) in cartItems" :key="index">
-                                    <div>{{ item.name }}</div>
-                                    <div>x {{ item.quantity }}</div>
+                                <li
+                                    class="d-flex justify-content-between align-items-center px-3 bg-secondary bg-opacity-25 border-bottom border-light">
+                                    <div></div>
+                                    <div></div>
                                 </li>
                                 <li class="mt-5 d-flex justify-content-between align-items-center gap-3 px-3">
                                     <RouterLink :to="{ name: 'payment' }">
                                         <div class="btn btn-success">Checkout</div>
                                     </RouterLink>
-                                    <div class="text-danger">{{ formatPrice(total) }}</div>
+                                    <div class="text-danger"></div>
                                 </li>
                             </ul>
                         </div>
