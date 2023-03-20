@@ -27,13 +27,13 @@
   #category {
     padding-right: 40%;
   }
-  #name, #input_description, #input_place, #input_phone, #input_vat, #input_shipping, #input_opening, #input_closing, #day_off, #input_img{
+  #name, #input_description, #input_place, #input_phone, #input_vat, #input_shipping, #input_opening, #input_closing, #day_off, #input_img,#vat_error{
     width: 400px;
   }
 }
 
 @media screen and (max-width: 570px) {
-  #name, #input_description, #input_place, #input_phone, #input_vat, #input_shipping, #input_opening, #input_closing, #day_off, #input_img{
+  #name, #input_description, #input_place, #input_phone, #input_vat, #input_shipping, #input_opening, #input_closing, #day_off, #input_img,#vat_error.visible{
     width: 350px;
   }
 }

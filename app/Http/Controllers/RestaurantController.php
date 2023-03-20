@@ -42,6 +42,10 @@ class RestaurantController extends Controller
             'closing_day' => 'required|string|min:3',
             'category_id' => 'required|array'
         ]);
+
+        // if (Restaurant::where('vat', $data['vat'])->exists()) {
+        //     return redirect()->back()->withErrors(['vat' => 'La Partita Iva è già presente negli archivi']);
+        // }
         
         // adding img
         $img_path = Storage::put('restaurantsImg', $data['img']);
@@ -61,6 +65,8 @@ class RestaurantController extends Controller
 
         return redirect() -> route('profile.edit');
     }
+
+   
 
     public function edit(Restaurant $restaurant) {
         $categories = Category::all();

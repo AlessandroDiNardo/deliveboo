@@ -50,7 +50,7 @@ Route::middleware(['auth', 'can:view,product'])->group(function () {
 Route::middleware('auth')->group(function (){
     Route::get('/restaurant/create', [RestaurantController::class, 'create'])->name('restaurant.create');
     Route::post('/restaurant/store', [RestaurantController::class, 'store'])->name('restaurant.store');
-    
+ 
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
     Route::get('/product/showall', [ProductController::class, 'showAll'])->name('product.showAll');
