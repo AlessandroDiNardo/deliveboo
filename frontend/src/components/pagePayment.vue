@@ -126,9 +126,9 @@ export default {
 
 <template>
     <section v-if="!transactionSubmitted">
-        <div class="ms_container">
+        <div id="up" class="ms_container">
             <h1 class="text-center fw-bolder">Completa il tuo Ordine!</h1>
-            <div class="border border-dark py-3 rounded-5 bg-light" style="width:400px;">
+            <div class="border border-dark py-3 rounded-5 bg-light" style="width:400px; margin:40px auto;">
                 <h3 class=" p-3">Riepilogo ordine:</h3>
                 <div class="d-flex justify-content-between align-items-center p-3 bg" v-for="item in store.cartItems">
                     <div>{{ item.name }}</div>
@@ -192,7 +192,7 @@ export default {
                     <div>
                         <!-- Putting the empty container you plan to pass to `braintree.dropin.create` inside a form will make layout and flow easier to manage -->
                         <div id="dropin-container"></div>
-                        <input type="submit" />
+                        <input  type="submit" />
                         <input type="hidden" id="nonce" name="payment_method_nonce" />
                     </div>
                 </div>
@@ -200,25 +200,23 @@ export default {
         </div>
     </section>
 
-    <section class="ms_container" v-else>
-        <section class="ms_container" v-if="transactionLoading">
-            <h1>
-
-                Loading
-            </h1>
+    <section class="ms_container " v-else>
+        <section class="ms_container text-center h-100 " v-if="transactionLoading">
+            <img class="loading_img animate__animated animate__bounce animate__infinite" src="../assets/Logo-Deliveboo.png" alt="">
         </section>
 
-        <section class="ms_container" v-if="!transactionLoading">
+        <section class="ms_container h-100 text-center" v-if="!transactionLoading">
             <section class="ms_container" v-if="transactionSuccess">
-                <h1>
+                <h1 class="animate__animated animate__bounceIn">
 
-                    pagamento completato
+                    Congratulazioni <br>
+                    Il tuo ordine n.Sto cazzone è in arrivo
                 </h1>
             </section>
 
-            <section class="ms_container" v-else>
-                <h1>
-                    pagamento fallito
+            <section class="ms_container height-100 text-center" v-else>
+                <h1 class="animate__animated animate__bounceIn">
+                  Ci Dispiace ma la sua transazione non è valida.
 
                 </h1>
             </section>
@@ -236,8 +234,8 @@ section {
 }
 
 .ms_container {
-    padding-top: 130px;
-    padding-bottom: 50px;
+    padding-top: 220px;
+    padding-bottom: 100px;
 }
 
 h1 {
@@ -288,5 +286,12 @@ button {
 
 .btn-block:hover {
     color: #fff;
+}
+
+.loading_img{
+    max-width: 100px;
+    filter: invert(57%) sepia(70%) saturate(1956%) hue-rotate(108deg) brightness(91%) contrast(95%);
+    padding-bottom: 100px;
+    
 }
 </style>

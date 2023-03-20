@@ -5,7 +5,7 @@ export default {
             items: [{
                 'title': 'Scopri Deliveboo',
                 links: [
-                    'Parteners',
+                    'Partners',
                     'Chi siamo',
                     'Ristoranti',
                     'Altro',
