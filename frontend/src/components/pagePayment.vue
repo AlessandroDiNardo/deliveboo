@@ -6,8 +6,8 @@ export default {
 
     data() {
         return {
+            cart: null,
             clientToken: null,
-            paymentMethodNonce: null,
             transaction: {
                 'paymentInfo': {
                     'payment_method_nonce' : null,
@@ -26,19 +26,36 @@ export default {
     },
 
     methods: {
+        transactionCall() {
+            axios.post('http://localhost:8000/api/v1/braintree/transaction', this.transaction)
+                .then(res => {
+                    const data = res.data;
+                    const success = data.success;
+                    const result = data.response;
+
+                    if (success) {
+                        console.log(result.transaction.success, result.order);
+                        // console.log(result.success, result.transaction.status);
+                    }
+                })
+                .catch(err => console.error(err));
+                            
+        },
+
         loadCart() {
             // carica il carrello dal local storage
             const cartItems = localStorage.getItem('cartItems');
             if (cartItems) {
-                let items = JSON.parse(cartItems);
+                this.cart = JSON.parse(cartItems);
 
-                items.forEach(element => {
+                this.cart.forEach(element => {
                     for (let index = 0; index < element.quantity; index++) {
 
                         this.transaction.paymentInfo.productsIds.push(element.id);
                         
                     }
 
+                    // DEBUG
                     console.log(this.transaction.paymentInfo.productsIds);
                 });
             }
@@ -82,30 +99,15 @@ export default {
                         dropinInstance.requestPaymentMethod((error, payload) => {
                             if (error) console.error(error);
 
-                            // Step four: when the user is ready to complete their
-                            //   transaction, use the dropinInstance to get a payment
-                            //   method nonce for the user's selected payment method, then add
-                            //   it a the hidden field before submitting the complete form to
-                            //   a server-side integration
                             this.transaction.paymentInfo.payment_method_nonce = payload.nonce;
 
+                            // DEBUG
                             console.log(this.transaction);
 
-                            axios.post('http://localhost:8000/api/v1/braintree/transaction', this.transaction)
-                                .then(res => {
-                                    const data = res.data;
-                                    const success = data.success;
-                                    const result = data.response;
-
-                                    if (success) {
-                                        console.log(result);
-                                        // console.log(result.success, result.transaction.status);
-                                    }
-                                })
-                                .catch(err => console.error(err));
-                            });
+                            this.transactionCall();
                         });
                     });
+                });    
             })  
             .catch(error => {
                 console.error(error);
@@ -121,17 +123,10 @@ export default {
             <h1 class="text-center fw-bolder">Completa il tuo Ordine!</h1>
             <div class="border border-dark py-3 rounded-5 bg-light" style="width:400px;">
                 <h3 class=" p-3">Riepilogo ordine:</h3>
-                <div class="d-flex justify-content-between align-items-center p-3 bg">
-                    <div>Crispy McBacon</div>
-                    <div>1x</div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center p-3 bg">
-                    <div>Big Mac</div>
-                    <div>3x</div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center pt-5 px-3">
-                    <strong>Totale: </strong>
-                    <strong class="text-danger">20.00$</strong>
+                <div class="d-flex justify-content-between align-items-center p-3 bg" v-for="product in this.cart">
+                    <div>{{ product.name }}</div>
+                    <div>{{ product.quantity }}x</div>
+                    <div>{{ product.price*product.quantity }}€</div>
                 </div>
             </div>
             <form id="payment-form" action="/route/on/your/server" method="post">
