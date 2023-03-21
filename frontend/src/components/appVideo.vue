@@ -45,7 +45,20 @@ export default {
             font-size: 5px;
         }
     }
+}
 
+@media screen and (max-width:700px) {
+    #link_anchor {
+        width: 50%;
+        left: 25%;
+    }
+}
 
+@media screen and (max-width:500px) {
+    #link_anchor {
+        width: 65%;
+        height: 35%;
+        left: 20%;
+    }
 }
 </style>
