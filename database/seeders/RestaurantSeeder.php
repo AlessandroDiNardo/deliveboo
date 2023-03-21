@@ -281,18 +281,18 @@ class RestaurantSeeder extends Seeder
             $r->categories()->attach(13);
         });
 
-         // pesce 2
-         Restaurant::factory()-> count(1) -> make() -> each(function($r) {
-            $r->user_id = 18;
-            $r->name = "Ristorante Ensama Pesce";
-            $r->place = "Via Dondarini, 4/C, 40010 Sala Bolognese, BO";
-            $r->description = "Proponiamo pesce fresco ogni giorno. Dal 1926!";
-            $r->img = 'https://media-cdn.tripadvisor.com/media/photo-o/04/2e/92/39/ristorante-all-anguilla.jpg';
-            $r->opening_time = '09:00:00';
-            $r->closing_time = '24:00:00';
-            $r->shipping_cost='2.00';
-            $r->save();
-            $r->categories()->attach(13);
-        });
+        //  // pesce 2
+        //  Restaurant::factory()-> count(1) -> make() -> each(function($r) {
+        //     $r->user_id = 18;
+        //     $r->name = "Ristorante Ensama Pesce";
+        //     $r->place = "Via Dondarini, 4/C, 40010 Sala Bolognese, BO";
+        //     $r->description = "Proponiamo pesce fresco ogni giorno. Dal 1926!";
+        //     $r->img = 'https://media-cdn.tripadvisor.com/media/photo-o/04/2e/92/39/ristorante-all-anguilla.jpg';
+        //     $r->opening_time = '09:00:00';
+        //     $r->closing_time = '24:00:00';
+        //     $r->shipping_cost='2.00';
+        //     $r->save();
+        //     $r->categories()->attach(13);
+        // });
     }
 }

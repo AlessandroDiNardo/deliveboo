@@ -529,24 +529,24 @@ class ProductSeeder extends Seeder
         });
 
 
-        // ristorante 18 pesce 1
-        Product::factory()-> count(1) -> make() -> each(function($p){
-            $p->restaurant_id = 18;
-            $p -> name = 'Spaghetti con ragù di crostacei, bottarga e limone';
-            $p -> price = 6.50;
-            $p -> ingredients = 'ragù di crostacei, bottarga, limone';
-            $p -> img = 'https://www.soniaperonaci.it/wp-content/uploads/2021/09/Spaghetti-con-ragu-di-crostacei-bottarga-e-limone-960x1440.jpg';
-            $p -> save();
-        });
+        // // ristorante 18 pesce 1
+        // Product::factory()-> count(1) -> make() -> each(function($p){
+        //     $p->restaurant_id = 18;
+        //     $p -> name = 'Spaghetti con ragù di crostacei, bottarga e limone';
+        //     $p -> price = 6.50;
+        //     $p -> ingredients = 'ragù di crostacei, bottarga, limone';
+        //     $p -> img = 'https://www.soniaperonaci.it/wp-content/uploads/2021/09/Spaghetti-con-ragu-di-crostacei-bottarga-e-limone-960x1440.jpg';
+        //     $p -> save();
+        // });
 
-        // ristorante 18 pesce 1
-        Product::factory()-> count(1) -> make() -> each(function($p){
-            $p->restaurant_id = 18;
-            $p -> name = 'Involtini di pesce spada con pesto di pistacchi';
-            $p -> price = 7.00;
-            $p -> ingredients = "pesce spada, pesto di pistacchi, pomodorini secchi sotto'olio";
-            $p -> img = 'https://www.soniaperonaci.it/wp-content/uploads/2019/07/Involtini-pesce-spada.jpg';
-            $p -> save();
-        });
+        // // ristorante 18 pesce 1
+        // Product::factory()-> count(1) -> make() -> each(function($p){
+        //     $p->restaurant_id = 18;
+        //     $p -> name = 'Involtini di pesce spada con pesto di pistacchi';
+        //     $p -> price = 7.00;
+        //     $p -> ingredients = "pesce spada, pesto di pistacchi, pomodorini secchi sotto'olio";
+        //     $p -> img = 'https://www.soniaperonaci.it/wp-content/uploads/2019/07/Involtini-pesce-spada.jpg';
+        //     $p -> save();
+        // });
     }
 }

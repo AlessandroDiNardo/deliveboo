@@ -114,7 +114,7 @@
             </div>
         </div>
        
-        <input  class="submit_form" type="submit"  value="CREATE NEW RESTAURANT" class="text-center">
+        <input  class="submit_form" type="submit"  value="CREA IL TUO RISTORANTE" class="text-center">
     </form>
 </section>
 @endsection

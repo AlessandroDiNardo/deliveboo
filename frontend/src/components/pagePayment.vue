@@ -185,13 +185,17 @@ export default {
                         <div>{{ store.formatPrice(item.price * item.quantity) }}</div>
                     </div>
                 </div>
+                <div class=" d-flex justify-content-between align-items-center px-3 mt-3">
+                    <div>Spedizione:</div>
+                    <div class="text-primary">{{ store.shippingCost }}€</div>
+                </div>
                 <div class="d-flex justify-content-between align-items-center p-3">
                     <div>Totale:</div>
                     <div class=" text-danger">
                         {{ store.formatPrice(store.total()) }}
                     </div>
                 </div>
-                <div class="my-3 px-3" v-if="store.cartItems.length > 0">
+                <div class="mb-2 px-3" v-if="store.cartItems.length > 0">
                     <RouterLink :to="{ name: 'restaurant', params: { id: store.cartItems[0].restaurant_id } }">
                         <div class="btn btn-success">Modifica Carrello</div>
                     </RouterLink>
@@ -234,9 +238,8 @@ export default {
                                 <label class="form-control-label">
                                     Numero telefonico<span class="text-danger">*</span>
                                 </label>
-                                <input type="tel" id="phone" name="phone"
-                                    pattern="^[+]?[0-9]{9,12}$"
-                                    required v-model="this.transaction.orderInfo.buyer_phone_number">
+                                <input type="tel" id="phone" name="phone" pattern="^[+]?[0-9]{9,12}$" required
+                                    v-model="this.transaction.orderInfo.buyer_phone_number">
                             </div>
 
                         </div>
@@ -313,7 +316,6 @@ export default {
             </RouterLink>
         </section>
     </section>
-
 </template>
 
 
