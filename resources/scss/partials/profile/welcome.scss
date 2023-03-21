@@ -27,6 +27,11 @@
     margin: 0 auto;
     height: 100%;
     padding: 20px;
+
+    h1 {
+        color: $main-color;
+        font-weight: 900;
+    }
 }
 
 .welcome_cont {

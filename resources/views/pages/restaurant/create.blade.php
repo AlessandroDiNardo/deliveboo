@@ -5,7 +5,7 @@
         @csrf
         <div class="d-flex justify-content-center align-items-center gap-3 mb-3">
                 <img class="Logo_filter" src="https://cdn.iconscout.com/icon/free/png-256/deliveroo-3442893-2875354.png" alt="logo" width="50" height="50"> 
-                <h1 class="">Aggiungi il tuo locale</h1>
+                <h1 class="text-light fw-bold">Aggiungi il tuo locale</h1>
         </div>
         <div class="d-flex justify-content-center align-items-start gap-5 ms_form">
             <div class="form-group col-md-7 col-lg-5 col-xl-6">

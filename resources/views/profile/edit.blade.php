@@ -38,45 +38,10 @@
                     {{ $restaurant -> description }}
                 </p>
                 
-                <a href="{{ route('restaurant.edit', $restaurant) }}" class="btn btn-warning w-25">
-                    Modifica Ristorante
-                </a>
-
-                <button type="button" class="btn btn-danger w-25" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Elimina Ristorante
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-
-                        <div class="modal-content">
-                            <div class="modal-header">
-
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Cancellazione ristorante!</h1>
-
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
-                            </div>
-
-                            <div class="modal-body">
-                                Questa azione cancellerà per sempre il tuo ristorante e i suoi dati, compresi tutti i prodotti e lo storico ordini.
-                            </div>
-
-                            <div class="modal-footer">
-
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                                <a href="{{ route('restaurant.delete', $restaurant) }}" class="text-reset text-decoration-none">
-                                    <button type="button" class="btn btn-danger">
-                                        Elimina
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                <div class="d-flex justify-content-start align-items-center gap-2">
+                    <a href="{{ route('restaurant.edit', $restaurant) }}" class="btn btn-warning w-25">
+                        Modifica Ristorante
+                    </a>
 
                     <a href="{{ route('product.showAll') }}" class="btn btn-success w-25">
                         Vai ai Prodotti
@@ -85,6 +50,42 @@
                     <a href="{{ route('order.show') }}" class="btn btn-primary w-25">
                         Visualizza gli Ordini
                     </a>
+                    
+                    <button type="button" class="btn btn-danger w-25" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Elimina Ristorante
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cancellazione ristorante!</h1>
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                                </div>
+
+                                <div class="modal-body">
+                                    Questa azione cancellerà per sempre il tuo ristorante e i suoi dati, compresi tutti i prodotti e lo storico ordini.
+                                </div>
+
+                                <div class="modal-footer">
+
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                    <a href="{{ route('restaurant.delete', $restaurant) }}" class="text-reset text-decoration-none">
+                                        <button type="button" class="btn btn-danger">
+                                            Elimina
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>

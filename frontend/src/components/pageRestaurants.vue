@@ -51,8 +51,8 @@ export default {
     <section class="main" id="resturant">
         <!-- main content -->
         <section class="ms_container d-flex justify-content-between align-items-center p-4 gap-5">
-            <div class="d-flex row justify-content-end align-items-end" style="width: 200px; height: 620px;">
-                <div class="pt-5 px-3 bg-light border_cont" style="height:260px;">
+            <div class="category_block">
+                <div class="pt-5 px-3 bg-light border_cont" style="height:200px;">
                     <h3>Cerca il tuo ristorante, cibo o piatto preferito!</h3>
                     <div class="d-flex justify-content-start align-items-start gap-3 mt-3">
                         <button type="button" class="btn btn-warning" @click="resetCheckboxes()">Reset</button>
@@ -71,11 +71,6 @@ export default {
                 </div>
             </div>
             <div id="carte" class="restaurant-overflow gap-2">
-                <button class="navbar-toggler bg-text-success text-white" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon text-success"></span>
-                </button>
                 <div class="ms_container d-flex flex-wrap justify-content-start align-content-center gap-3">
                     <div class="card ms_card" v-for="restaurant in this.filteredRestaurants">
                         <div class="img_cont">
@@ -202,5 +197,26 @@ ul {
 .btn-color {
     background-color: $main-color;
     border: none;
+}
+
+.category_block {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+    width: 400px;
+    height: 620px;
+}
+
+@media screen and (max-width: 850px) {
+
+    .category_block {
+        width: 300px;
+        height: 620px;
+    }
+
+    .category_cont {
+        width: 300px;
+    }
 }
 </style>
