@@ -80,7 +80,9 @@ export default {
         removeFromCart(index) {
             store.cartItems.splice(index, 1)
 
-            this.resetShippingCost();
+            if(store.cartItems.length == 0) {
+                this.resetShippingCost();
+            }
 
             // aggiorna il carrello nel local storage
             localStorage.setItem('cartItems', JSON.stringify(store.cartItems));
@@ -95,11 +97,14 @@ export default {
                 // rimuovi l'oggetto dall'array
                 store.cartItems.splice(index, 1)
 
-                this.resetShippingCost();
+                if(store.cartItems.length == 0) {
+                    this.resetShippingCost();
+                }
 
-                // aggiorna il carrello nel local storage
-                localStorage.setItem('cartItems', JSON.stringify(store.cartItems));
             }
+            // aggiorna il carrello nel local storage
+            localStorage.setItem('cartItems', JSON.stringify(store.cartItems));
+            
         },
 
         emptyCart() {

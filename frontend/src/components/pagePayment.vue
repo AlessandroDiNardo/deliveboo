@@ -270,7 +270,7 @@ export default {
             <section class="ms_container height-100 text-center" v-else>
                 <h1 class="animate__animated animate__bounceIn">
                     Ci Dispiace ma la sua transazione non è valida.
-
+                    Ricarica la pagina per riprovare.
                 </h1>
             </section>
         </section>
