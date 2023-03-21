@@ -26,7 +26,8 @@ export default {
 
                     if (success) {
                         this.restaurant = result;
-                        this.products = result.products;
+                        this.products = result.products.filter(product => product.visible === 1);
+                        console.log(this.products);
                         this.shippingCost = result.shipping_cost;
                     }
                 })
