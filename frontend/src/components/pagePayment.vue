@@ -33,6 +33,8 @@ export default {
             transactionSubmitted: false,
             transactionLoading: false,
             transactionSuccess: false,
+
+            transactionResult: null,
         }
     },
 
@@ -77,6 +79,7 @@ export default {
                     console.log(success);
 
                     if (success) {
+                        this.transactionResult = result.order
                         this.transactionLoading = false;
 
                         if (result.transaction.success) {
@@ -276,7 +279,7 @@ export default {
             <section class="padding " v-if="transactionSuccess">
                 <h1 class="animate__animated animate__bounceIn fw-bold">
                     Congratulazioni, <br>
-                    il tuo ordine è in arrivo. <br>
+                    il tuo ordine #{{ transactionResult.code }} è in arrivo. <br>
                     Controlla la tua mail per ulteriori dettagli!
                 </h1>
             </section>
