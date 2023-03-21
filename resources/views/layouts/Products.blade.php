@@ -64,7 +64,6 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item text-success" href="{{ url('profile') }}">{{__('Profile')}}</a>
-                                    <a class="dropdown-item green" href="{{ url('order') }}">{{__('Order')}}</a>
                                     <a class="dropdown-item green" href="http://localhost:5174/" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}

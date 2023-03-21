@@ -2,31 +2,35 @@
 
 @section('content')
 
+
 <div class="container-xl container-ls container-md container-sm ms_order_container">
+    <a class="btn btn-warning w-1 text-start mt-5" href="{{ url('profile') }}">
+        {{__('Torna al Profilo')}}
+    </a>
     <h2 class="text-center py-5 fw-bold">ORDINI RICEVUTI</h2>
     <div class="table-responsive-xl table-responsive-lg table-responsive-md table-responsive-sm">
         <table class=" table table-success table-striped table-bordered mb-5">
             <thead class="table-dark">
             <tr>
                 <th scope="col" class="text-center">Codice</th>
-                <th scope="col" class="text-center col-xl-2 col-lg-1 col-md-1 col-sm-1">Data Spedizione</th>
-                <th scope="col" class="text-center col-xl-2 col-lg-1 col-md-1 col-sm-1">Prezzo</th>
-                <th scope="col" class="text-center col-xl-3 col-lg-1 col-md-2 col-sm-1">Elenco Prodotti</th>
+                <th scope="col" class="text-center col-xl-1 col-lg-1 col-md-1 col-sm-1">Data Spedizione</th>
+                <th scope="col" class="text-center col-xl-1 col-lg-1 col-md-1 col-sm-1">Prezzo</th>
+                <th scope="col" class="text-center col-xl-2 col-lg-1 col-md-2 col-sm-1">Elenco Prodotti</th>
                 <th scope="col" class="text-center col-xl-1 col-lg-1 col-md-1 col-sm-1">Telefono Rider</th>
                 <th scope="col" class="text-center col-xl-1 col-lg-1 col-md-1 col-sm-1">Nome Acquirente</th>
                 <th scope="col" class="text-center col-xl-1 col-lg-1 col-md-1 col-sm-1">Cognome Acquirente</th>
-                <th scope="col" class="text-center col-xl-3 col-lg-1 col-md-1 col-sm-1">E-Mail Acquirente</th>
-                <th scope="col" class="text-center col-xl-3 col-lg-1 col-md-1 col-sm-1">Telefono Acquirente</th>
-                <th scope="col" class="text-center col-xl-3 col-lg-1 col-md-1 col-sm-1">Indirizzo</th>
+                <th scope="col" class="text-center col-xl-1 col-lg-1 col-md-1 col-sm-1">E-Mail Acquirente</th>
+                <th scope="col" class="text-center col-xl-2 col-lg-1 col-md-1 col-sm-1">Telefono Acquirente</th>
+                <th scope="col" class="text-center col-xl-2 col-lg-1 col-md-1 col-sm-1">Indirizzo</th>
             </tr>
             </thead>
-            <tbody class="table-success">
+            <tbody class="table-success ">
                 @foreach($orders as $order)
                 <tr>
-                    <td>{{ $order->code }}</td>
-                    <td>{{ $order->order_date }}</td>
-                    <td>{{ $order->price }} €</td>
-                    <td>
+                    <td class="align-middle text-center">{{ $order->code }}</td>
+                    <td class="align-middle text-center">{{ $order->order_date }}</td>
+                    <td class="align-middle text-center">{{ $order->price }} €</td>
+                    <td class="align-middle">
                         <ul>
                             @php
                                 $currentProduct = null;
@@ -50,12 +54,12 @@
                         </ul>
                     </td>
                     
-                    <td>{{ $order->rider_phone_number }}</td>
-                    <td>{{ $order->buyer_first_name }}</td>
-                    <td>{{ $order->buyer_last_name }}</td>
-                    <td>{{ $order->buyer_email }}</td>
-                    <td>{{ $order->buyer_phone_number }}</td>
-                    <td>{{ $order->address }}</td>
+                    <td class="align-middle text-center">{{ $order->rider_phone_number }}</td>
+                    <td class="align-middle text-center">{{ $order->buyer_first_name }}</td>
+                    <td class="align-middle text-center">{{ $order->buyer_last_name }}</td>
+                    <td class="align-middle text-center">{{ $order->buyer_email }}</td>
+                    <td class="align-middle text-center">{{ $order->buyer_phone_number }}</td>
+                    <td class="align-middle">{{ $order->address }}</td>
                     
                 </tr>
                 @endforeach

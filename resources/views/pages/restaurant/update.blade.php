@@ -9,10 +9,12 @@
     <section class="d-flex justify-content-center py-5 my_bg">
         <form class="form form-group" method="POST" action="{{ route('restaurant.update', $restaurant) }}" enctype="multipart/form-data">
        @csrf 
-
-            <div class="d-flex justify-content-center align-items-center">
+            <a class="btn btn-warning w-1 text-start" href="{{ url('profile') }}">
+                {{__('Torna al Profilo')}}
+            </a>
+            <div class="d-flex justify-content-center align-items-center my-5">
                 <img class="Logo_filter" src="https://cdn.iconscout.com/icon/free/png-256/deliveroo-3442893-2875354.png" alt="logo" width="50" height="50"> 
-                <h1>Modifica il tuo locale</h1>
+                <h1 id="h1_update">Modifica il tuo locale</h1>
             </div>
               <div class="d-flex justify-content-center align-items-start gap-5 ms_form">
                 <div class="form-group ">

@@ -43,15 +43,14 @@
                         Modifica Ristorante
                     </a>
 
-                    <a href="{{ route('restaurant.delete', $restaurant) }}" class="btn btn-success w-25">
+                    <a href="{{ route('product.showAll') }}" class="btn btn-success w-25">
                         Vai ai Prodotti
                     </a>
 
-                    <a href="{{ route('product.showAll') }}" class="btn btn-primary w-25">
+                    <a href="{{ route('order.show') }}" class="btn btn-primary w-25">
                         Visualizza gli Ordini
                     </a>
-
-                    <a href="{{ route('order.show') }}" class="btn btn-danger w-25">
+                    <a href="{{ route('restaurant.delete', $restaurant) }}" class="btn btn-danger w-25">
                         Elimina Ristorante 
                     </a>
                 </div>
