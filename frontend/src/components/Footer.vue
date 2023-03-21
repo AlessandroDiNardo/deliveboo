@@ -29,7 +29,7 @@ export default {
                 links: [
                     ' Termini & Condizioni',
                     ' Informativa sulla privacy',
-                    'Cookies'
+                    " Contatta l'Assistenza "
                 ]
             },
             ]
@@ -41,7 +41,7 @@ export default {
 <template>
     <footer class="p-5">
         <div class="list_container w-75 m-auto d-flex gap-5">
-            <ul v-for="(element, index) in items" class="rounded-2">
+            <ul v-for="(element, index) in items" class="rounded-2 ul_cont">
                 <li>
                     <h6 class="text-start">{{ element.title }}</h6>
                 </li>
@@ -51,14 +51,11 @@ export default {
                     </a>
                 </li>
             </ul>
-            <ul class="rounded-2 ">
-                <li>
-                    <h6 class="text-start">Porta deliveboo con te</h6>
-                </li>
-                <li class="pb-2 text-start">
-                </li>
-            </ul>
         </div>
+        <h4 class="text-center mt-3">
+            Deliveboo <span><font-awesome-icon icon="fa-solid fa-copyright" /></span> 2023
+        </h4>
+        <hr>
     </footer>
 </template>
 
@@ -80,7 +77,7 @@ footer {
         display: flex;
         flex-direction: column;
         gap: 5px;
-        height: 400px;
+        height: 450px;
         padding: 30px;
     }
 
@@ -101,5 +98,31 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media screen and (max-width: 750px) {
+    .list_container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .ul_cont {
+        height: 200px;
+        overflow-y: scroll;
+    }
+
+    .ul_cont::-webkit-scrollbar {
+        display: none;
+    }
+
+    .ul_cont {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
 }
 </style>
