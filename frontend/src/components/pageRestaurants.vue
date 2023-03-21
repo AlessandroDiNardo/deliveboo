@@ -72,7 +72,7 @@ export default {
             </div>
             <div id="carte" class="restaurant-overflow gap-2">
                 <div class="ms_container d-flex flex-wrap justify-content-start align-content-center gap-3">
-                    <div class="card ms_card"  v-for="restaurant in this.filteredRestaurants">
+                    <div class="card ms_card" v-for="restaurant in this.filteredRestaurants">
                         <div class="img_cont">
                             <img :src="restaurant.img" class="card-img-top" alt="">
                         </div>
@@ -94,6 +94,11 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/scss/general.scss' as *;
 @use '../assets/scss/partials/variables.scss' as *;
+
+.ms_container {
+    max-width: 1550px;
+    margin: 0 auto;
+}
 
 .main {
     background-color: $bg-main;
@@ -144,7 +149,7 @@ export default {
 .ms_card {
     width: 340px;
     height: 400px;
-   
+
 
     .img_cont {
         height: 200px;
@@ -193,5 +198,4 @@ ul {
     background-color: $main-color;
     border: none;
 }
-
 </style>
