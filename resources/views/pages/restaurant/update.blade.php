@@ -107,10 +107,7 @@
 
                     <label for="img">Immagine ristorante</label>
                     <div>
-                        <input  required class="input_img" type="file" name="img">
-                        <span role="alert" class="input_imgError" aria-hidden="true">
-                            Aggiungi un immagine
-                         </span>
+                        <input class="input_img" type="file" name="img">
                     </div>
                     <br>
                     

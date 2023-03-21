@@ -32,10 +32,7 @@
         <br>
     
         <label for="img">Immagine</label>
-        <input required class="imgProduct" type="file" name="img">
-        <span role="alert" class="imgError" aria-hidden="true">
-            Aggiungi un Immagine
-         </span>
+        <input  class="imgProduct" type="file" name="img">
         <br>
     
         <label for="visible">Disponibilità</label>
