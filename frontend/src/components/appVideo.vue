@@ -10,7 +10,7 @@ export default {
         <a id="link_anchor" href="#resturant">
             <h2>
                 Inizia ad ordinare! <br>
-                Visualizza i nostri locali <span class="fs-2">&downarrow;</span>
+                Visualizza i nostri locali
             </h2>
         </a>
     </div>
