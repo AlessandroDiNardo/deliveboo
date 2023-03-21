@@ -1,20 +1,16 @@
 @extends('layouts.app')
 @section('content')
 
-<section>
-
-    <h1 class="text-center py-5">
-        Accedi o Registrati per usufrutire del nostro servizio!
-    </h1>
-        
-        <div class="d-flex justify-content-center align-items-center gap-5">
-            <button class="btn btn-success">
-                <a class="text-white text-decoration-none py-5 px-5" href="{{ route('login') }}">{{ __('Accedi') }}</a>
-            <button>
-
-            <button class="btn btn-success">
-                <a class="text-white text-decoration-none py-3 px-5" href="{{ route('register') }}">{{ __('Registrati') }}</a>
-            <button>
+<section class="ms_cont">
+    <div class=" welcome_cont">
+        <div class="bg_cont">
+            <img src="https://img.freepik.com/free-vector/man-delivering-food-while-wearing-medical-mask_52683-39764.jpg?w=1380&t=st=1679410705~exp=1679411305~hmac=66e1c74fa0a1c55bb4a1d115c3e2da5c1ab05ca6e056970268ecc4ed688cf724" alt="" class="img">
         </div>
+        <div class="title_cont">
+            <h1 class="text-start">
+                Deliveboo la miglior web app per ordinare cibo comodamente da casa tua, registarti e scopri tutti i nostri servizi!
+            </h1>
+        </div>
+    </div>
 </section>
 @endsection
