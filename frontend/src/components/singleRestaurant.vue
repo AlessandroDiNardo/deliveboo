@@ -12,7 +12,7 @@ export default {
             restaurant: [],
             products: [],
             cartItems: [],
-            shippingCost:"",
+            shippingCost: "",
         }
     },
     methods: {
@@ -41,7 +41,7 @@ export default {
                 if (product.restaurant_id != store.cartItems[store.cartItems.length - 1].restaurant_id) {
                     return false
                 }
-            } 
+            }
 
             store.shippingCost = this.shippingCost
 
@@ -81,7 +81,7 @@ export default {
         removeFromCart(index) {
             store.cartItems.splice(index, 1)
 
-            if(store.cartItems.length == 0) {
+            if (store.cartItems.length == 0) {
                 store.resetShippingCost();
             }
 
@@ -98,14 +98,14 @@ export default {
                 // rimuovi l'oggetto dall'array
                 store.cartItems.splice(index, 1)
 
-                if(store.cartItems.length == 0) {
+                if (store.cartItems.length == 0) {
                     store.resetShippingCost();
                 }
 
             }
             // aggiorna il carrello nel local storage
             localStorage.setItem('cartItems', JSON.stringify(store.cartItems));
-            
+
         },
     },
 
