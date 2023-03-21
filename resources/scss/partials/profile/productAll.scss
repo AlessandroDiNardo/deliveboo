@@ -1,0 +1,24 @@
+@import "/resources/scss/general/general.scss";
+
+.product_cont {
+    height: 500px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #06c167 #ffffff;
+}
+
+.product_cont::-webkit-scrollbar {
+    display: block;
+}
+
+.product_cont {
+    -ms-overflow-style: block;
+    /* IE and Edge */
+    scrollbar-width: block;
+    /* Firefox */
+}
+
+.ms_product_cont {
+    max-width: 1350px;
+    margin: 0 auto;
+}
