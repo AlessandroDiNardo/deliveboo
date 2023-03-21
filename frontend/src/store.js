@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const store = reactive({
     // variables
-    cartItems: null, 
+    cartItems: [], 
     shippingCost: null,
 
 
