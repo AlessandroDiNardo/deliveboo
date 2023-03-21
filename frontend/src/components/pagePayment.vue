@@ -208,7 +208,7 @@ export default {
                         <div class="row justify-content-between text-left">
 
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">
+                                <label class="form-control-label">
                                     Nome<span class="text-danger">*</span>
                                 </label>
 
