@@ -13,7 +13,7 @@
             <thead class="table-dark">
             <tr>
                 <th scope="col" class="text-center">Codice</th>
-                <th scope="col" class="text-center col-xl-1 col-lg-1 col-md-1 col-sm-1">Data Spedizione</th>
+                <th scope="col" class="text-center col-xl-1 col-lg-1 col-md-1 col-sm-1">Data Ordine</th>
                 <th scope="col" class="text-center col-xl-1 col-lg-1 col-md-1 col-sm-1">Prezzo</th>
                 <th scope="col" class="text-center col-xl-2 col-lg-1 col-md-2 col-sm-1">Elenco Prodotti</th>
                 <th scope="col" class="text-center col-xl-1 col-lg-1 col-md-1 col-sm-1">Telefono Rider</th>
