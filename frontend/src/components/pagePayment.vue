@@ -170,8 +170,8 @@ export default {
                 <div class="drop_cont">
                     <div class="d-flex justify-content-between align-items-center p-3 bg" v-for="item in store.cartItems">
                         <div>
-                            {{ item.quantity }}x {{ item.name }}</div>
-                        <div>{{ item.price * item.quantity }}€</div>
+                            {{ item.quantity }}x - {{ item.name }}</div>
+                        <div>{{ store.formatPrice(item.price * item.quantity) }}</div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center p-3">
