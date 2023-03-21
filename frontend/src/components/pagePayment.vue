@@ -191,6 +191,11 @@ export default {
                         {{ store.formatPrice(store.total()) }}
                     </div>
                 </div>
+                <div class="my-3 px-3" v-if="store.cartItems.length > 0">
+                    <RouterLink :to="{ name: 'restaurant', params: { id: store.cartItems[0].restaurant_id } }">
+                        <div class="btn btn-success">Modifica Carrello</div>
+                    </RouterLink>
+                </div>
             </div>
             <form @submit="validateForm" id="payment-form" action="/route/on/your/server" method="post">
                 <div class="d-flex justify-content-evenly align-items-center gap-5 border border-dark mt-4 rounded-5"
@@ -229,8 +234,9 @@ export default {
                                 <label class="form-control-label">
                                     Numero telefonico<span class="text-danger">*</span>
                                 </label>
-                                <input required type="text" placeholder=""
-                                    v-model="this.transaction.orderInfo.buyer_phone_number">
+                                <input type="tel" id="phone" name="phone"
+                                    pattern="^[+]?[0-9]{9,12}$"
+                                    required v-model="this.transaction.orderInfo.buyer_phone_number">
                             </div>
 
                         </div>
