@@ -26,18 +26,31 @@ export default {
                 }
             },
 
+            street:"",
+            city: "",
+            cap:"",
+
             transactionSubmitted: false,
             transactionLoading: false,
             transactionSuccess: false,
         }
     },
 
+    computed: {
+
+    },
+
     methods: {
+        setAddress() {
+            this.transaction.orderInfo.address = `${this.street}, ${this.cap}, ${this.city}`
+        },
+
         scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
 
         },
+
         validateForm() {
             if (!this.transaction.orderInfo.buyer_first_name || !this.transaction.orderInfo.buyer_last_name ||
                 !this.transaction.orderInfo.buyer_email || !this.transaction.orderInfo.buyer_phone_number ||
@@ -126,7 +139,7 @@ export default {
 
                             this.transaction.paymentInfo.payment_method_nonce = payload.nonce;
 
-
+                            this.setAddress();
                             // DEBUG
                             console.log(this.transaction);
 
@@ -171,7 +184,7 @@ export default {
 
                             <div class="form-group col-sm-6 flex-column d-flex">
                                 <label class="form-control-label px-3">
-                                    Nome<span class="text-danger"> *</span>
+                                    Nome<span class="text-danger">*</span>
                                 </label>
 
                                 <input required type="text" placeholder=""
@@ -210,19 +223,19 @@ export default {
 
                             <div class="form-group col-sm-6 flex-column d-flex">
                                 <label class="form-control-label">
-                                    indirizzo<span class="text-danger"> *</span>
+                                    Via / Piazza<span class="text-danger"> *</span>
                                 </label>
 
-                                <input required type="text" placeholder="" v-model="this.transaction.orderInfo.address">
+                                <input required type="text" placeholder="" v-model="this.street">
                             </div>
 
 
                             <div class="form-group col-sm-6 flex-column d-flex">
                                 <label class="form-control-label">
-                                    CIttà<span class="text-danger">*</span>
+                                    Città<span class="text-danger">*</span>
                                 </label>
                                 <input required type="text" placeholder=""
-                                    v-model="this.transaction.orderInfo.buyer_phone_number">
+                                    v-model="this.city">
                             </div>
 
                         </div>
@@ -234,7 +247,7 @@ export default {
                                     CAP<span class="text-danger"> *</span>
                                 </label>
 
-                                <input required type="text" placeholder="" v-model="this.transaction.orderInfo.address">
+                                <input required type="text" placeholder="" v-model="this.cap">
                             </div>
                         </div>
 
