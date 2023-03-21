@@ -26,9 +26,9 @@ export default {
                 }
             },
 
-            street:"",
+            street: "",
             city: "",
-            cap:"",
+            cap: "",
 
             transactionSubmitted: false,
             transactionLoading: false,
@@ -234,8 +234,7 @@ export default {
                                 <label class="form-control-label">
                                     Città<span class="text-danger">*</span>
                                 </label>
-                                <input required type="text" placeholder=""
-                                    v-model="this.city">
+                                <input required type="text" placeholder="" v-model="this.city">
                             </div>
 
                         </div>
@@ -265,27 +264,31 @@ export default {
         </div>
     </section>
 
-    <section class="ms_container vcontainer-fluid" v-else>
-        <section class="ms_container text-center h-100 " v-if="transactionLoading">
+    <section class="container" v-else style="height: 300px;">
+        <section class="text-center " v-if="transactionLoading">
             <img class="loading_img animate__animated animate__bounce animate__infinite" src="../assets/Logo-Deliveboo.png"
                 alt="">
         </section>
 
-        <section class="ms_container h-100 text-center" v-if="!transactionLoading">
-            <section class="ms_container" v-if="transactionSuccess">
+        <section class=" text-center" v-if="!transactionLoading">
+            <section class="mt-5" v-if="transactionSuccess">
                 <h1 class="animate__animated animate__bounceIn">
 
                     Congratulazioni <br>
-                    Il tuo ordine n.Sto cazzone è in arrivo
+                    Il tuo ordine è in arrivo
+
                 </h1>
             </section>
 
-            <section class="ms_container height-100 text-center" v-else>
+            <section class=" text-center" v-else>
                 <h1 class="animate__animated animate__bounceIn">
                     Ci Dispiace ma la sua transazione non è valida.
                     Ricarica la pagina per riprovare.
                 </h1>
             </section>
+            <RouterLink :to="{ name: 'home' }" class="btn btn-success p-2 mt-3">
+                <font-awesome-icon icon="fa-solid fa-person-walking-arrow-loop-left" /> Torna alla Home!
+            </RouterLink>
         </section>
     </section>
 </template>
@@ -457,4 +460,5 @@ button {
         max-width: 300px;
     }
 
-}</style>
+}
+</style>
