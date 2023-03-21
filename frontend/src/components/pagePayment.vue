@@ -8,6 +8,7 @@ export default {
     data() {
         return {
             store,
+            notValid:false,
             cart: null,
             clientToken: null,
             transaction: {
@@ -32,6 +33,24 @@ export default {
     },
 
     methods: {
+        scrollToTop(){
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          
+            
+        },
+        validateForm() {
+    if (!this.transaction.orderInfo.buyer_first_name || !this.transaction.orderInfo.buyer_last_name ||
+        !this.transaction.orderInfo.buyer_email || !this.transaction.orderInfo.buyer_phone_number ||
+        !this.transaction.orderInfo.address || !this.transaction.orderInfo.city ||
+        !this.transaction.orderInfo.postal_code) {
+      this.notValid = true;
+     
+    } else {
+      this.notValid = false;
+    }
+  },
+       
+
         transactionCall() {
             this.transactionSubmitted = true;
             this.transactionLoading = true;
@@ -128,67 +147,87 @@ export default {
     <section v-if="!transactionSubmitted">
         <div id="up" class="ms_container">
             <h1 class="text-center fw-bolder">Completa il tuo Ordine!</h1>
-            <div class="border border-dark py-3 rounded-5 bg-light" style="width:400px; margin:40px auto;">
+            <div class="border border-dark py-3 rounded-5 bg-light" style="max-width: 400px; margin: 40px auto;padding: 20px;">
                 <h3 class=" p-3">Riepilogo ordine:</h3>
                 <div class="d-flex justify-content-between align-items-center p-3 bg" v-for="item in store.cartItems">
-                    <div>{{ item.name }}</div>
-                    <div>{{ item.quantity }}x</div>
+                    <div class="pe-2">{{ item.name }}</div>
+                    <div class="mx-1">{{ item.quantity }}x</div>
                     <div>{{ item.price*item.quantity }}€</div>
                 </div>
             </div>
-            <form id="payment-form" action="/route/on/your/server" method="post">
-                <div class="d-flex justify-content-evenly align-items-center gap-5 border border-dark mt-5 py-5 rounded-5">
+            <form @submit="validateForm" id="payment-form"  action="/route/on/your/server" method="post">
+                <div class="d-flex justify-content-evenly align-items-center gap-5 border border-dark mt-5 py-5 rounded-5" id="form_container">
                     <div>
                         <div class="row justify-content-between text-left">
 
                             <div class="form-group col-sm-6 flex-column d-flex"> 
-                                <label class="form-control-label px-3">
+                                <label class="form-control-label">
                                     Nome<span class="text-danger"> *</span>
                                 </label> 
                                 
-                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_first_name"> 
+                                <input  required type="text" placeholder=""  v-model="this.transaction.orderInfo.buyer_first_name  " > 
+                                <div v-if="notValid">Il campo nome è obbligatorio.</div>
+
                             </div>
 
-                            <div class="form-group col-sm-6 flex-column d-flex"> 
-                                <label class="form-control-label px-3">
-                                    Cognome <span class="text-danger"> *</span>
-                                </label>
+                         <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label">
+                                    Cognome<span class="text-danger"> *</span>
+                                </label> 
                                 
-                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_last_name">
+                                <input required type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_last_name" > 
                             </div>
 
-                        </div>
-
-                        <div class="row justify-content-between text-left">
-
-                            <div class="form-group col-sm-6 flex-column d-flex"> 
-                                <label class="form-control-label px-3">
+                          <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label">
                                     Email<span class="text-danger"> *</span>
                                 </label> 
-                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_email"> 
+                                <input required  type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_email"> 
                             </div>
 
-                            <div class="form-group col-sm-6 flex-column d-flex"> 
-                                <label class="form-control-label px-3">
+                           <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label">
                                     Numero telefonico<span class="text-danger">*</span>
                                 </label> 
-                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_phone_number"> 
+                                <input required type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_phone_number"> 
                             </div>
-
+                            
                         </div>
 
                         <div class="row justify-content-between text-left">
 
-                            <div class="form-group col-sm-6 flex-column d-flex"> 
-                                <label class="form-control-label px-3">
+                         <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label">
                                     indirizzo<span class="text-danger"> *</span>
                                 </label>
                                 
-                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.address">
+                                <input required type="text" placeholder="" v-model="this.transaction.orderInfo.address">
+                            </div>
+                            
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label">
+                                   CIttà<span class="text-danger">*</span>
+                                </label> 
+                                <input required type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_phone_number"> 
+                            </div>
+
+                        </div>
+
+                        <div class="row justify-content-between text-left">
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label">
+                                   CAP<span class="text-danger"> *</span>
+                                </label>
+                                
+                                <input required type="text" placeholder="" v-model="this.transaction.orderInfo.address">
                             </div>
                         </div>
 
+                       
                     </div>
+                    
                     <div>
                         <!-- Putting the empty container you plan to pass to `braintree.dropin.create` inside a form will make layout and flow easier to manage -->
                         <div id="dropin-container"></div>
@@ -200,10 +239,10 @@ export default {
         </div>
     </section>
 
-    <section class="ms_container " v-else>
+    <section class="ms_container vcontainer-fluid" v-else>
         <section class="ms_container text-center h-100 " v-if="transactionLoading">
             <img class="loading_img animate__animated animate__bounce animate__infinite" src="../assets/Logo-Deliveboo.png" alt="">
-        </section>
+        </section> 
 
         <section class="ms_container h-100 text-center" v-if="!transactionLoading">
             <section class="ms_container" v-if="transactionSuccess">
@@ -211,14 +250,14 @@ export default {
 
                     Congratulazioni <br>
                     Il tuo ordine n.Sto cazzone è in arrivo
-                </h1>
+                </h1> 
             </section>
 
             <section class="ms_container height-100 text-center" v-else>
                 <h1 class="animate__animated animate__bounceIn">
                   Ci Dispiace ma la sua transazione non è valida.
 
-                </h1>
+                </h1> 
             </section>
         </section>
     </section>
@@ -234,7 +273,7 @@ section {
 }
 
 .ms_container {
-    padding-top: 220px;
+    padding-top: 150px;
     padding-bottom: 100px;
 }
 
@@ -291,7 +330,27 @@ button {
 .loading_img{
     max-width: 100px;
     filter: invert(57%) sepia(70%) saturate(1956%) hue-rotate(108deg) brightness(91%) contrast(95%);
-    padding-bottom: 100px;
+    
     
 }
+
+#form_container{
+    width: 90%;
+    margin: auto;
+      margin-top: auto;
+    padding: 15px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      
+  }
+
+ 
+//Responsive Form_Container
+
+@media (max-width: 768px) {
+  #form_container{
+    flex-direction: column;
+  }
+}
+
 </style>
