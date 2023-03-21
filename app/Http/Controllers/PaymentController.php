@@ -76,7 +76,7 @@ class PaymentController extends Controller
         $data['price'] = $orderPrice;
 
         // aggiunge data reale
-        $data['order_date'] = Carbon::now();
+        $data['order_date'] = Carbon::now()->addHour();
 
         // esegui la transazione con Braintree
         $transaction = $this->braintree->generateTransaction()->sale([

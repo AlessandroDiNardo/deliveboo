@@ -148,6 +148,8 @@ export default {
                             // DEBUG
                             console.log(this.transaction);
 
+                            this.scrollToTop();
+
                             this.transactionCall();
                         });
                     });
