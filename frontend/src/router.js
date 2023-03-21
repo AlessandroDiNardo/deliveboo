@@ -23,7 +23,10 @@ const router = createRouter({
             name: 'payment',
             component: Payment
         }
-    ]
+    ],
+    scrollBehavior() {
+        return {x: 0, y: 0}
+    }
 });
 
 export default router;

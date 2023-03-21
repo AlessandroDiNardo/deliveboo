@@ -8,6 +8,7 @@ export default {
     data() {
         return {
             store,
+            notValid: false,
             cart: null,
             clientToken: null,
             transaction: {
@@ -32,6 +33,24 @@ export default {
     },
 
     methods: {
+        scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+
+        },
+        validateForm() {
+            if (!this.transaction.orderInfo.buyer_first_name || !this.transaction.orderInfo.buyer_last_name ||
+                !this.transaction.orderInfo.buyer_email || !this.transaction.orderInfo.buyer_phone_number ||
+                !this.transaction.orderInfo.address || !this.transaction.orderInfo.city ||
+                !this.transaction.orderInfo.postal_code) {
+                this.notValid = true;
+
+            } else {
+                this.notValid = false;
+            }
+        },
+
+
         transactionCall() {
             this.transactionSubmitted = true;
             this.transactionLoading = true;
@@ -47,8 +66,8 @@ export default {
                     if (success) {
                         this.transactionLoading = false;
 
-                        if(result.transaction.success) {
-                            this.transactionSuccess= true;
+                        if (result.transaction.success) {
+                            this.transactionSuccess = true;
                         }
 
                         console.log(result.transaction.success, result.order);
@@ -107,7 +126,7 @@ export default {
 
                             this.transaction.paymentInfo.payment_method_nonce = payload.nonce;
 
-                            
+
                             // DEBUG
                             console.log(this.transaction);
 
@@ -126,7 +145,7 @@ export default {
 
 <template>
     <section v-if="!transactionSubmitted">
-        <div class="ms_container">
+        <div id="up" class="ms_container">
             <h1 class="text-center fw-bolder">Completa il tuo Ordine!</h1>
             <div class="border border-dark rounded-4 bg-light" style="width:350px;">
                 <h3 class=" p-3">Riepilogo ordine:</h3>
@@ -144,9 +163,9 @@ export default {
                     </div>
                 </div>
             </div>
-            <form id="payment-form" action="/route/on/your/server" method="post">
-                <div
-                    class="d-flex justify-content-evenly align-items-center gap-5 border border-dark mt-5 py-5 rounded-5 pay_cont">
+            <form @submit="validateForm" id="payment-form" action="/route/on/your/server" method="post">
+                <div class="d-flex justify-content-evenly align-items-center gap-5 border border-dark mt-5 py-5 rounded-5"
+                    id="form_container">
                     <div>
                         <div class="row justify-content-between text-left">
 
@@ -155,15 +174,34 @@ export default {
                                     Nome<span class="text-danger"> *</span>
                                 </label>
 
-                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_first_name">
+                                <input required type="text" placeholder=""
+                                    v-model="this.transaction.orderInfo.buyer_first_name">
+                                <div v-if="notValid">Il campo nome è obbligatorio.</div>
+
                             </div>
 
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">
-                                    Cognome <span class="text-danger"> *</span>
+                                <label class="form-control-label">
+                                    Cognome<span class="text-danger"> *</span>
                                 </label>
 
-                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_last_name">
+                                <input required type="text" placeholder=""
+                                    v-model="this.transaction.orderInfo.buyer_last_name">
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label">
+                                    Email<span class="text-danger"> *</span>
+                                </label>
+                                <input required type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_email">
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label">
+                                    Numero telefonico<span class="text-danger">*</span>
+                                </label>
+                                <input required type="text" placeholder=""
+                                    v-model="this.transaction.orderInfo.buyer_phone_number">
                             </div>
 
                         </div>
@@ -171,17 +209,20 @@ export default {
                         <div class="row justify-content-between text-left data_cont">
 
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">
-                                    Email<span class="text-danger"> *</span>
+                                <label class="form-control-label">
+                                    indirizzo<span class="text-danger"> *</span>
                                 </label>
-                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_email">
+
+                                <input required type="text" placeholder="" v-model="this.transaction.orderInfo.address">
                             </div>
 
+
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">
-                                    Numero telefonico<span class="text-danger">*</span>
+                                <label class="form-control-label">
+                                    CIttà<span class="text-danger">*</span>
                                 </label>
-                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_phone_number">
+                                <input required type="text" placeholder=""
+                                    v-model="this.transaction.orderInfo.buyer_phone_number">
                             </div>
 
                         </div>
@@ -189,15 +230,17 @@ export default {
                         <div class="row justify-content-between text-left">
 
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">
-                                    indirizzo<span class="text-danger"> *</span>
+                                <label class="form-control-label">
+                                    CAP<span class="text-danger"> *</span>
                                 </label>
 
-                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.address">
+                                <input required type="text" placeholder="" v-model="this.transaction.orderInfo.address">
                             </div>
                         </div>
 
+
                     </div>
+
                     <div>
                         <!-- Putting the empty container you plan to pass to `braintree.dropin.create` inside a form will make layout and flow easier to manage -->
                         <div id="dropin-container"></div>
@@ -209,25 +252,24 @@ export default {
         </div>
     </section>
 
-    <section class="ms_container" v-else>
-        <section class="ms_container" v-if="transactionLoading">
-            <h1>
-
-                Loading
-            </h1>
+    <section class="ms_container vcontainer-fluid" v-else>
+        <section class="ms_container text-center h-100 " v-if="transactionLoading">
+            <img class="loading_img animate__animated animate__bounce animate__infinite" src="../assets/Logo-Deliveboo.png"
+                alt="">
         </section>
 
-        <section class="ms_container" v-if="!transactionLoading">
+        <section class="ms_container h-100 text-center" v-if="!transactionLoading">
             <section class="ms_container" v-if="transactionSuccess">
-                <h1>
+                <h1 class="animate__animated animate__bounceIn">
 
-                    pagamento completato
+                    Congratulazioni <br>
+                    Il tuo ordine n.Sto cazzone è in arrivo
                 </h1>
             </section>
 
-            <section class="ms_container" v-else>
-                <h1>
-                    pagamento fallito
+            <section class="ms_container height-100 text-center" v-else>
+                <h1 class="animate__animated animate__bounceIn">
+                    Ci Dispiace ma la sua transazione non è valida.
 
                 </h1>
             </section>
@@ -245,8 +287,8 @@ section {
 }
 
 .ms_container {
-    padding-top: 130px;
-    padding-bottom: 50px;
+    padding-top: 150px;
+    padding-bottom: 100px;
 }
 
 h1 {
@@ -298,6 +340,33 @@ button {
 .btn-block:hover {
     color: #fff;
 }
+
+.loading_img {
+    max-width: 100px;
+    filter: invert(57%) sepia(70%) saturate(1956%) hue-rotate(108deg) brightness(91%) contrast(95%);
+
+
+}
+
+#form_container {
+    width: 90%;
+    margin: auto;
+    margin-top: auto;
+    padding: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+}
+
+
+//Responsive Form_Container
+
+@media (max-width: 768px) {
+    #form_container {
+        flex-direction: column;
+    }
+}
+
 
 .drop_cont {
     height: 150px;
@@ -375,5 +444,4 @@ button {
         max-width: 300px;
     }
 
-}
-</style>
+}</style>
