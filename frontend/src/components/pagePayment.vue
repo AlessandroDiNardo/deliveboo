@@ -159,7 +159,7 @@ export default {
 <template>
     <section v-if="!transactionSubmitted">
         <div id="up" class="ms_container">
-            <h1 class="text-center fw-bolder">Completa il tuo Ordine!</h1>
+            <h1 class="text-center fw-bolder mb-5">Completa il tuo Ordine!</h1>
             <div class="border border-dark rounded-4 bg-light" style="width:350px;">
                 <h3 class=" p-3">Riepilogo ordine:</h3>
                 <div class="drop_cont">
@@ -177,7 +177,7 @@ export default {
                 </div>
             </div>
             <form @submit="validateForm" id="payment-form" action="/route/on/your/server" method="post">
-                <div class="d-flex justify-content-evenly align-items-center gap-5 border border-dark mt-5 py-5 rounded-5"
+                <div class="d-flex justify-content-evenly align-items-center gap-5 border border-dark mt-4 rounded-5"
                     id="form_container">
                     <div>
                         <div class="row justify-content-between text-left">
@@ -303,6 +303,7 @@ section {
 }
 
 .ms_container {
+    margin: 0 auto;
     padding-top: 150px;
     padding-bottom: 100px;
 }
@@ -360,18 +361,15 @@ button {
 .loading_img {
     max-width: 100px;
     filter: invert(57%) sepia(70%) saturate(1956%) hue-rotate(108deg) brightness(91%) contrast(95%);
-
-
 }
 
 #form_container {
-    width: 90%;
+    width: 100%;
     margin: auto;
     margin-top: auto;
     padding: 15px;
     padding-top: 15px;
     padding-bottom: 15px;
-
 }
 
 
