@@ -36,5 +36,19 @@ export const store = reactive({
 
     formatPrice(price) {
         return parseFloat(price).toFixed(2) + '€';
+    },
+
+    emptyCart() {
+        store.cartItems = [];
+        store.resetShippingCost();
+
+        localStorage.setItem('cartItems', JSON.stringify(store.cartItems));
+
+    },
+
+    resetShippingCost() {
+        if (store.cartItems = [] || store.cartItems == null || store.cartItems == false) {
+            store.shippingCost = null;
+        }
     }
 })

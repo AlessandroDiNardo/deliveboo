@@ -81,7 +81,7 @@ export default {
             store.cartItems.splice(index, 1)
 
             if(store.cartItems.length == 0) {
-                this.resetShippingCost();
+                store.resetShippingCost();
             }
 
             // aggiorna il carrello nel local storage
@@ -98,7 +98,7 @@ export default {
                 store.cartItems.splice(index, 1)
 
                 if(store.cartItems.length == 0) {
-                    this.resetShippingCost();
+                    store.resetShippingCost();
                 }
 
             }
@@ -106,20 +106,6 @@ export default {
             localStorage.setItem('cartItems', JSON.stringify(store.cartItems));
             
         },
-
-        emptyCart() {
-            store.cartItems = [];
-            this.resetShippingCost();
-
-            localStorage.setItem('cartItems', JSON.stringify(store.cartItems));
-
-        },
-
-        resetShippingCost() {
-            if (store.cartItems = [] || store.cartItems == null || store.cartItems == false) {
-                store.shippingCost = null;
-            }
-        }
     },
 
     mounted() {
@@ -220,7 +206,7 @@ export default {
                             <div class="btn btn-success mt-3">Checkout</div>
                         </RouterLink>
                     </div>
-                    <button class="btn btn-danger" @click="emptyCart" style="width:50px;">
+                    <button class="btn btn-danger" @click="store.emptyCart()" style="width:50px;">
                         <font-awesome-icon icon="fa-solid fa-trash" />
                     </button>
                 </div>

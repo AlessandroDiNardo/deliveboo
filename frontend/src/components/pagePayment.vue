@@ -81,6 +81,8 @@ export default {
 
                         if (result.transaction.success) {
                             this.transactionSuccess = true;
+
+                            store.emptyCart();
                         }
 
                         console.log(result.transaction.success, result.order);
