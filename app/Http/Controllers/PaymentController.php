@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
 use App\Services\BraintreeService;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,9 @@ use App\Models\Restaurant;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
+
+use App\Mail\NewOrderRestaurant;
+use App\Mail\NewOrderBuyer;
 
 class PaymentController extends Controller
 {
@@ -103,6 +107,12 @@ class PaymentController extends Controller
         $order -> save();
 
         $order -> products() -> attach($productsIds);
+
+        Mail::to($restaurant -> user -> email)
+            -> send(new NewOrderRestaurant($order));
+
+        Mail::to($order -> buyer_email)
+        -> send(new NewOrderBuyer($order));
 
         return $order;
     } 

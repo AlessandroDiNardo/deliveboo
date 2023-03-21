@@ -27,9 +27,44 @@
                         <a href="{{ route('product.edit', $product) }}" class="btn btn-outline-success my-2">
                             Modifica Piatto
                         </a>
-                        <a href="{{ route('product.delete', $product) }}" class="btn btn-outline-danger my-2">
+                        {{-- <a href="{{ route('product.delete', $product) }}" class="btn btn-outline-danger my-2">
                             Elimina Piatto
-                        </a>
+                        </a> --}}
+                        <button type="button" class="btn btn-outline-danger my-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Elimina piatto
+                        </button>
+        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+        
+                                <div class="modal-content">
+                                    <div class="modal-header">
+        
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Cancellazione prodotto!</h1>
+        
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        
+                                    </div>
+        
+                                    <div class="modal-body">
+                                        Questa azione cancellerà per sempre il tuo prodotto.
+                                    </div>
+        
+                                    <div class="modal-footer">
+        
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+                                        <a href="{{ route('product.delete', $product) }}" class="text-reset text-decoration-none">
+                                            <button type="button" class="btn btn-danger">
+                                                Elimina
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
