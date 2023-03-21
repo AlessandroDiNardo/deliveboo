@@ -111,7 +111,7 @@ export default {
 }
 
 .restaurant-overflow {
-    height: 700px;
+    height: 600px;
     overflow-y: scroll;
     margin-top: 80px;
 }
@@ -129,7 +129,7 @@ export default {
 
 .category_cont {
     width: 400px;
-    height: 500px;
+    height: 400px;
     overflow-y: scroll;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -149,7 +149,6 @@ export default {
 .ms_card {
     width: 340px;
     height: 400px;
-
 
     .img_cont {
         height: 200px;
@@ -205,7 +204,7 @@ ul {
     align-items: flex-end;
     flex-direction: column;
     width: 400px;
-    height: 620px;
+    height: 678px;
 }
 
 @media screen and (max-width: 850px) {
