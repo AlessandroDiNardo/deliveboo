@@ -16,7 +16,7 @@
     <div class="container d-flex justify-content-center align-items-center flex-wrap gap-5">
         @foreach ( $restaurant -> products as $product)
         <div class="card-deck d-flex align-items-center justify-content-end gap-3 flex-wrap" >
-            <div class="card " style="height:550px; width:300px;">
+            <div class="card " style="height:600px; width:300px;">
                 <img src="{{ str_contains($product -> img, 'http') ? $product -> img : asset('storage/' . $product -> img) }}" alt="Card image cap" class=" card-img-top" style="height:250px; width:298px;">
                 <div class="text-start p-3 text_cont" style="width:100%; height:100%;">
                     <h3 class="card-title category font-weight-bold mt-3">{{ $product -> name }}</h3>
@@ -24,13 +24,10 @@
                     <h5>Ingredienti:</h5>
                     <p class="card-text font-weight-bold mt-2">{{ $product -> ingredients }}</p>
                     <div class="d-flex align-items-center justify-content-center gap-3 btn_cont" style="height:100%">
-                        <a href="{{ route('product.edit', $product) }}" class="btn btn-outline-success my-2">
+                        <a href="{{ route('product.edit', $product) }}" class="btn btn-success my-2">
                             Modifica Piatto
                         </a>
-                        {{-- <a href="{{ route('product.delete', $product) }}" class="btn btn-outline-danger my-2">
-                            Elimina Piatto
-                        </a> --}}
-                        <button type="button" class="btn btn-outline-danger my-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn btn-danger my-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Elimina piatto
                         </button>
         
