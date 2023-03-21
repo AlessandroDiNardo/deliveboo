@@ -264,23 +264,21 @@ export default {
         </div>
     </section>
 
-    <section class="container" v-else style="height: 300px;">
-        <section class="text-center " v-if="transactionLoading">
+    <section class="container bg-light bg-opacity-0" v-else style="height: 500px;">
+        <section class="text-center padding bg-light bg-opacity-0" v-if="transactionLoading">
             <img class="loading_img animate__animated animate__bounce animate__infinite" src="../assets/Logo-Deliveboo.png"
                 alt="">
         </section>
 
-        <section class=" text-center" v-if="!transactionLoading">
-            <section class="mt-5" v-if="transactionSuccess">
+        <section class=" text-center bg-light bg-opacity-0" v-if="!transactionLoading">
+            <section class="padding bg-light bg-opacity-0" v-if="transactionSuccess">
                 <h1 class="animate__animated animate__bounceIn">
-
                     Congratulazioni <br>
                     Il tuo ordine è in arrivo
-
                 </h1>
             </section>
 
-            <section class=" text-center" v-else>
+            <section class=" text-center padding bg-light bg-opacity-0" v-else>
                 <h1 class="animate__animated animate__bounceIn">
                     Ci Dispiace ma la sua transazione non è valida.
                     Ricarica la pagina per riprovare.
@@ -372,6 +370,9 @@ button {
     padding-bottom: 15px;
 }
 
+.padding {
+    padding-top: 200px;
+}
 
 //Responsive Form_Container
 
