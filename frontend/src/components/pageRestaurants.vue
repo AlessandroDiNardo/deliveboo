@@ -50,7 +50,7 @@ export default {
 <template>
     <section class="main" id="resturant">
         <!-- main content -->
-        <section class="ms_container d-flex justify-content-between align-items-center p-4 gap-5">
+        <section class="ms_container d-flex justify-content-start align-items-center p-4 gap-5">
             <div class="category_block">
                 <div class="pt-5 px-3 bg-light border_cont" style="height:200px;">
                     <h3>Cerca il tuo ristorante, cibo o piatto preferito!</h3>
@@ -85,6 +85,11 @@ export default {
                             </router-link>
                         </div>
                     </div>
+                </div>
+                <div v-if="this.filteredRestaurants.length === 0">
+                    <h1 class="title_position text-success fw-bold">
+                        Non sono presenti ristoranti con i filtri selezionati!
+                    </h1>
                 </div>
             </div>
         </section>
@@ -205,6 +210,12 @@ ul {
     flex-direction: column;
     width: 400px;
     height: 678px;
+}
+
+
+.title_position {
+    position: relative;
+    top: 300px;
 }
 
 @media screen and (max-width: 850px) {
