@@ -171,7 +171,7 @@ export default {
                         <div class="d-flex justify-content-between align-teims-center pt-2">
                             <div class="d-flex justify-content-start align-items-center gap-2 py-1">
                                 <span class="text-danger">
-                                    {{ item.price * item.quantity }} €
+                                    {{ store.formatPrice(item.price * item.quantity) }}
                                 </span>
                             </div>
                             <div class="d-flex justify-content-start align-items-center gap-3 py-1">
