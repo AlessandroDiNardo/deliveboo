@@ -22,7 +22,7 @@ export default {
       // carica il carrello dal local storage
       const cartItems = localStorage.getItem('cartItems');
       if (cartItems) {
-          store.cartItems = JSON.parse(cartItems);
+        store.cartItems = JSON.parse(cartItems);
       }
     }
   },
