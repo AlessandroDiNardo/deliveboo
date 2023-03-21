@@ -73,7 +73,7 @@ footer {
 
     ul {
         list-style: none;
-        background-color: #434848;
+        background-color: #393939;
         display: flex;
         flex-direction: column;
         gap: 5px;

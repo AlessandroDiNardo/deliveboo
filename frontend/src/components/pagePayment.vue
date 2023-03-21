@@ -266,23 +266,23 @@ export default {
         </div>
     </section>
 
-    <section class="container bg-light bg-opacity-100" v-else style="height: 500px;">
-        <section class="text-center padding bg-light bg-opacity-0" v-if="transactionLoading">
+    <section class="container " v-else style="height: 500px;">
+        <section class="text-center padding " v-if="transactionLoading">
             <img class="loading_img animate__animated animate__bounce animate__infinite" src="../assets/Logo-Deliveboo.png"
                 alt="">
         </section>
 
-        <section class=" text-center bg-light bg-opacity-0" v-if="!transactionLoading">
-            <section class="padding bg-light bg-opacity-0" v-if="transactionSuccess">
-                <h1 class="animate__animated animate__bounceIn bg-light bg-opacity-0">
-                    Congratulazioni <br>
-                    Il tuo ordine è in arrivo <br>
+        <section class=" text-center " v-if="!transactionLoading">
+            <section class="padding " v-if="transactionSuccess">
+                <h1 class="animate__animated animate__bounceIn fw-bold">
+                    Congratulazioni, <br>
+                    il tuo ordine è in arrivo. <br>
                     Controlla la tua mail per ulteriori dettagli!
                 </h1>
             </section>
 
-            <section class=" text-center padding bg-light bg-opacity-0" v-else>
-                <h1 class="animate__animated animate__bounceIn">
+            <section class=" text-center padding " v-else>
+                <h1 class="animate__animated animate__ fw-bold">
                     Ci Dispiace ma la sua transazione non è valida.
                     Ricarica la pagina per riprovare.
                 </h1>
@@ -299,9 +299,6 @@ export default {
 @use '../assets/scss/general.scss' as *;
 @use '../assets/scss/partials/variables.scss' as *;
 
-section {
-    background-color: $bg_main;
-}
 
 .ms_container {
     margin: 0 auto;
