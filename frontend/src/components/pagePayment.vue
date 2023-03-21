@@ -12,16 +12,16 @@ export default {
             clientToken: null,
             transaction: {
                 'paymentInfo': {
-                    'payment_method_nonce' : null,
+                    'payment_method_nonce': null,
                     'productsIds': [],
                 },
 
                 'orderInfo': {
-                    'buyer_first_name' : null,
-                    'buyer_last_name' : null,
-                    'buyer_email' : null,
-                    'buyer_phone_number' : null,
-                    'address' : null,
+                    'buyer_first_name': null,
+                    'buyer_last_name': null,
+                    'buyer_email': null,
+                    'buyer_phone_number': null,
+                    'address': null,
                 }
             },
         }
@@ -41,7 +41,7 @@ export default {
                     }
                 })
                 .catch(err => console.error(err));
-                            
+
         },
 
         saveCartToTransaction() {
@@ -49,11 +49,11 @@ export default {
 
                 store.cartItems.forEach(element => {
                     for (let index = 0; index < element.quantity; index++) {
-    
+
                         this.transaction.paymentInfo.productsIds.push(element.id);
-                        
+
                     }
-    
+
                     // DEBUG
                     console.log(this.transaction.paymentInfo.productsIds);
                 });
@@ -90,7 +90,7 @@ export default {
                     container: '#dropin-container',
 
                 }, (error, dropinInstance) => {
-                        if (error) console.error(error);
+                    if (error) console.error(error);
 
                     form.addEventListener('submit', event => {
                         event.preventDefault();
@@ -106,8 +106,8 @@ export default {
                             this.transactionCall();
                         });
                     });
-                });    
-            })  
+                });
+            })
             .catch(error => {
                 console.error(error);
             });
@@ -120,62 +120,71 @@ export default {
     <section>
         <div class="ms_container">
             <h1 class="text-center fw-bolder">Completa il tuo Ordine!</h1>
-            <div class="border border-dark py-3 rounded-5 bg-light" style="width:400px;">
+            <div class="border border-dark rounded-4 bg-light" style="width:350px;">
                 <h3 class=" p-3">Riepilogo ordine:</h3>
-                <div class="d-flex justify-content-between align-items-center p-3 bg" v-for="item in store.cartItems">
-                    <div>{{ item.name }}</div>
-                    <div>{{ item.quantity }}x</div>
-                    <div>{{ item.price*item.quantity }}€</div>
+                <div class="drop_cont">
+                    <div class="d-flex justify-content-between align-items-center p-3 bg" v-for="item in store.cartItems">
+                        <div>
+                            {{ item.quantity }}x {{ item.name }}</div>
+                        <div>{{ item.price * item.quantity }}€</div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-3">
+                    <div>Totale:</div>
+                    <div class=" text-danger">
+                        {{ store.formatPrice(store.total()) }}
+                    </div>
                 </div>
             </div>
             <form id="payment-form" action="/route/on/your/server" method="post">
-                <div class="d-flex justify-content-evenly align-items-center gap-5 border border-dark mt-5 py-5 rounded-5">
+                <div
+                    class="d-flex justify-content-evenly align-items-center gap-5 border border-dark mt-5 py-5 rounded-5 pay_cont">
                     <div>
                         <div class="row justify-content-between text-left">
 
-                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                            <div class="form-group col-sm-6 flex-column d-flex">
                                 <label class="form-control-label px-3">
                                     Nome<span class="text-danger"> *</span>
-                                </label> 
-                                
-                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_first_name"> 
+                                </label>
+
+                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_first_name">
                             </div>
 
-                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                            <div class="form-group col-sm-6 flex-column d-flex">
                                 <label class="form-control-label px-3">
                                     Cognome <span class="text-danger"> *</span>
                                 </label>
-                                
+
                                 <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_last_name">
                             </div>
 
                         </div>
 
-                        <div class="row justify-content-between text-left">
+                        <div class="row justify-content-between text-left data_cont">
 
-                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                            <div class="form-group col-sm-6 flex-column d-flex">
                                 <label class="form-control-label px-3">
                                     Email<span class="text-danger"> *</span>
-                                </label> 
-                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_email"> 
+                                </label>
+                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_email">
                             </div>
 
-                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                            <div class="form-group col-sm-6 flex-column d-flex">
                                 <label class="form-control-label px-3">
                                     Numero telefonico<span class="text-danger">*</span>
-                                </label> 
-                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_phone_number"> 
+                                </label>
+                                <input type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_phone_number">
                             </div>
 
                         </div>
 
                         <div class="row justify-content-between text-left">
 
-                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                            <div class="form-group col-sm-6 flex-column d-flex">
                                 <label class="form-control-label px-3">
                                     indirizzo<span class="text-danger"> *</span>
                                 </label>
-                                
+
                                 <input type="text" placeholder="" v-model="this.transaction.orderInfo.address">
                             </div>
                         </div>
@@ -255,5 +264,83 @@ button {
 
 .btn-block:hover {
     color: #fff;
+}
+
+.drop_cont {
+    height: 150px;
+    overflow-y: scroll;
+}
+
+.drop_cont::-webkit-scrollbar {
+    display: none;
+}
+
+.drop_cont {
+    -ms-overflow-style: none;
+}
+
+@media screen and (max-width: 1520px) {
+
+    .ms_container {
+        max-width: 1320px;
+    }
+}
+
+@media screen and (max-width: 1340px) {
+
+    .ms_container {
+        max-width: 1150px;
+    }
+}
+
+@media screen and (max-width: 1160px) {
+
+    .ms_container {
+        max-width: 992px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+
+    .ms_container {
+        max-width: 840px;
+    }
+
+    .pay_cont {
+        padding: 0 50px;
+    }
+}
+
+@media screen and (max-width: 840px) {
+
+    .ms_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .pay_cont {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 640px) {
+
+    .ms_container {
+        max-width: 500px;
+    }
+
+}
+
+@media screen and (max-width: 510px) {
+
+    .ms_container {
+        max-width: 300px;
+    }
+
 }
 </style>
