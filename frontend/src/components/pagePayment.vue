@@ -266,7 +266,7 @@ export default {
         </div>
     </section>
 
-    <section class="container bg-light bg-opacity-0" v-else style="height: 500px;">
+    <section class="container bg-light bg-opacity-100" v-else style="height: 500px;">
         <section class="text-center padding bg-light bg-opacity-0" v-if="transactionLoading">
             <img class="loading_img animate__animated animate__bounce animate__infinite" src="../assets/Logo-Deliveboo.png"
                 alt="">
@@ -274,9 +274,10 @@ export default {
 
         <section class=" text-center bg-light bg-opacity-0" v-if="!transactionLoading">
             <section class="padding bg-light bg-opacity-0" v-if="transactionSuccess">
-                <h1 class="animate__animated animate__bounceIn">
+                <h1 class="animate__animated animate__bounceIn bg-light bg-opacity-0">
                     Congratulazioni <br>
-                    Il tuo ordine è in arrivo
+                    Il tuo ordine è in arrivo <br>
+                    Controlla la tua mail per ulteriori dettagli!
                 </h1>
             </section>
 
