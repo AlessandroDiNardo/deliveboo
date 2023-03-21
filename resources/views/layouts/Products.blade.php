@@ -27,7 +27,7 @@
                     <a class="navbar-brand d-flex align-items-center" href="http://localhost:5174/">
                         <img src="{{Vite::asset('resources/img/Logo-Delivebo.png')}}" alt="logo"  class="Logo_filter">
                         <div class="logo_laravel">
-                            <h1>Deliveboo </h1>
+                            <h1 id="header-title">Deliveboo </h1>
                         </div>
                     </a>
 

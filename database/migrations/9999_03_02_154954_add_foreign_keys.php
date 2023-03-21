@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('restaurants', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id') -> unique();
  
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users') -> onDelete('cascade');
         });
 
         Schema::table('products', function (Blueprint $table) {
@@ -28,7 +28,7 @@ return new class extends Migration
         });
 
         Schema::table('category_restaurant', function (Blueprint $table) {
-            $table -> foreignId('restaurant_id') -> constrained();
+            $table -> foreignId('restaurant_id') -> constrained() -> onDelete('cascade');
 
             $table -> foreignId('category_id') -> constrained();
         });  
