@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use App\Services\BraintreeService;
 use Illuminate\Http\Request;
@@ -73,6 +74,9 @@ class PaymentController extends Controller
 
         // aggiungi la key price con l'intero prezzo all'array $data
         $data['price'] = $orderPrice;
+
+        // aggiunge data reale
+        $data['order_date'] = Carbon::now();
 
         // esegui la transazione con Braintree
         $transaction = $this->braintree->generateTransaction()->sale([
