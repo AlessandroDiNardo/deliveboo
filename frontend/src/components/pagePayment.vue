@@ -162,144 +162,7 @@ export default {
 
 
 <template>
-
-    <div v-if="store.cartItems.length != 0"> 
-        <section v-if="!transactionSubmitted">
-            <div id="up" class="ms_container">
-                <h1 class="text-center fw-bolder mb-5">Completa il tuo Ordine!</h1>
-                <div class="border border-dark rounded-4 bg-light" style="width:350px;">
-                    <h3 class=" p-3">Riepilogo ordine:</h3>
-                    <div class="drop_cont">
-                        <div class="d-flex justify-content-between align-items-center p-3 bg" v-for="item in store.cartItems">
-                            <div>
-                                {{ item.quantity }}x - {{ item.name }}</div>
-                            <div>{{ store.formatPrice(item.price * item.quantity) }}</div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center p-3">
-                        <div>Totale:</div>
-                        <div class=" text-danger">
-                            {{ store.formatPrice(store.total()) }}
-                        </div>
-                    </div>
-                </div>
-                <form @submit="validateForm" id="payment-form" action="/route/on/your/server" method="post">
-                    <div class="d-flex justify-content-evenly align-items-center gap-5 border border-dark mt-4 rounded-5"
-                        id="form_container">
-                        <div>
-                            <div class="row justify-content-between text-left">
-
-                                <div class="form-group col-sm-6 flex-column d-flex">
-                                    <label class="form-control-label px-3">
-                                        Nome<span class="text-danger">*</span>
-                                    </label>
-
-                                    <input required type="text" placeholder=""
-                                        v-model="this.transaction.orderInfo.buyer_first_name">
-                                    <div v-if="notValid">Il campo nome è obbligatorio.</div>
-
-                                </div>
-
-                                <div class="form-group col-sm-6 flex-column d-flex">
-                                    <label class="form-control-label">
-                                        Cognome<span class="text-danger"> *</span>
-                                    </label>
-
-                                    <input required type="text" placeholder=""
-                                        v-model="this.transaction.orderInfo.buyer_last_name">
-                                </div>
-
-                                <div class="form-group col-sm-6 flex-column d-flex">
-                                    <label class="form-control-label">
-                                        Email<span class="text-danger"> *</span>
-                                    </label>
-                                    <input required type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_email">
-                                </div>
-
-                                <div class="form-group col-sm-6 flex-column d-flex">
-                                    <label class="form-control-label">
-                                        Numero telefonico<span class="text-danger">*</span>
-                                    </label>
-                                    <input required type="text" placeholder=""
-                                        v-model="this.transaction.orderInfo.buyer_phone_number">
-                                </div>
-
-                            </div>
-
-                            <div class="row justify-content-between text-left data_cont">
-
-                                <div class="form-group col-sm-6 flex-column d-flex">
-                                    <label class="form-control-label">
-                                        Via / Piazza<span class="text-danger"> *</span>
-                                    </label>
-
-                                    <input required type="text" placeholder="" v-model="this.street">
-                                </div>
-
-
-                                <div class="form-group col-sm-6 flex-column d-flex">
-                                    <label class="form-control-label">
-                                        Città<span class="text-danger">*</span>
-                                    </label>
-                                    <input required type="text" placeholder="" v-model="this.city">
-                                </div>
-
-                            </div>
-
-                            <div class="row justify-content-between text-left">
-
-                                <div class="form-group col-sm-6 flex-column d-flex">
-                                    <label class="form-control-label">
-                                        CAP<span class="text-danger"> *</span>
-                                    </label>
-
-                                    <input required type="text" placeholder="" v-model="this.cap">
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                        <div>
-                            <!-- Putting the empty container you plan to pass to `braintree.dropin.create` inside a form will make layout and flow easier to manage -->
-                            <div id="dropin-container"></div>
-                            <input type="submit" />
-                            <input type="hidden" id="nonce" name="payment_method_nonce" />
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </section>
-
-        <section class="container " v-else style="height: 500px;">
-            <section class="text-center padding " v-if="transactionLoading">
-                <img class="loading_img animate__animated animate__bounce animate__infinite" src="../assets/Logo-Deliveboo.png"
-                    alt="">
-            </section>
-
-            <section class=" text-center " v-if="!transactionLoading">
-                <section class="padding " v-if="transactionSuccess">
-                    <h1 class="animate__animated animate__bounceIn fw-bold">
-                        Congratulazioni, <br>
-                        il tuo ordine #{{ transactionResult.code }} è in arrivo. <br>
-                        Controlla la tua mail per ulteriori dettagli!
-                    </h1>
-                </section>
-
-                <section class=" text-center padding " v-else>
-                    <h1 class="animate__animated animate__ fw-bold">
-                        Ci Dispiace ma la sua transazione non è valida.
-                        Ricarica la pagina per riprovare.
-                    </h1>
-                </section>
-                <RouterLink :to="{ name: 'home' }" class="btn btn-success p-2 mt-3">
-                    <font-awesome-icon icon="fa-solid fa-person-walking-arrow-loop-left" /> Torna alla Home!
-                </RouterLink>
-            </section>
-        </section>
-    </div>
-
-    <div class="container text-center" v-else>
+    <section class="container text-center" v-if="store.cartItems.length === 0 && !transactionSubmitted">
         <section class=" text-center padding ">
             <h1 class="animate__animated animate__ fw-bold">
                 Non ci sono prodotti nel carrello, acquista pressi i nostri ristoranti!
@@ -308,7 +171,143 @@ export default {
         <RouterLink :to="{ name: 'home' }" class="btn btn-success p-2 my-5">
             <font-awesome-icon icon="fa-solid fa-person-walking-arrow-loop-left" /> Torna alla Home!
         </RouterLink>
-    </div>
+    </section>
+
+    <section v-else-if="!transactionSubmitted">
+        <div id="up" class="ms_container">
+            <h1 class="text-center fw-bolder mb-5">Completa il tuo Ordine!</h1>
+            <div class="border border-dark rounded-4 bg-light" style="width:350px;">
+                <h3 class=" p-3">Riepilogo ordine:</h3>
+                <div class="drop_cont">
+                    <div class="d-flex justify-content-between align-items-center p-3 bg" v-for="item in store.cartItems">
+                        <div>
+                            {{ item.quantity }}x - {{ item.name }}</div>
+                        <div>{{ store.formatPrice(item.price * item.quantity) }}</div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-3">
+                    <div>Totale:</div>
+                    <div class=" text-danger">
+                        {{ store.formatPrice(store.total()) }}
+                    </div>
+                </div>
+            </div>
+            <form @submit="validateForm" id="payment-form" action="/route/on/your/server" method="post">
+                <div class="d-flex justify-content-evenly align-items-center gap-5 border border-dark mt-4 rounded-5"
+                    id="form_container">
+                    <div>
+                        <div class="row justify-content-between text-left">
+
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3">
+                                    Nome<span class="text-danger">*</span>
+                                </label>
+
+                                <input required type="text" placeholder=""
+                                    v-model="this.transaction.orderInfo.buyer_first_name">
+                                <div v-if="notValid">Il campo nome è obbligatorio.</div>
+
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label">
+                                    Cognome<span class="text-danger"> *</span>
+                                </label>
+
+                                <input required type="text" placeholder=""
+                                    v-model="this.transaction.orderInfo.buyer_last_name">
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label">
+                                    Email<span class="text-danger"> *</span>
+                                </label>
+                                <input required type="text" placeholder="" v-model="this.transaction.orderInfo.buyer_email">
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label">
+                                    Numero telefonico<span class="text-danger">*</span>
+                                </label>
+                                <input required type="text" placeholder=""
+                                    v-model="this.transaction.orderInfo.buyer_phone_number">
+                            </div>
+
+                        </div>
+
+                        <div class="row justify-content-between text-left data_cont">
+
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label">
+                                    Via / Piazza<span class="text-danger"> *</span>
+                                </label>
+
+                                <input required type="text" placeholder="" v-model="this.street">
+                            </div>
+
+
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label">
+                                    Città<span class="text-danger">*</span>
+                                </label>
+                                <input required type="text" placeholder="" v-model="this.city">
+                            </div>
+
+                        </div>
+
+                        <div class="row justify-content-between text-left">
+
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label">
+                                    CAP<span class="text-danger"> *</span>
+                                </label>
+
+                                <input required type="text" placeholder="" v-model="this.cap">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div>
+                        <!-- Putting the empty container you plan to pass to `braintree.dropin.create` inside a form will make layout and flow easier to manage -->
+                        <div id="dropin-container"></div>
+                        <input type="submit" />
+                        <input type="hidden" id="nonce" name="payment_method_nonce" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="container " v-else style="height: 500px;">
+        <section class="text-center padding " v-if="transactionLoading">
+            <img class="loading_img animate__animated animate__bounce animate__infinite" src="../assets/Logo-Deliveboo.png"
+                alt="">
+        </section>
+
+        <section class=" text-center " v-if="!transactionLoading">
+            <section class="padding " v-if="transactionSuccess">
+                <h1 class="animate__animated animate__bounceIn fw-bold">
+                    Congratulazioni, <br>
+                    il tuo ordine #{{ transactionResult.code }} è in arrivo. <br>
+                    Controlla la tua mail per ulteriori dettagli!
+                </h1>
+            </section>
+
+            <section class=" text-center padding" v-else>
+                <h1 class="animate__animated animate__ fw-bold">
+                    Ci Dispiace ma la sua transazione non è valida.
+                    Ricarica la pagina per riprovare.
+                </h1>
+            </section>
+
+            <RouterLink :to="{ name: 'home' }" class="btn btn-success p-2 mt-3">
+                <font-awesome-icon icon="fa-solid fa-person-walking-arrow-loop-left" /> Torna alla Home!
+            </RouterLink>
+        </section>
+    </section>
+
 </template>
 
 
