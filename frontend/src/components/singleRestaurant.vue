@@ -17,6 +17,39 @@ export default {
     },
     methods: {
 
+        formatDay($day) {
+            if($day == 'Monday') {
+                return 'Lunedì'
+            }
+
+            if($day == 'Tuesday') {
+                return 'Martedì'
+            }
+
+            if($day == 'Wednesday') {
+                return 'Mercoledì'
+            }
+
+            if($day == 'Thursday') {
+                return 'Giovedì'
+            }
+
+            if($day == 'Friday') {
+                return 'Venerdì'
+            }
+
+            if($day == 'Saturday') {
+                return 'Sabato'
+            }
+
+            if($day == 'Sunday') {
+                return 'Domenica'
+            }
+
+            return 'Lunedi'
+          
+        },
+
         getProducts() {
             axios.get('http://localhost:8000/api/v1/products/all', { params: { restaurantId: this.$route.params.id } })
                 .then(res => {
@@ -135,7 +168,7 @@ export default {
                         <p> {{ restaurant.place }}</p>
                         <p> Orario: {{ restaurant.opening_time }} - {{ restaurant.closing_time }}
                         </p>
-                        <p> Giorno di chiusura: {{ restaurant.closing_day }}</p>
+                        <p> Giorno di chiusura: {{ formatDay(restaurant.closing_day) }}</p>
                         <div class="d-flex justify-conten-start align-items-center gap-2">
                             <div class="btn btn-success me-2" v-for="category in restaurant.categories">
                                 {{ category.name }}
