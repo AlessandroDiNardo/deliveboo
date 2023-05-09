@@ -2,11 +2,11 @@
 
 @section('content')
 
-<section class="d-flex justify-content-center py-5 my_bg">
-    <form class="form d-flex flex-column" method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
-        <div class="d-flex justify-content-center">
+<section class="d-flex justify-content-center my_bg" style="height:994px;">
+    <form class="form d-flex flex-column " method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data" style="height:500px;">
+        <div class="d-flex justify-content-center ">
             <img class="Logo_filter" src="https://cdn.iconscout.com/icon/free/png-256/deliveroo-3442893-2875354.png" alt="logo" width="50" height="50"> 
-        <h1>CREA UN NUOVO PIATTO</h1>
+            <h1>CREA UN NUOVO PIATTO</h1>
         </div>
         @csrf
     
@@ -31,25 +31,27 @@
          </span>
         <br>
     
-        <label for="img">Immagine</label>
+        <label for="img" class="mt-3">Immagine</label>
         <input required class="imgProduct" type="file" name="img">
         <span role="alert" class="imgError" aria-hidden="true">
             Aggiungi un Immagine
          </span>
         <br>
     
-        <label for="visible">Disponibilità</label>
-        <select required class="disponibility my-2   text-center" name="visible">
-        <option value="" selected>Seleziona Disponibilità</option>   
-        <option value="1" selected>Disponibile</option>
-        <option value="0">Non Disponibile</option>
-        </select>
-         <span role="alert" class="disponibilityError" aria-hidden="true">
-           Aggiungi un campo
-         </span>
-        <br>
-    
-        <input class="my-2 submit  "  type="submit" value="CREA UN NUOVO PIATTO">
+        <div class="d-flex justify-content-center align-items-center row">
+            <div class="d-flex justify-content-center align-items-center">
+                <select required class="disponibility my-2 text-center" name="visible"  style="width:50%;">
+                <option value="" selected>Seleziona Disponibilità</option>   
+                <option value="1" selected>Disponibile</option>
+                <option value="0">Non Disponibile</option>
+                </select>
+                <span role="alert" class="disponibilityError" aria-hidden="true">
+                Aggiungi un campo
+                </span>
+            </div>
+        
+            <input class="my-2 submit"  type="submit" value="CREA UN NUOVO PIATTO" style="width:50%;">
+        </div>
     </form>
 </section>
 @endsection
